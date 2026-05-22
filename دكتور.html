@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدكتور في القدرات</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: #0B0B18;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  .topbar {
+    background: linear-gradient(90deg, #1a0a3c, #0d1a3c);
+    border-bottom: 2px solid #F5A623;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .topbar-title { font-size: 20px; font-weight: 900; color: #F5A623; }
+  .topbar-sub   { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+  .counter-wrap {
+    background: linear-gradient(135deg, #1a0a3c, #0d1228);
+    border: 1px solid rgba(245,166,35,0.3);
+    border-radius: 18px;
+    padding: 28px 32px;
+    text-align: center;
+    max-width: 340px;
+    margin: 36px auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .counter-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #F5A623, #6C3CE1, #F5A623);
+    z-index: -1;
+  }
+  .counter-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: 17px;
+    background: linear-gradient(135deg, #1a0a3c, #0d1228);
+    z-index: -1;
+  }
+  .counter-label  { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 6px; }
+  .counter-num    { font-size: 72px; font-weight: 900; color: #F5A623; line-height: 1; text-shadow: 0 0 30px rgba(245,166,35,0.5); letter-spacing: -2px; }
+  .counter-suffix { font-size: 15px; color: rgba(255,255,255,0.7); margin-top: 6px; font-weight: 600; }
+
+  .section {
+    max-width: 860px;
+    margin: 0 auto 48px;
+    padding: 0 20px;
+  }
+  .section-title {
+    font-size: 18px; font-weight: 700; color: #F5A623;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: rgba(245,166,35,0.25); }
+
+  .images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .img-card {
+    aspect-ratio: 4/3;
+    border-radius: 14px;
+    border: 2px dashed rgba(245,166,35,0.25);
+    background: rgba(255,255,255,0.03);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.25);
+    font-size: 13px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .img-card:hover { border-color: rgba(245,166,35,0.5); }
+  .img-card .icon { font-size: 36px; opacity: 0.4; }
+
+  .img-card img,
+  .img-card video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 12px;
+    pointer-events: none;
+  }
+
+  .play-icon {
+    position: absolute;
+    font-size: 44px;
+    pointer-events: none;
+    z-index: 2;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+  }
+
+  .lock-badge {
+    position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+    border: 1px solid rgba(245,166,35,0.4);
+    color: #F5A623; font-size: 12px; font-weight: 700;
+    padding: 5px 14px; border-radius: 50px; white-space: nowrap;
+  }
+
+  .cta-wrap { text-align: center; padding: 20px 20px 60px; }
+  .btn-row {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 12px; margin-bottom: 14px;
+  }
+  .btn-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 800; font-size: 15px; font-family: 'Cairo', sans-serif;
+    padding: 13px 28px; border-radius: 50px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-cta:hover { transform: translateY(-3px); }
+  .btn-wa    { background: linear-gradient(135deg, #25D366, #128C4A); color: #fff; box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+  .btn-insta { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; box-shadow: 0 8px 24px rgba(220,39,67,0.3); }
+  .btn-tele  { background: linear-gradient(135deg, #2AABEE, #0088CC); color: #fff; box-shadow: 0 8px 24px rgba(0,136,204,0.3); }
+  .btn-tiktok{ background: linear-gradient(135deg, #010101, #1a1a2e); color: #fff; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+  .cta-note { font-size: 13px; color: rgba(255,255,255,0.35); }
+  .cta-note span { color: #F5A623; font-weight: 600; }
+
+  /* ── lightbox ── */
+  #lightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(8px);
+    align-items: center; justify-content: center;
+  }
+  #lightbox.open { display: flex; }
+
+  #lightbox img, #lightbox video {
+    max-width: 92vw; max-height: 88vh;
+    border-radius: 14px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+    object-fit: contain;
+    animation: zoomIn 0.2s ease;
+  }
+  #lightbox video { background: #000; }
+
+  @keyframes zoomIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+
+  #lightbox-close {
+    position: absolute; top: 18px; left: 18px;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; font-size: 22px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  #lightbox-close:hover { background: rgba(255,255,255,0.25); }
+</style>
+</head>
+<body>
+
+<!-- شريط علوي -->
+<div class="topbar">
+  <div>
+    <div class="topbar-title">⭐ الدكتور في القدرات</div>
+  </div>
+  <div style="font-size:13px; color:rgba(255,255,255,0.45);">هيثم عصام</div>
+</div>
+
+<!-- عداد المشتركين -->
+<div class="counter-wrap">
+  <div class="counter-label">انضم إليهم وسجّل اشتراكك</div>
+  <div class="counter-num">17</div>
+  <div class="counter-suffix">مشترك وثقوا في الملف 🎯</div>
+</div>
+
+<!-- الصور المرئية -->
+<div class="section">
+  <div class="section-title">مقدمة من الملف</div>
+  <div class="images-grid">
+
+    <div class="img-card" onclick="openLightbox(this)">
+      <img src="1.png" onerror="this.style.display='none'" alt="">
+      <span class="icon">🖼️</span>
+      <span>ضع صورتك هنا</span>
+    </div>
+
+    <div class="img-card" onclick="openLightbox(this)">
+      <img src="2.png" onerror="this.style.display='none'" alt="">
+      <span class="icon">🖼️</span>
+      <span>ضع صورتك هنا</span>
+    </div>
+
+    <div class="img-card" onclick="openLightbox(this)">
+      <img src="3 (2).png" onerror="this.style.display='none'" alt="">
+      <span class="icon">🖼️</span>
+      <span>ضع صورتك هنا</span>
+    </div>
+
+    <div class="img-card" onclick="openLightbox(this)">
+      <img src="4.png" onerror="this.style.display='none'" alt="">
+      <span class="icon">🖼️</span>
+      <span>ضع صورتك هنا</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- لمحة من الملف -->
+<div class="section">
+  <div class="section-title">لمحة من الملف</div>
+  <div class="images-grid">
+
+    <div class="img-card" onclick="openLightbox(this)">
+      <img src="5.png" onerror="this.style.display='none'" alt="">
+      <span class="icon">📄</span>
+      <span>ضع صورتك هنا</span>
+    </div>
+
+    <div class="img-card" onclick="openLightbox(this)">
+      <img src="6.png" onerror="this.style.display='none'" alt="">
+      <span class="icon">📄</span>
+      <span>ضع صورتك هنا</span>
+    </div>
+
+    <div class="img-card" onclick="openLightbox(this)">
+      <img src="7.png" onerror="this.style.display='none'" alt="">
+      <span class="icon">📄</span>
+      <span>ضع صورتك هنا</span>
+    </div>
+
+    <!-- كارد الفيديو -->
+    <div class="img-card" onclick="openLightbox(this)">
+      <video src="v.mp4" muted playsinline preload="metadata"></video>
+      <span class="play-icon">▶️</span>
+    </div>
+
+  </div>
+</div>
+<!-- أزرار التواصل -->
+<div class="cta-wrap">
+  <p style="font-size:16px; font-weight:700; color:#fff; margin-bottom:18px;">
+    أطلب الملف وتواصل معنا من خلال الروابط 👇
+  </p>
+  <div class="btn-row">
+<!-- أزرار التواصل -->
+<div class="cta-wrap">
+  <div class="btn-row">
+    <a class="btn-cta btn-wa"     href="https://wa.me/966547856086"                                      target="_blank">واتساب</a>
+    <a class="btn-cta btn-insta"  href="https://instagram.com/dr_hith_oom"                               target="_blank">انستا</a>
+    <a class="btn-cta btn-tele"   href="https://t.me/Dr_hith_oom"                                        target="_blank">تيليجرام</a>
+    <a class="btn-cta btn-tiktok" href="https://www.tiktok.com/@dr.hithoom7?_r=1&_t=ZS-96ZTfEGlpa8"    target="_blank">تيك توك</a>
+  </div>
+  <div class="cta-note"><span>جهد حقيقي قُدِّم بصدق لأجلك — ادعُ لي ولوالديّ</span></div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <div id="lightbox-close" onclick="closeLightbox()">✕</div>
+  <img    id="lightbox-img" src="" alt="" style="display:none">
+  <video  id="lightbox-vid" controls style="display:none"></video>
+</div>
+
+<script>
+  function openLightbox(card) {
+    const img = card.querySelector('img');
+    const vid = card.querySelector('video');
+    const lb  = document.getElementById('lightbox');
+    const lImg = document.getElementById('lightbox-img');
+    const lVid = document.getElementById('lightbox-vid');
+
+    if (vid) {
+      lImg.style.display = 'none';
+      lVid.src = vid.src;
+      lVid.style.display = 'block';
+      lVid.play();
+    } else if (img && img.style.display !== 'none') {
+      lVid.style.display = 'none';
+      lImg.src = img.src;
+      lImg.style.display = 'block';
+    } else {
+      return;
+    }
+    lb.classList.add('open');
+  }
+
+  function closeLightbox() {
+    const lVid = document.getElementById('lightbox-vid');
+    lVid.pause();
+    lVid.src = '';
+    lVid.style.display = 'none';
+    document.getElementById('lightbox-img').style.display = 'none';
+    document.getElementById('lightbox-img').src = '';
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
