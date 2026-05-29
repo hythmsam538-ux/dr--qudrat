@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدكتور في القدرات | منصة تفاعلية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ====================================================
+   DESIGN SYSTEM — الدكتور في القدرات
+   Dark Gold Edition — Production Ready
+==================================================== */
+:root{
+  --bg:#080d1a;--bg2:#0f1627;--card:#131d2e;--card2:#1a2540;
+  --gold:#f0c040;--gold2:#c89a10;--blue:#3b7dd8;--green:#1db954;
+  --red:#e63946;--purple:#8b5cf6;--cyan:#06b6d4;--orange:#fb923c;
+  --text:#e2e8f5;--text2:#8896b3;--text3:#4a5780;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --r:14px;--shadow:0 8px 40px rgba(0,0,0,0.5);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;direction:rtl}
+
+/* === ANIMATED BACKGROUND === */
+.bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.12;animation:drift 20s ease-in-out infinite}
+.orb1{width:600px;height:600px;background:var(--gold);top:-200px;right:-200px;animation-delay:0s}
+.orb2{width:500px;height:500px;background:var(--blue);bottom:-200px;left:-200px;animation-delay:-7s}
+.orb3{width:400px;height:400px;background:var(--purple);top:40%;left:40%;animation-delay:-14s}
+@keyframes drift{0%,100%{transform:translate(0,0)}33%{transform:translate(30px,-40px)}66%{transform:translate(-20px,30px)}}
+
+/* === LOGIN SCREEN === */
+#loginScreen{
+  position:fixed;inset:0;z-index:2000;
+  background:linear-gradient(135deg,#08101f 0%,#0d1f3c 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.login-wrap{position:relative;z-index:1;text-align:center;width:100%;max-width:440px;padding:1rem}
+.login-logo{font-size:64px;margin-bottom:1rem;display:block;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.login-title{font-family:'Tajawal',sans-serif;font-size:36px;font-weight:900;margin-bottom:0.25rem}
+.login-title span{background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.login-sub{color:var(--text2);font-size:15px;margin-bottom:2rem}
+.login-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2.5rem;box-shadow:var(--shadow)}
+.field{margin-bottom:1rem;text-align:right}
+.field label{display:block;font-size:13px;color:var(--text2);margin-bottom:6px;font-weight:600}
+.field input,.field select{
+  width:100%;padding:13px 16px;background:var(--bg2);border:1px solid var(--border2);
+  border-radius:10px;color:var(--text);font-family:'Cairo',sans-serif;font-size:15px;
+  transition:border-color .2s;outline:none;direction:rtl;
+}
+.field input:focus,.field select:focus{border-color:var(--gold)}
+.field select option{background:var(--bg2)}
+.login-btn{
+  width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;
+  cursor:pointer;color:#08101f;transition:all .2s;margin-top:0.5rem;
+}
+.login-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(240,192,64,0.4)}
+.login-error{background:rgba(230,57,70,0.12);border:1px solid rgba(230,57,70,0.3);border-radius:8px;padding:10px;font-size:14px;color:var(--red);margin-top:0.5rem;display:none}
+
+/* === NAVBAR === */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(8,13,26,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);height:62px;display:none;
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 1.5rem}
+.nav-logo{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700}
+.nav-logo span{background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:2px}
+.nav-btn{
+  padding:7px 13px;border-radius:8px;border:none;background:transparent;
+  color:var(--text2);font-family:'Cairo',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;transition:all .2s;
+}
+.nav-btn:hover,.nav-btn.active{background:rgba(240,192,64,0.1);color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.xp-pill{padding:5px 12px;border-radius:20px;font-size:13px;font-weight:700;background:rgba(240,192,64,0.1);color:var(--gold);border:1px solid rgba(240,192,64,0.2)}
+.user-pill{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+
+/* === PAGES === */
+.page{display:none;min-height:100vh;padding:80px 1.5rem 3rem;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.page.active{display:block}
+
+/* === HOME PAGE === */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:2rem 0 3rem}
+.hero-badge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;background:rgba(240,192,64,0.1);color:var(--gold);border:1px solid rgba(240,192,64,0.2);margin-bottom:1rem}
+.hero-title{font-family:'Tajawal',sans-serif;font-size:52px;font-weight:900;line-height:1.1;margin-bottom:1rem}
+.hero-title .g{background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--text2);font-size:16px;line-height:1.8;margin-bottom:2rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* === BUTTONS === */
+.btn-gold{padding:13px 28px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;cursor:pointer;color:#08101f;transition:all .2s}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(240,192,64,0.35)}
+.btn-outline{padding:13px 28px;border:1px solid var(--border2);background:transparent;border-radius:10px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:600;cursor:pointer;color:var(--text);transition:all .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* === HERO VISUAL === */
+.hero-visual{}
+.stats-ring{width:220px;height:220px;border-radius:50%;margin:0 auto;background:conic-gradient(var(--gold) 0deg, var(--gold) var(--deg,0deg), rgba(255,255,255,0.05) var(--deg,0deg));display:flex;align-items:center;justify-content:center;box-shadow:0 0 60px rgba(240,192,64,0.15);transition:background 1s ease}
+.ring-inner{width:188px;height:188px;border-radius:50%;background:var(--bg2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.ring-pct{font-family:'Tajawal',sans-serif;font-size:42px;font-weight:900;color:var(--gold)}
+.ring-lbl{font-size:13px;color:var(--text2)}
+.floating-stats{margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fstat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
+.fstat-n{font-family:'Tajawal',sans-serif;font-size:26px;font-weight:800;color:var(--gold)}
+.fstat-l{font-size:12px;color:var(--text2);margin-top:2px}
+
+/* === SECTION HEADER === */
+.sec-hdr{margin-bottom:1.25rem}
+.sec-hdr h2{font-family:'Tajawal',sans-serif;font-size:24px;font-weight:800;margin-bottom:4px}
+.sec-hdr p{color:var(--text2);font-size:14px}
+
+/* === QUICK GRID === */
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:2rem 0}
+.qcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.qcard:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 8px 30px rgba(240,192,64,0.15)}
+.qcard-icon{font-size:32px;margin-bottom:0.5rem}
+.qcard-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.qcard-desc{font-size:12px;color:var(--text2)}
+
+/* === TOPICS GRID === */
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;cursor:pointer;transition:all .25s;position:relative}
+.tcard::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--orange));transform:scaleX(0);transform-origin:right;transition:transform .3s;border-radius:var(--r) var(--r) 0 0}
+.tcard:hover{transform:translateY(-3px);border-color:rgba(240,192,64,0.4)}
+.tcard:hover::before,.tcard.done::before{transform:scaleX(1)}
+.tcard.done{border-color:rgba(29,185,84,0.3)}
+.tcard.done::before{background:linear-gradient(90deg,var(--green),#16a34a)}
+.tcard-num{font-size:11px;color:var(--text3);margin-bottom:4px}
+.tcard-name{font-size:15px;font-weight:700;margin-bottom:6px}
+.tcard-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:10px}
+.tcard-foot{display:flex;align-items:center;justify-content:space-between}
+.tag{padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700}
+.tag-b{background:rgba(59,125,216,0.15);color:var(--blue)}
+.tag-r{background:rgba(240,192,64,0.12);color:var(--gold)}
+.tag-g{background:rgba(29,185,84,0.12);color:var(--green)}
+.tcard-q{font-size:11px;color:var(--text3)}
+.done-tick{position:absolute;top:10px;left:10px;width:20px;height:20px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:10px}
+
+/* === FILTER TABS === */
+.filter-row{display:flex;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap}
+.ftab{padding:7px 16px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--text2);font-family:'Cairo',sans-serif;transition:all .2s}
+.ftab.active,.ftab:hover{background:var(--gold);border-color:var(--gold);color:#08101f}
+
+/* === LESSON VIEW === */
+#lessonView{display:none}
+.lesson-header{background:var(--card);border-radius:var(--r);padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border)}
+.lesson-header h2{font-size:1.4rem;color:var(--gold);margin-bottom:0.5rem}
+.lesson-section{background:var(--card);border-radius:var(--r);padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border)}
+.lesson-section h3{color:var(--gold);margin-bottom:1rem;font-size:1rem}
+.rule-item{background:var(--bg2);padding:0.8rem 1rem;border-radius:8px;margin-bottom:8px;border-right:3px solid var(--gold);font-size:14px;line-height:1.6}
+.example-item{background:var(--bg2);padding:0.8rem 1rem;border-radius:8px;margin-bottom:8px;font-size:14px;line-height:1.6}
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-family:'Cairo',sans-serif;font-size:14px;cursor:pointer;transition:all .2s;margin-bottom:1rem}
+.back-btn:hover{color:var(--gold);border-color:var(--gold)}
+
+/* === QUIZ ENGINE === */
+#quizView{display:none}
+.quiz-wrap{max-width:680px;margin:0 auto}
+.quiz-hdr{background:var(--card);border-radius:var(--r);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;margin-bottom:1rem;border:1px solid var(--border)}
+.quiz-name{font-size:14px;font-weight:700;white-space:nowrap}
+.qpbar{background:var(--bg2);height:8px;border-radius:4px;flex:1;overflow:hidden}
+.qpbar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:4px;transition:width .4s}
+.timer{padding:4px 12px;border-radius:8px;background:rgba(230,57,70,0.15);color:var(--red);font-weight:700;font-size:14px;white-space:nowrap}
+.timer.ok{background:rgba(29,185,84,0.12);color:var(--green)}
+.qcard{background:var(--card);border-radius:16px;padding:1.75rem;margin-bottom:1rem;border:1px solid var(--border)}
+.q-text{font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;line-height:1.7}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{padding:0.9rem 1rem;background:var(--bg2);border:2px solid var(--border);border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:600;cursor:pointer;color:var(--text);transition:all .2s;text-align:right}
+.opt:hover:not(:disabled){border-color:var(--gold);background:rgba(240,192,64,0.06)}
+.opt.correct{background:rgba(29,185,84,0.12);border-color:var(--green);color:var(--green)}
+.opt.wrong{background:rgba(230,57,70,0.12);border-color:var(--red);color:var(--red)}
+.exp-box{background:rgba(59,125,216,0.08);border-radius:10px;padding:1rem;margin-top:1rem;border-right:3px solid var(--blue);display:none;font-size:14px;line-height:1.6}
+.exp-box.show{display:block}
+.quiz-actions{display:flex;gap:10px;margin-top:0.75rem}
+.btn-next{padding:10px 24px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;color:#08101f;display:none}
+.btn-quit{padding:10px 18px;border:1px solid var(--border2);background:transparent;border-radius:8px;font-family:'Cairo',sans-serif;font-size:14px;color:var(--text2);cursor:pointer}
+
+/* === RESULT SCREEN === */
+.result-card{background:var(--card);border-radius:16px;padding:2rem;text-align:center;border:1px solid var(--border)}
+.res-emoji{font-size:52px;margin-bottom:0.5rem}
+.res-pct{font-family:'Tajawal',sans-serif;font-size:52px;font-weight:900;margin:0.5rem 0}
+.res-pct.great{color:var(--green)}.res-pct.good{color:var(--gold)}.res-pct.poor{color:var(--red)}
+.res-msg{color:var(--text2);font-size:15px;margin-bottom:1.5rem}
+.res-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem}
+.rstat{background:var(--bg2);border-radius:10px;padding:1rem}
+.rstat-n{font-family:'Tajawal',sans-serif;font-size:26px;font-weight:800}
+.rstat-l{font-size:12px;color:var(--text2);margin-top:2px}
+.res-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-retry{padding:10px 22px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;color:#08101f}
+.btn-back2{padding:10px 22px;border:1px solid var(--border2);background:transparent;border-radius:8px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:600;cursor:pointer;color:var(--text)}
+
+/* === CHALLENGE PAGE === */
+.challenge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:2rem}
+.cmode{background:var(--card);border:2px solid var(--border);border-radius:var(--r);padding:1.5rem;text-align:center;cursor:pointer;transition:all .2s}
+.cmode:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 24px rgba(240,192,64,0.12)}
+.cmode-icon{font-size:36px;margin-bottom:0.5rem}
+.cmode-name{font-size:15px;font-weight:700;margin-bottom:4px}
+.cmode-desc{font-size:12px;color:var(--text2)}
+.cmode.featured{border-color:rgba(59,125,216,0.5);background:rgba(59,125,216,0.04)}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem}
+.challenge-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem}
+.challenge-box h3{font-size:16px;font-weight:700;margin-bottom:1rem;color:var(--gold)}
+.code-display{font-family:monospace;font-size:28px;font-weight:900;letter-spacing:8px;color:var(--gold);text-align:center;padding:1rem;background:rgba(240,192,64,0.08);border-radius:10px;border:1px solid rgba(240,192,64,0.2);margin-bottom:0.75rem;cursor:pointer;transition:all .2s}
+.code-display:hover{background:rgba(240,192,64,0.15)}
+.code-hint{font-size:12px;color:var(--text2);text-align:center}
+.join-row{display:flex;gap:10px;align-items:center}
+.join-input{flex:1;padding:11px 14px;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:monospace;font-size:18px;font-weight:700;letter-spacing:4px;text-transform:uppercase;outline:none;text-align:center}
+.join-input:focus{border-color:var(--gold)}
+.btn-join{padding:11px 20px;background:linear-gradient(135deg,var(--blue),#1d4ed8);border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;color:white}
+
+/* === LEADERBOARD === */
+.lb-podium{background:linear-gradient(135deg,#0d1f3c,#091429);padding:2rem 1.5rem;display:flex;align-items:flex-end;justify-content:center;gap:1rem;border-radius:var(--r) var(--r) 0 0}
+.podium-item{display:flex;flex-direction:column;align-items:center;gap:6px}
+.podium-av{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+.podium-av.gold{width:64px;height:64px;background:var(--gold);color:#08101f;font-size:22px}
+.podium-av.silver{width:52px;height:52px;background:#9ca3af;font-size:18px}
+.podium-av.bronze{width:52px;height:52px;background:#cd7f32;font-size:18px}
+.podium-name{font-size:13px;font-weight:700;color:rgba(255,255,255,0.9)}
+.podium-pts{font-size:14px;font-weight:800;color:var(--gold)}
+.lb-list{background:var(--card);border-radius:0 0 var(--r) var(--r);border:1px solid var(--border);border-top:none;padding:1rem}
+.lb-row{display:flex;align-items:center;gap:12px;padding:0.75rem 0.9rem;border-radius:10px;margin-bottom:4px}
+.lb-row.mine{background:rgba(59,125,216,0.1);border:1px solid rgba(59,125,216,0.25)}
+.lb-rank{width:26px;height:26px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.lb-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.lb-info{flex:1}
+.lb-name{font-size:14px;font-weight:700}
+.lb-sub{font-size:12px;color:var(--text3)}
+.lb-pts{font-size:18px;font-weight:800;color:var(--gold)}
+
+/* === PROGRESS PAGE === */
+.prog-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:2rem}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center}
+.pcard-n{font-family:'Tajawal',sans-serif;font-size:34px;font-weight:900;color:var(--gold)}
+.pcard-l{font-size:13px;color:var(--text2);margin-top:4px}
+.prog-list-item{background:var(--card);border-radius:10px;padding:0.9rem 1rem;margin-bottom:8px;border:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.prog-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0}
+.prog-info{flex:1}
+.prog-title{font-size:13px;font-weight:700}
+.prog-bar-s{background:var(--bg2);height:5px;border-radius:3px;overflow:hidden;margin-top:4px}
+.prog-bar-f{height:100%;background:linear-gradient(90deg,var(--gold),var(--orange));border-radius:3px}
+
+/* === TOAST & POPUPS === */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:11px 22px;font-size:14px;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{border-color:rgba(29,185,84,0.4);color:var(--green)}
+.toast.err{border-color:rgba(230,57,70,0.4);color:var(--red)}
+.toast.info{border-color:rgba(59,125,216,0.4);color:var(--cyan)}
+.xp-pop{position:fixed;top:75px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--orange));color:#08101f;padding:8px 20px;border-radius:20px;font-size:15px;font-weight:800;z-index:9999;opacity:0;transition:all .4s;pointer-events:none}
+.xp-pop.show{opacity:1}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .opts{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .two-col{grid-template-columns:1fr}
+  .hero-title{font-size:36px}
+  .page{padding:72px 1rem 2rem}
+  .topics-grid,.quick-grid,.challenge-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:420px){
+  .topics-grid,.quick-grid,.challenge-grid{grid-template-columns:1fr}
+  .res-stats{grid-template-columns:1fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ====================================================
+     BACKGROUND ORBS
+==================================================== -->
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- ====================================================
+     LOGIN SCREEN
+==================================================== -->
+<div id="loginScreen">
+  <div class="login-wrap">
+    <span class="login-logo">🎓</span>
+    <div class="login-title"><span>الدكتور في القدرات</span></div>
+    <p class="login-sub">منصة تفاعلية للقدرات الكمية</p>
+    <div class="login-card">
+      <div class="field">
+        <label>اسمك الكريم</label>
+        <input id="lname" type="text" placeholder="اكتب اسمك" autocomplete="off">
+      </div>
+      <div class="field">
+        <label>المرحلة الدراسية</label>
+        <select id="lgrade">
+          <option value="">اختر المرحلة</option>
+          <option>ثالث ثانوي</option>
+          <option>خريج ثانوي</option>
+          <option>طالب جامعي</option>
+          <option>موظف</option>
+        </select>
+      </div>
+      <button class="login-btn" onclick="doLogin()">🚀 ابدأ الرحلة</button>
+      <div class="login-error" id="lerr"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================================================
+     NAVBAR
+==================================================== -->
+<nav id="nav">
+  <div class="nav-in">
+    <div class="nav-logo">🎓 <span>الدكتور في القدرات</span></div>
+    <div class="nav-links">
+      <button class="nav-btn active" onclick="goPage('home')">الرئيسية</button>
+      <button class="nav-btn" onclick="goPage('topics')">📚 المواضيع</button>
+      <button class="nav-btn" onclick="goPage('challenge')">⚡ التحديات</button>
+      <button class="nav-btn" onclick="goPage('leaderboard')">🏆 المتصدرون</button>
+      <button class="nav-btn" onclick="goPage('progress')">📊 تقدمي</button>
+    </div>
+    <div class="nav-right">
+      <div class="xp-pill" id="navXp">⚡ 0 XP</div>
+      <div class="user-pill" id="navAv">؟</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ====================================================
+     PAGE: HOME
+==================================================== -->
+<div id="page-home" class="page">
+  <div class="hero">
+    <div>
+      <div class="hero-badge">🏅 منصة القدرات الكمية #1</div>
+      <h1 class="hero-title"><span class="g">الدكتور</span><br>في القدرات</h1>
+      <p class="hero-sub">تدرب على 31 موضوعاً، تنافس مع أصدقائك، وحقق أعلى الدرجات في اختبار القدرات الكمية</p>
+      <div class="hero-actions">
+        <button class="btn-gold" onclick="goPage('topics')">📚 ابدأ التدريب</button>
+        <button class="btn-outline" onclick="goPage('challenge')">⚡ تحدٍّ سريع</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stats-ring" id="heroRing">
+        <div class="ring-inner">
+          <div class="ring-pct" id="heroPct">0%</div>
+          <div class="ring-lbl">إتقانك العام</div>
+        </div>
+      </div>
+      <div class="floating-stats">
+        <div class="fstat"><div class="fstat-n" id="hs1">0</div><div class="fstat-l">سؤال محلول</div></div>
+        <div class="fstat"><div class="fstat-n" id="hs2">0</div><div class="fstat-l">إجابة صحيحة</div></div>
+        <div class="fstat"><div class="fstat-n" id="hs3">0</div><div class="fstat-l">مواضيع مكتملة</div></div>
+        <div class="fstat"><div class="fstat-n" id="hs4" style="color:var(--blue)">0</div><div class="fstat-l">تحديات خضتها</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><h2>🚀 ابدأ بسرعة</h2><p>اختر نوع التدريب المناسب لك</p></div>
+  <div class="quick-grid">
+    <div class="qcard" onclick="startChallenge('quick')"><div class="qcard-icon">⚡</div><div class="qcard-title">تحدي سريع</div><div class="qcard-desc">10 أسئلة · 60 ثانية لكل سؤال</div></div>
+    <div class="qcard" onclick="startChallenge('hard')"><div class="qcard-icon">🔥</div><div class="qcard-title">وضع الإتقان</div><div class="qcard-desc">20 سؤال · 45 ثانية · أصعب</div></div>
+    <div class="qcard" onclick="startChallenge('practice')"><div class="qcard-icon">📖</div><div class="qcard-title">مراجعة شاملة</div><div class="qcard-desc">15 سؤال · بدون مؤقت · راحة تامة</div></div>
+    <div class="qcard" onclick="goPage('topics')"><div class="qcard-icon">📚</div><div class="qcard-title">تدرب بالموضوع</div><div class="qcard-desc">31 موضوعاً مع شرح مفصل وأمثلة</div></div>
+  </div>
+
+  <div class="sec-hdr"><h2>📚 آخر المواضيع</h2></div>
+  <div class="topics-grid" id="homeTopics"></div>
+</div>
+
+<!-- ====================================================
+     PAGE: TOPICS
+==================================================== -->
+<div id="page-topics" class="page">
+  <div class="sec-hdr"><h2>📚 جميع المواضيع</h2><p>31 موضوعاً شاملاً في القدرات الكمية</p></div>
+  <div class="filter-row">
+    <button class="ftab active" onclick="filterTopics('all',this)">الكل (31)</button>
+    <button class="ftab" onclick="filterTopics('basics',this)">📘 أساسيات</button>
+    <button class="ftab" onclick="filterTopics('ratios',this)">📊 نسب ومتوسطات</button>
+    <button class="ftab" onclick="filterTopics('geometry',this)">📐 هندسة</button>
+  </div>
+  <div id="lessonView"></div>
+  <div class="topics-grid" id="topicsGrid"></div>
+</div>
+
+<!-- ====================================================
+     PAGE: CHALLENGE
+==================================================== -->
+<div id="page-challenge" class="page">
+  <div id="challengeModes">
+    <div class="sec-hdr"><h2>⚡ التحديات</h2><p>تدرب، تنافس، وتفوق على أصدقائك</p></div>
+    <div class="challenge-grid">
+      <div class="cmode" onclick="startChallenge('quick')"><div class="cmode-icon">⚡</div><div class="cmode-name">تحدي سريع</div><div class="cmode-desc">10 أسئلة · 60 ثانية</div></div>
+      <div class="cmode" onclick="startChallenge('hard')"><div class="cmode-icon">🔥</div><div class="cmode-name">وضع الإتقان</div><div class="cmode-desc">20 سؤال · 45 ثانية</div></div>
+      <div class="cmode" onclick="startChallenge('practice')"><div class="cmode-icon">📖</div><div class="cmode-name">مراجعة بدون مؤقت</div><div class="cmode-desc">15 سؤال · راحة تامة</div></div>
+      <div class="cmode featured" onclick="showTopicPicker()"><div class="cmode-icon">📚</div><div class="cmode-name">تحدي بالموضوع</div><div class="cmode-desc">اختر موضوعاً محدداً</div></div>
+    </div>
+    <div id="topicPickerChallenge" style="display:none;margin-bottom:1.5rem"></div>
+
+    <div class="two-col">
+      <!-- إنشاء تحدي -->
+      <div class="challenge-box">
+        <h3>🎮 تحدِّ صديقاً</h3>
+        <p style="color:var(--text2);font-size:13px;margin-bottom:1rem">أنشئ كوداً وشاركه مع صديقك للتنافس على نفس الأسئلة في نفس الوقت</p>
+        <button class="btn-gold" style="width:100%;margin-bottom:0.75rem" onclick="createChallenge()">🎯 إنشاء تحدي جديد</button>
+        <div id="challengeCodeBox" style="display:none">
+          <div class="code-display" id="challengeCode" onclick="copyCode()" title="انقر للنسخ"></div>
+          <p class="code-hint">انقر على الكود لنسخه ثم شاركه مع صديقك</p>
+        </div>
+      </div>
+      <!-- الانضمام لتحدي -->
+      <div class="challenge-box">
+        <h3>🔗 انضم لتحدي</h3>
+        <p style="color:var(--text2);font-size:13px;margin-bottom:1rem">أدخل الكود الذي أرسله لك صديقك (6 خانات)</p>
+        <div class="join-row">
+          <input class="join-input" id="joinInput" placeholder="الكود" maxlength="6">
+          <button class="btn-join" onclick="joinChallenge()">انضم ←</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- سجل التحديات -->
+    <div class="challenge-box" style="margin-top:1rem">
+      <h3>📜 سجل تحدياتك السابقة</h3>
+      <div id="challengeHistory"><p style="color:var(--text2);font-size:14px">لا يوجد تحديات سابقة بعد</p></div>
+    </div>
+  </div>
+
+  <div id="quizView"></div>
+</div>
+
+<!-- ====================================================
+     PAGE: LEADERBOARD
+==================================================== -->
+<div id="page-leaderboard" class="page">
+  <div class="sec-hdr"><h2>🏆 لوحة المتصدرين</h2><p>أفضل المتدربين على المنصة</p></div>
+  <div style="background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid var(--border)">
+    <div class="lb-podium" id="lbPodium"></div>
+    <div class="lb-list" id="lbList"></div>
+  </div>
+</div>
+
+<!-- ====================================================
+     PAGE: PROGRESS
+==================================================== -->
+<div id="page-progress" class="page">
+  <div class="sec-hdr"><h2>📊 تقدمي</h2><p>تفاصيل أدائك عبر كل المواضيع</p></div>
+  <div class="prog-cards" id="progCards"></div>
+  <div class="sec-hdr"><h2>📋 تفاصيل المواضيع</h2></div>
+  <div id="progList"></div>
+</div>
+
+<!-- ====================================================
+     TOAST & XP POPUP
+==================================================== -->
+<div class="toast" id="toast"></div>
+<div class="xp-pop" id="xpPop"></div>
+
+<script>
+// ============================================================
+// DATA — المواضيع والأسئلة
+// ============================================================
+const TOPICS = [
+  {id:1,name:"ترتيب العمليات",cat:"basics",desc:"أولويات العمليات الحسابية وتسلسلها الصحيح",rules:["ابدأ بالأقواس أولاً","ثم الأسس والجذور","ثم الضرب والقسمة من اليسار","أخيراً الجمع والطرح من اليسار"],examples:["5+7×(8-2²)÷2+3²: 2²=4، 8-4=4، 7×4=28، 28÷2=14، 5+14+9=28","4+3×(5-2)²÷3: (5-2)²=9، 3×9=27، 27÷3=9، 4+9=13"]},
+  {id:2,name:"جمع عدد مع نفسه",cat:"basics",desc:"اختصارات الجمع المتكرر والتعرف على التربيع",rules:["جمع عدد ن مع نفسه ن مرة = ن²","جمع عدد ك مع نفسه ن مرة = ن×ك"],examples:["64 مجموعة 64 مرة = 64²","3/4 مجموعة 20 مرة = 20×3/4 = 15"]},
+  {id:3,name:"جمع متتالية بدون حاسبة",cat:"basics",desc:"حيل ذكية لجمع الأعداد المتتالية بسرعة",rules:["اجمع الأول والأخير وضرب في (عدد الحدود÷2)","مجموع 1 إلى ن = ن×(ن+1)÷2"],examples:["99+88+77+66+55+44: جمع متساوٍ→143×3=429","1+2+...+100 = 100×101÷2 = 5050"]},
+  {id:4,name:"مجموع متتالية أرقام",cat:"basics",desc:"مجموع المتتاليات الحسابية العامة",rules:["م = عدد الحدود × (الأول + الآخر) ÷ 2","عدد الحدود = (الآخر - الأول) ÷ الأساس + 1"],examples:["مجموع 1 إلى 50 = 50×51÷2 = 1275","10+20+...+90: 9 حدود × (10+90)÷2 = 450"]},
+  {id:5,name:"مجموع الزوجي والفردي",cat:"basics",desc:"حيل مجموع الأعداد الزوجية والفردية",rules:["مجموع الزوجي 2 إلى 2ن = ن×(ن+1)","مجموع الفردي 1 إلى (2ن-1) = ن²"],examples:["مجموع 2 إلى 20: ن=10، 10×11=110","مجموع 1 إلى 9 الفردي: 5 أعداد، 5²=25"]},
+  {id:6,name:"رقم الآحاد",cat:"basics",desc:"حساب رقم الآحاد في ضرب الأعداد الكبيرة",rules:["فقط اضرب آحاد الأعداد لتحصل على آحاد الناتج","آحاد 7: 7،9،3،1،7،... دورة كل 4"],examples:["4532×375765: آحاد 2×5=10 → الآحاد صفر","123×987: 3×7=21 → الآحاد 1"]},
+  {id:7,name:"عدد المصافحات والمباريات",cat:"basics",desc:"مسائل العد والتوافيق الأساسية",rules:["ن كيانات: عدد التوافيق الثنائية = ن×(ن-1)÷2"],examples:["10 فرق دوري: 10×9÷2=45 مباراة","8 أشخاص: 8×7÷2=28 مصافحة"]},
+  {id:8,name:"عدد العلامات والمستطيلات",cat:"basics",desc:"مسائل العد الهندسي الخاصة",rules:["علامات على طريق: الطول÷المسافة+1","مستطيلات في شبكة م×ن: م(م+1)/2 × ن(ن+1)/2"],examples:["1000م بعلامة كل 50م: 1000÷50+1=21 علامة","شبكة 3×2: 6×3=18 مستطيلاً"]},
+  {id:9,name:"مسائل الساعة",cat:"basics",desc:"حساب الزوايا وتلاقي عقارب الساعة",rules:["زاوية عقرب الساعات في دقيقة=0.5°","زاوية عقرب الدقائق في دقيقة=6°","زاوية في الساعة س:د = |30س - 5.5د|"],examples:["9:20 → |270-110|=160°","3:00 → |90-0|=90°"]},
+  {id:10,name:"كم عدد الأعداد",cat:"basics",desc:"حساب الأعداد في نطاق معين",rules:["من أ إلى ب شاملاً: ب-أ+1","من أ إلى ب حصراً: ب-أ-1","الزوجي من أ إلى ب: (ب-أ)÷2+1"],examples:["الأعداد بين 5 و47 حصراً: 47-5-1=41","الزوجية من 12 إلى 60: (60-12)÷2+1=25"]},
+  {id:11,name:"أيام الأسبوع والدورات",cat:"basics",desc:"تحديد اليوم بعد عدد من الأيام",rules:["اقسم على 7 والباقي يعطيك عدد الأيام للأمام","الدورات: اقسم على طول الدورة وانظر للباقي"],examples:["الأربعاء+95: 95÷7 باقي4، الأربعاء+4=الأحد","دورة 3,7,1,5 عند 99: 99÷4 باقي3→1"]},
+  {id:12,name:"ترتيب الأشخاص وزكاة المال",cat:"basics",desc:"مسائل الترتيب والزكاة المالية",rules:["مجموع الترتيب = أمام + خلف - 1","زكاة المال = القيمة÷40"],examples:["نورة 15 أمام 22 خلف: 15+22-1=36 شخصاً","زكاة 2000: 2000÷40=50"]},
+  {id:13,name:"الأعداد الأولية والقسمة",cat:"basics",desc:"اختبار الأولية وقواعد القسمة",rules:["على 2: آخر رقم زوجي","على 3: مجموع أرقامه على 3","على 6: يقبل على 2 و3 معاً","على 9: مجموع أرقامه على 9"],examples:["132: 1+3+2=6 يقبل على 3، وزوجي → يقبل على 6","43 أولي، 51=3×17، 49=7²"]},
+  {id:14,name:"مربع الأعداد القريبة من 100",cat:"basics",desc:"اختصارات تربيع الأعداد",rules:["(100+ن)² = 10000 + 200ن + ن²","(100-ن)² = 10000 - 200ن + ن²"],examples:["101² = 10000+200+1 = 10201","99² = 10000-200+1 = 9801","102² = 10000+400+4 = 10404"]},
+  {id:15,name:"الكسور العشرية",cat:"basics",desc:"العمليات الحسابية على الكسور العشرية",rules:["الضرب: تجاهل الفواصل، اضرب، ثم ضع الفاصلة","الجمع: اضبط محاذاة الفواصل أولاً"],examples:["3.75×0.4: 375×4=1500 → 1.500 → 1.5","2.64+5.23 = 7.87"]},
+  {id:16,name:"الكسور العادية",cat:"basics",desc:"جمع وطرح وضرب وقسمة الكسور",rules:["الجمع/الطرح: اجعل المقامات متساوية","الضرب: بسط×بسط ÷ مقام×مقام","القسمة: اضرب في مقلوب المقسوم عليه"],examples:["1/2+1/3=3/6+2/6=5/6","4/3÷9/16=4/3×16/9=64/27","3/4×2/3=6/12=1/2"]},
+  {id:17,name:"الجذور التربيعية",cat:"basics",desc:"تبسيط وحل معادلات الجذور",rules:["√(أ×ب) = √أ × √ب","√(أ²×ب) = أ×√ب"],examples:["√200=√(100×2)=10√2","√(2س+1)=5 → 2س+1=25 → س=12","√72=√(36×2)=6√2"]},
+  {id:18,name:"الأسس والقوى",cat:"basics",desc:"قوانين الأسس والقوى",rules:["أ^م × أ^ن = أ^(م+ن)","أ^م ÷ أ^ن = أ^(م-ن)","(أ^م)^ن = أ^(م×ن)","أ^0 = 1"],examples:["5⁷×5³÷5⁴=5^(7+3-4)=5⁶","7^س×7^س=7^18 → 2س=18 → س=9"]},
+  {id:19,name:"السرعة والمسافة والزمن",cat:"ratios",desc:"علاقة السرعة والمسافة والزمن",rules:["المسافة = السرعة × الزمن","السرعة الوسطى (ذهاب وإياب) = 2×ق1×ق2÷(ق1+ق2)"],examples:["360كم، سيارتان 80و100: 360÷180=2ساعة","60 ذهاباً 40 إياباً: 2×60×40÷100=48 وسطى"]},
+  {id:20,name:"النسبة المئوية",cat:"ratios",desc:"حساب النسب والتغيرات المئوية",rules:["الجزء = النسبة×الكل÷100","نسبة الربح = (البيع-الشراء)÷الشراء×100"],examples:["شراء 2400، بيع 3000: 600÷2400×100=25%","15% من 80 = 12"]},
+  {id:21,name:"الخصم والزيادة المتتالية",cat:"ratios",desc:"التعامل مع الخصومات المتعاقبة",rules:["خصم 15% ثم 10% ≠ 25%: اضرب 0.85×0.9=0.765","للعثور على السعر الأصلي: اقسم على نسبة الزيادة"],examples:["2000 بخصم 15% ثم 10%: 2000×0.85×0.9=1530","باع بـ850 بربح 25%: 850÷1.25=680"]},
+  {id:22,name:"التناسب الطردي والعكسي",cat:"ratios",desc:"حل مسائل التناسب بنوعيها",rules:["طردي: كلما زاد أحدهما زاد الآخر، أ/ب=ج/د","عكسي: كلما زاد أحدهما نقص الآخر، أ×ب=ج×د"],examples:["6 عمال 12 يوماً، 9 عمال: 6×12=72÷9=8 أيام","240كم/3ساعات=؟/7ساعات → 560كم"]},
+  {id:23,name:"الوسط الحسابي والمتوسطات",cat:"ratios",desc:"حساب المتوسطات والوسط الحسابي",rules:["الوسط = المجموع÷العدد","المجموع = الوسط × العدد"],examples:["متوسط 5 طلاب 72، انضم 90: (360+90)÷6=75","متوسط 6 أعداد 15، حُذف → متوسط 13: المحذوف=90-65=25"]},
+  {id:24,name:"الاحتمالات",cat:"ratios",desc:"حساب احتمال وقوع الأحداث",rules:["الاحتمال = عدد النتائج المرغوبة÷عدد النتائج الكلية","الاحتمال دائماً بين 0 و1"],examples:["5 حمراء+3 خضراء+2 صفراء: خضراء=3/10","رمي نرد: احتمال >4 هو 2/6=1/3"]},
+  {id:25,name:"الزوايا والمضلعات",cat:"geometry",desc:"مجموع زوايا المضلعات المختلفة",rules:["مجموع زوايا أي مثلث=180°","مجموع زوايا مضلع=(ن-2)×180° حيث ن عدد الأضلاع"],examples:["مضلع سداسي: (6-2)×180=720°","مثلث زاويتان 75°و55°: ثالثة=180-130=50°"]},
+  {id:26,name:"المثلث ونظرية فيثاغورس",cat:"geometry",desc:"مساحة المثلث وحساب أضلاعه",rules:["مساحة=½×قاعدة×ارتفاع","وتر²=ضلع1²+ضلع2² (نظرية فيثاغورس)"],examples:["مثلث قائم 6و8: وتر=√(36+64)=10","قاعدة12 وارتفاع9: مساحة=½×12×9=54"]},
+  {id:27,name:"المستطيل والمربع",cat:"geometry",desc:"مساحة ومحيط وقطر المستطيل والمربع",rules:["مستطيل: مساحة=ط×ع، محيط=2(ط+ع)، قطر=√(ط²+ع²)","مربع: مساحة=ض²، محيط=4×ض"],examples:["مستطيل 15×8: قطر=√(225+64)=17","مربع مساحته 144: ض=12، محيط=48"]},
+  {id:28,name:"المعين وشبه المنحرف",cat:"geometry",desc:"مساحة المعين وشبه المنحرف",rules:["معين: مساحة=½×القطر الأول×القطر الثاني","شبه منحرف: مساحة=½×(ق1+ق2)×الارتفاع"],examples:["معين قطراه 10و16: ½×10×16=80","شبه منحرف 7و11 وارتفاع8: ½×18×8=72"]},
+  {id:29,name:"الدائرة",cat:"geometry",desc:"محيط ومساحة الدائرة وأجزائها",rules:["محيط=2πر=πقطر","مساحة=πر²","π≈22/7≈3.14"],examples:["قطر14: ر=7، محيط=2×22/7×7=44","مساحة=22/7×49=154"]},
+  {id:30,name:"التوازي والزوايا",cat:"geometry",desc:"الزوايا بين خطين متوازيين وقاطع",rules:["زوايا التبادل: متساويتان","الزوايا المتحالفة: مجموعها 180°","الزوايا الموافقة: متساويتان"],examples:["زاوية تبادل لـ70°=70°","متحالفة مع 65°: 180-65=115°"]},
+  {id:31,name:"الأشكال ثلاثية الأبعاد",cat:"geometry",desc:"حجم ومساحة الأجسام المجسمة",rules:["مكعب: حجم=ض³، سطح=6ض²","متوازي مستطيلات: حجم=ط×ع×ا","أسطوانة: حجم=πر²×ا"],examples:["مكعب ضلعه5: سطح=6×25=150","أسطوانة نق7 وارتفاع10: 22/7×49×10=1540"]}
+];
+
+// بنك الأسئلة — 3 أسئلة لكل موضوع
+const QB={
+  1:[{q:"ما ناتج: 5+7×(8-2²)÷2+3²",opts:["28","35","30","25"],ans:0,exp:"2²=4، 8-4=4، 7×4=28، 28÷2=14، 5+14+9=28"},{q:"ما ناتج: 4+3×(5-2)²÷3",opts:["13","7","16","9"],ans:0,exp:"5-2=3، 3²=9، 3×9=27، 27÷3=9، 4+9=13"},{q:"ما ناتج: 3×(4+2)²÷4-1",opts:["26","27","25","28"],ans:0,exp:"(4+2)²=36، 3×36=108، 108÷4=27، 27-1=26"}],
+  2:[{q:"ما ناتج جمع 64 مع نفسه 64 مرة؟",opts:["64","16","64²","81"],ans:2,exp:"64×64=64²=4096"},{q:"ما ناتج جمع 3/4 مع نفسها 20 مرة؟",opts:["15","12","24","20"],ans:0,exp:"3/4×20=60/4=15"},{q:"ما ناتج جمع 25 مع نفسه 25 مرة؟",opts:["25²","50","500","100"],ans:0,exp:"25×25=25²=625"}],
+  3:[{q:"ما ناتج: 99+88+77+66+55+44",opts:["430","429","420","419"],ans:1,exp:"(99+44)+(88+55)+(77+66)=143+143+143=143×3=429"},{q:"ما ناتج: 1+2+3+...+100",opts:["5000","5050","4950","5100"],ans:1,exp:"100×101÷2=5050"},{q:"ما ناتج: 1+3+5+7+9+11+13+15+17+19",opts:["100","90","80","110"],ans:0,exp:"10 أعداد فردية: 10²=100"}],
+  4:[{q:"ما مجموع الأعداد من 1 إلى 50؟",opts:["1225","1150","1300","1275"],ans:3,exp:"50×51÷2=1275"},{q:"ما ناتج: 10+20+30+...+90؟",opts:["450","400","550","500"],ans:0,exp:"9 حدود، مجموع=9×(10+90)÷2=450"},{q:"ما مجموع: 5+10+15+...+50؟",opts:["275","250","300","325"],ans:0,exp:"10 حدود، 10×(5+50)÷2=275"}],
+  5:[{q:"ما مجموع الأعداد الزوجية من 2 إلى 20؟",opts:["110","100","90","120"],ans:0,exp:"ن=10، 10×(10+1)=110"},{q:"ما مجموع الأعداد الفردية من 1 إلى 9؟",opts:["25","20","30","16"],ans:0,exp:"5 أعداد فردية: 5²=25"},{q:"ما مجموع الأعداد الزوجية من 2 إلى 10؟",opts:["30","25","20","35"],ans:0,exp:"ن=5، 5×6=30"}],
+  6:[{q:"ما آحاد ناتج: 4532×375765؟",opts:["1","0","3","2"],ans:1,exp:"آحاد 2×5=10 → الآحاد صفر"},{q:"ما آحاد ناتج: 123×987؟",opts:["1","3","5","9"],ans:0,exp:"3×7=21 → آحاد الناتج=1"},{q:"ما آحاد ناتج: 37⁴؟",opts:["1","3","9","7"],ans:0,exp:"7¹=7،7²=9،7³=3،7⁴=1 → دورة كل 4 → باقي 4÷4=0 → آحاد=1"}],
+  7:[{q:"دوري 10 فرق، كم مباراة يحتاج؟",opts:["45","40","55","50"],ans:0,exp:"10×9÷2=45 مباراة"},{q:"8 أشخاص في اجتماع، كم مصافحة؟",opts:["28","24","56","32"],ans:0,exp:"8×7÷2=28 مصافحة"},{q:"5 فرق في دوري، كم مباراة؟",opts:["10","15","8","12"],ans:0,exp:"5×4÷2=10 مباريات"}],
+  8:[{q:"طريق 1000م بعلامة كل 50م، كم علامة؟",opts:["20","19","22","21"],ans:3,exp:"1000÷50=20، +1 للبداية=21"},{q:"كم مستطيلاً في شبكة 3×2؟",opts:["18","6","10","12"],ans:0,exp:"(1+2+3)×(1+2)=6×3=18"},{q:"طريق 500م بعلامة كل 25م، كم علامة؟",opts:["20","21","19","22"],ans:1,exp:"500÷25=20، +1=21"}],
+  9:[{q:"أحمد يملأ خزاناً في 3ساعات وسعد في 6ساعات، معاً كم؟",opts:["1.5","2","2.5","4"],ans:1,exp:"1/3+1/6=1/2 → يملآن معاً في 2 ساعة"},{q:"الساعة 9:20، ما الزاوية بين العقربين؟",opts:["160°","150°","145°","120°"],ans:0,exp:"|9×30-5.5×20|=|270-110|=160°"},{q:"الساعة 3:00، ما الزاوية بين العقربين؟",opts:["90°","180°","60°","120°"],ans:0,exp:"3×30=90°"}],
+  10:[{q:"كم عدداً صحيحاً محصوراً بين 5 و47 حصراً؟",opts:["41","42","44","43"],ans:0,exp:"47-5-1=41 عدداً"},{q:"كم عدداً زوجياً من 12 إلى 60 شاملاً؟",opts:["25","24","23","26"],ans:0,exp:"(60-12)÷2+1=25"},{q:"كم عدداً فردياً من 1 إلى 19 شاملاً؟",opts:["10","9","11","8"],ans:0,exp:"(19-1)÷2+1=10"}],
+  11:[{q:"إذا كان اليوم الأربعاء، ما اليوم بعد 95 يوماً؟",opts:["السبت","الجمعة","الاثنين","الأحد"],ans:3,exp:"95÷7=13 باقي4، الأربعاء+4=الأحد"},{q:"دورة 3,7,1,5 تتكرر، ما العنصر في الموضع 99؟",opts:["7","3","1","5"],ans:2,exp:"99÷4=24 باقي3 → العنصر3=1"},{q:"إذا كان اليوم الإثنين، ما اليوم بعد 100 يوم؟",opts:["الأربعاء","الإثنين","الجمعة","الثلاثاء"],ans:0,exp:"100÷7=14 باقي2، الإثنين+2=الأربعاء"}],
+  12:[{q:"نورة ترتيبها 15 من الأمام و22 من الخلف، كم عدد الطلاب؟",opts:["37","36","39","38"],ans:1,exp:"15+22-1=36 طالباً"},{q:"ما زكاة مبلغ 2000 ريال؟",opts:["50","40","80","100"],ans:0,exp:"2000÷40=50 ريالاً"},{q:"زيد ترتيبه 8 من الأمام و12 من الخلف، كم عدد المجموعة؟",opts:["19","20","21","18"],ans:0,exp:"8+12-1=19"}],
+  13:[{q:"أيٌّ من التالي عدد أولي؟",opts:["49","51","57","43"],ans:3,exp:"43 لا يقبل القسمة إلا على 1 وعلى نفسه"},{q:"أيٌّ من التالي يقبل القسمة على 6؟",opts:["124","135","132","145"],ans:2,exp:"132: 1+3+2=6 يقبل على 3، وهو زوجي → يقبل على 6"},{q:"أيٌّ من التالي يقبل القسمة على 9؟",opts:["127","135","143","218"],ans:1,exp:"135: 1+3+5=9 يقبل على 9"}],
+  14:[{q:"ما ناتج 101²؟",opts:["10101","10201","10301","10001"],ans:1,exp:"(100+1)²=10000+200+1=10201"},{q:"ما ناتج 99²؟",opts:["9801","9901","9701","9601"],ans:0,exp:"(100-1)²=10000-200+1=9801"},{q:"ما ناتج 102²؟",opts:["10304","10404","10204","10104"],ans:1,exp:"(100+2)²=10000+400+4=10404"}],
+  15:[{q:"ما ناتج: 3.75×0.4؟",opts:["1.5","1.0","1.20","1.3"],ans:0,exp:"375×4=1500 → 1.500 → 1.5"},{q:"ما ناتج: 2.64+5.23؟",opts:["7.87","7.50","7.75","7.80"],ans:0,exp:"2.64+5.23=7.87"},{q:"ما ناتج: 0.25×0.4؟",opts:["0.1","0.01","0.001","1"],ans:0,exp:"25×4=100 → نضع فاصلتين من اليمين → 0.10"}],
+  16:[{q:"ما ناتج: 1/2+1/3؟",opts:["5/6","2/5","1/6","2/6"],ans:0,exp:"3/6+2/6=5/6"},{q:"ما ناتج: 3/4×2/3؟",opts:["1/2","2/4","3/2","1/4"],ans:0,exp:"(3×2)/(4×3)=6/12=1/2"},{q:"ما ناتج: 2/3÷1/6؟",opts:["4","3","1/9","12"],ans:0,exp:"2/3×6/1=12/3=4"}],
+  17:[{q:"ما تبسيط √200؟",opts:["2√100","10√2","14","5√8"],ans:1,exp:"√(100×2)=10√2"},{q:"إذا كان √(2س+1)=5، فما قيمة س؟",opts:["12","11","10","13"],ans:0,exp:"(2س+1)=25 → 2س=24 → س=12"},{q:"ما تبسيط √72؟",opts:["6√2","8√2","6√3","9√2"],ans:0,exp:"√(36×2)=6√2"}],
+  18:[{q:"ما ناتج: 5⁷×5³÷5⁴؟",opts:["5⁷","5⁶","5⁸","5⁵"],ans:1,exp:"5^(7+3-4)=5⁶"},{q:"إذا كان 7^س×7^س=7^18، فما قيمة س؟",opts:["8","7","6","9"],ans:3,exp:"7^(2س)=7^18 → 2س=18 → س=9"},{q:"ما ناتج: (3²)³؟",opts:["3⁵","3⁶","3⁷","3⁸"],ans:1,exp:"3^(2×3)=3⁶"}],
+  19:[{q:"مسافة 360كم بين مدينتين، سيارتان تسيران نحو بعضهما بسرعة 80و100كم/س، متى يلتقيان؟",opts:["1.8 ساعة","2 ساعة","1.5 ساعة","2.5 ساعة"],ans:1,exp:"360÷(80+100)=360÷180=2 ساعة"},{q:"ذهب بسرعة 60كم/س وعاد بسرعة 40كم/س، السرعة المتوسطة=؟",opts:["48","50","52","45"],ans:0,exp:"2×60×40÷(60+40)=4800÷100=48"},{q:"مسافة 150كم بسرعة 75كم/س، الزمن=؟",opts:["2 ساعة","1.5 ساعة","3 ساعات","2.5 ساعة"],ans:0,exp:"الزمن=المسافة÷السرعة=150÷75=2 ساعة"}],
+  20:[{q:"اشترى بـ2400 وباع بـ3000، نسبة الربح=؟",opts:["25%","20%","15%","30%"],ans:0,exp:"600÷2400×100=25%"},{q:"ما قيمة 15% من 80؟",opts:["12","15","8","20"],ans:0,exp:"80×15÷100=12"},{q:"اشترى بـ500 وباع بـ400، نسبة الخسارة=؟",opts:["20%","25%","15%","10%"],ans:0,exp:"100÷500×100=20%"}],
+  21:[{q:"سعر 2000 خُصم منه 15% ثم 10%، السعر النهائي=؟",opts:["1400","1530","1500","1470"],ans:1,exp:"2000×0.85×0.9=1530"},{q:"سعر بعد زيادة 20% أصبح 600، ما السعر الأصلي؟",opts:["480","500","520","450"],ans:1,exp:"600÷1.2=500"},{q:"باع بـ850 بربح 25%، ما سعر الشراء؟",opts:["640","620","700","680"],ans:3,exp:"850÷1.25=680"}],
+  22:[{q:"6 عمال يُنهون عملاً في 12 يوماً، كم يحتاج 9 عمال؟",opts:["7","6","9","8"],ans:3,exp:"عكسي: 6×12=72÷9=8 أيام"},{q:"سيارة تقطع 240كم في 3ساعات، كم تقطع في 7ساعات؟",opts:["520","500","560","540"],ans:2,exp:"طردي: 240÷3×7=560"},{q:"4 صنابير تملأ خزاناً في 6ساعات، كم يحتاج 3 صنابير؟",opts:["8 ساعات","9 ساعات","6 ساعات","7 ساعات"],ans:0,exp:"عكسي: 4×6=24÷3=8 ساعات"}],
+  23:[{q:"متوسط درجات 5 طلاب 72، انضم طالب درجته 90، ما المتوسط الجديد؟",opts:["74","73","76","75"],ans:3,exp:"(72×5+90)÷6=(360+90)÷6=75"},{q:"متوسط 6 أعداد 15، حُذف أحدها فأصبح المتوسط 13، ما المحذوف؟",opts:["23","21","27","25"],ans:3,exp:"المجموع الأصلي=90، الجديد=13×5=65، المحذوف=90-65=25"},{q:"ما الوسط الحسابي للأعداد: 8,12,16,20؟",opts:["14","15","13","16"],ans:1,exp:"(8+12+16+20)÷4=56÷4=14"}],
+  24:[{q:"كيس فيه 5 كرات حمراء و3 خضراء و2 صفراء، ما احتمال سحب خضراء؟",opts:["3/10","1/5","1/3","3/8"],ans:0,exp:"3÷(5+3+2)=3/10"},{q:"عند رمي نرد واحد، ما احتمال ظهور عدد أكبر من 4؟",opts:["1/2","1/3","1/6","2/3"],ans:1,exp:"الأعداد >4 هي {5,6} → 2/6=1/3"},{q:"عند رمي عملة معدنية، ما احتمال ظهور الصورة؟",opts:["1/2","1/3","1/4","1"],ans:0,exp:"وجه واحد من وجهين → 1/2"}],
+  25:[{q:"ما مجموع زوايا مضلع سداسي الأضلاع؟",opts:["660°","720°","900°","540°"],ans:1,exp:"(6-2)×180=4×180=720°"},{q:"مثلث زاويتان فيه 75° و55°، ما الزاوية الثالثة؟",opts:["45°","50°","60°","40°"],ans:1,exp:"180-75-55=50°"},{q:"ما مجموع زوايا مضلع خماسي الأضلاع؟",opts:["540°","720°","360°","600°"],ans:0,exp:"(5-2)×180=3×180=540°"}],
+  26:[{q:"مثلث قائم الزاوية أحد ضلعيه 6 والآخر 8، ما طول الوتر؟",opts:["10","12","9","14"],ans:0,exp:"وتر=√(6²+8²)=√(36+64)=√100=10"},{q:"مثلث قاعدته 12 وارتفاعه 9، ما مساحته؟",opts:["54","48","60","108"],ans:0,exp:"مساحة=½×12×9=54"},{q:"وتر مثلث قائم 13 وأحد ضلعيه 5، ما الضلع الآخر؟",opts:["12","8","10","11"],ans:0,exp:"ض=√(13²-5²)=√(169-25)=√144=12"}],
+  27:[{q:"مستطيل أبعاده 15×8، ما طول قطره؟",opts:["17","16","19","18"],ans:0,exp:"قطر=√(15²+8²)=√(225+64)=√289=17"},{q:"مربع مساحته 144 سم²، ما محيطه؟",opts:["40","36","48","44"],ans:2,exp:"ضلع=√144=12، محيط=4×12=48"},{q:"مستطيل محيطه 30 وطوله 10، ما عرضه؟",opts:["5","6","7","8"],ans:0,exp:"30=2(10+ع) → 15=10+ع → ع=5"}],
+  28:[{q:"معين قطراه 10 و16، ما مساحته؟",opts:["70","60","90","80"],ans:3,exp:"مساحة=½×10×16=80"},{q:"شبه منحرف قاعدتاه 7 و11 وارتفاعه 8، ما مساحته؟",opts:["72","64","56","80"],ans:0,exp:"مساحة=½×(7+11)×8=½×18×8=72"},{q:"معين قطراه 6 و8، ما مساحته؟",opts:["24","48","28","36"],ans:0,exp:"مساحة=½×6×8=24"}],
+  29:[{q:"دائرة قطرها 14سم، ما محيطها؟ (π=22/7)",opts:["44سم","42سم","48سم","46سم"],ans:0,exp:"نق=7، محيط=2×22/7×7=44"},{q:"دائرة مساحتها 154سم²، ما قطرها؟ (π=22/7)",opts:["14سم","12سم","18سم","16سم"],ans:0,exp:"22/7×نق²=154 → نق²=49 → نق=7 → قطر=14"},{q:"دائرة نصف قطرها 10، ما مساحتها؟ (π≈3)",opts:["300","314","310","320"],ans:0,exp:"مساحة=3×10²=300"}],
+  30:[{q:"ما مقدار زاوية التبادل لزاوية 70°؟",opts:["70°","110°","35°","90°"],ans:0,exp:"زوايا التبادل متساوية = 70°"},{q:"ما مقدار الزاوية المتحالفة مع زاوية 65°؟",opts:["115°","65°","295°","90°"],ans:0,exp:"المتحالفة + الأصلية = 180° → 180-65=115°"},{q:"ما مقدار الزاوية الموافقة لزاوية 80°؟",opts:["80°","100°","90°","160°"],ans:0,exp:"الزوايا الموافقة متساوية = 80°"}],
+  31:[{q:"مكعب طول ضلعه 5سم، ما مساحة سطحه الكلية؟",opts:["130","120","150","140"],ans:2,exp:"مساحة سطح=6×5²=6×25=150"},{q:"أسطوانة نق=7 وارتفاع=10، ما حجمها؟ (π=22/7)",opts:["1430","1400","1540","1500"],ans:2,exp:"حجم=22/7×7²×10=22/7×490=1540"},{q:"مكعب طول ضلعه 3سم، ما حجمه؟",opts:["27","18","9","81"],ans:0,exp:"حجم=3³=27"}]
+};
+
+// ============================================================
+// STATE & STORAGE
+// بيانات المستخدمين محفوظة في localStorage
+// TODO: استبدل localStorage بـ Supabase أو Firebase للإنتاج
+// ============================================================
+let CU=null; // اسم المستخدم الحالي
+let US={xp:0,streak:0,total:0,correct:0,topics:{},tscores:{},challenges:0,wins:0,grade:''};
+let LB=[]; // لوحة المتصدرين
+let challenges={}; // تحديات الأصدقاء
+let quiz=null; // حالة الاختبار الحالي
+let timerI=null; // معرّف المؤقت
+
+// === دوال التخزين ===
+function loadState(name){
+  // تحميل بيانات المستخدم
+  let saved=localStorage.getItem('qudrat_user_'+name);
+  if(saved){
+    let d=JSON.parse(saved);
+    Object.assign(US,d);
+  }
+  // تحميل لوحة المتصدرين
+  let lbSaved=localStorage.getItem('qudrat_leaderboard');
+  if(lbSaved) LB=JSON.parse(lbSaved);
+  else LB=[
+    {n:"أحمد المطيري",g:"ثالث ثانوي",xp:2450,c:42,t:50},
+    {n:"سارة الشهري",g:"خريج ثانوي",xp:2100,c:38,t:45},
+    {n:"محمد العتيبي",g:"طالب جامعي",xp:1980,c:35,t:42},
+    {n:"نورة القحطاني",g:"ثالث ثانوي",xp:1750,c:31,t:38},
+    {n:"عبدالله الدوسري",g:"موظف",xp:1500,c:28,t:35}
+  ];
+  // تحميل بيانات التحديات
+  let chSaved=localStorage.getItem('qudrat_challenges');
+  if(chSaved) challenges=JSON.parse(chSaved);
+}
+
+function saveState(){
+  if(!CU) return;
+  // حفظ بيانات المستخدم
+  localStorage.setItem('qudrat_user_'+CU, JSON.stringify(US));
+  // تحديث لوحة المتصدرين
+  let entry=LB.find(x=>x.n===CU);
+  if(entry){entry.xp=US.xp;entry.c=US.correct;entry.t=US.total;}
+  else LB.push({n:CU,g:US.grade||'',xp:US.xp,c:US.correct,t:US.total});
+  LB.sort((a,b)=>b.xp-a.xp);
+  localStorage.setItem('qudrat_leaderboard', JSON.stringify(LB));
+}
+
+function saveChallenges(){
+  localStorage.setItem('qudrat_challenges', JSON.stringify(challenges));
+}
+
+// ============================================================
+// UI HELPERS
+// ============================================================
+function toast(msg,type=''){
+  let t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+type+' show';
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+function addXp(n){
+  US.xp+=n;
+  let p=document.getElementById('xpPop');
+  p.textContent='+'+n+' XP ⚡';p.className='xp-pop show';
+  setTimeout(()=>p.className='xp-pop',1800);
+  document.getElementById('navXp').textContent='⚡ '+US.xp+' XP';
+  saveState();
+  updateHome();
+}
+
+function updateNav(){
+  if(!CU) return;
+  document.getElementById('navXp').textContent='⚡ '+US.xp+' XP';
+  document.getElementById('navAv').textContent=CU[0];
+}
+
+function updateHome(){
+  let pct=US.total>0?Math.round(US.correct/US.total*100):0;
+  document.getElementById('heroPct').textContent=pct+'%';
+  // حساب درجة الدائرة
+  let deg=pct*3.6;
+  let ring=document.getElementById('heroRing');
+  if(ring) ring.style.background=`conic-gradient(var(--gold) 0deg, var(--gold) ${deg}deg, rgba(255,255,255,0.05) ${deg}deg)`;
+  document.getElementById('hs1').textContent=US.total;
+  document.getElementById('hs2').textContent=US.correct;
+  document.getElementById('hs3').textContent=Object.keys(US.topics).length;
+  document.getElementById('hs4').textContent=US.challenges||0;
+}
+
+// ============================================================
+// LOGIN
+// ============================================================
+function doLogin(){
+  let name=document.getElementById('lname').value.trim();
+  let grade=document.getElementById('lgrade').value;
+  let err=document.getElementById('lerr');
+  if(!name){err.style.display='block';err.textContent='من فضلك اكتب اسمك أولاً';return;}
+  if(!grade){err.style.display='block';err.textContent='اختر المرحلة الدراسية';return;}
+  err.style.display='none';
+  CU=name;
+  US.grade=grade;
+  loadState(name);
+  US.grade=grade; // تأكيد المرحلة بعد التحميل
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('nav').style.display='flex';
+  document.getElementById('page-home').classList.add('active');
+  updateNav();
+  updateHome();
+  renderHomeTopics();
+  renderTopicsGrid('all');
+  renderLeaderboard();
+  renderProgress();
+  toast('أهلاً '+name+'! 🌟','ok');
+  // فحص كود التحدي في الرابط
+  let params=new URLSearchParams(window.location.search);
+  let code=params.get('challenge');
+  if(code){
+    document.getElementById('joinInput').value=code.toUpperCase();
+    goPage('challenge');
+    toast('تم اكتشاف كود تحدي! انقر على "انضم"','info');
+  }
+}
+document.getElementById('lname').addEventListener('keypress',e=>{if(e.key==='Enter') doLogin();});
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function goPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  let pages=['home','topics','challenge','leaderboard','progress'];
+  let idx=pages.indexOf(p);
+  if(idx>=0) document.querySelectorAll('.nav-btn')[idx].classList.add('active');
+  if(p==='home'){updateHome();renderHomeTopics();}
+  if(p==='topics'){renderTopicsGrid(currentFilter);}
+  if(p==='leaderboard'){renderLeaderboard();}
+  if(p==='progress'){renderProgress();}
+  if(p==='challenge'){renderChallengeHistory();}
+}
+
+// ============================================================
+// TOPICS
+// ============================================================
+function getTag(cat){
+  if(cat==='basics') return '<span class="tag tag-b">📘 أساسيات</span>';
+  if(cat==='ratios') return '<span class="tag tag-r">📊 نسب</span>';
+  return '<span class="tag tag-g">📐 هندسة</span>';
+}
+
+let currentFilter='all';
+function filterTopics(cat,btn){
+  currentFilter=cat;
+  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTopicsGrid(cat);
+}
+
+function renderTopicsGrid(filter){
+  let topics=filter==='all'?TOPICS:TOPICS.filter(t=>t.cat===filter);
+  let g=document.getElementById('topicsGrid');
+  if(!g) return;
+  g.innerHTML=topics.map(t=>`
+    <div class="tcard ${US.topics[t.id]?'done':''}" onclick="openLesson(${t.id})">
+      ${US.topics[t.id]?'<div class="done-tick">✓</div>':''}
+      <div class="tcard-num">الموضوع ${t.id} من 31</div>
+      <div class="tcard-name">${t.name}</div>
+      <div class="tcard-desc">${t.desc}</div>
+      <div class="tcard-foot">${getTag(t.cat)}<span class="tcard-q">${QB[t.id]?.length||0} أسئلة</span></div>
+    </div>
+  `).join('');
+}
+
+function renderHomeTopics(){
+  let g=document.getElementById('homeTopics');
+  if(!g) return;
+  // إظهار 6 مواضيع الأولى
+  g.innerHTML=TOPICS.slice(0,6).map(t=>`
+    <div class="tcard ${US.topics[t.id]?'done':''}" onclick="openLesson(${t.id})">
+      ${US.topics[t.id]?'<div class="done-tick">✓</div>':''}
+      <div class="tcard-num">الموضوع ${t.id}</div>
+      <div class="tcard-name">${t.name}</div>
+      <div class="tcard-desc">${t.desc.substring(0,55)}...</div>
+      <div class="tcard-foot">${getTag(t.cat)}<span class="tcard-q">${QB[t.id]?.length||0} أسئلة</span></div>
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// LESSON VIEW
+// ============================================================
+function openLesson(id,fromTopics=true){
+  let topic=TOPICS.find(t=>t.id===id);
+  if(!topic) return;
+  if(!fromTopics){goPage('topics');}
+  let lv=document.getElementById('lessonView');
+  let tg=document.getElementById('topicsGrid');
+  tg.style.display='none';
+  lv.style.display='block';
+  lv.innerHTML=`
+    <button class="back-btn" onclick="closeLesson()">← العودة للمواضيع</button>
+    <div class="lesson-header">
+      <h2>${topic.name}</h2>
+      <p style="color:var(--text2);margin-top:6px">${topic.desc}</p>
+    </div>
+    <div class="lesson-section">
+      <h3>📌 القواعد الأساسية</h3>
+      ${topic.rules.map(r=>`<div class="rule-item">🔹 ${r}</div>`).join('')}
+    </div>
+    <div class="lesson-section">
+      <h3>✏️ أمثلة محلولة</h3>
+      ${topic.examples.map(e=>`<div class="example-item">📝 ${e}</div>`).join('')}
+    </div>
+    <div style="text-align:center;margin-top:1rem;padding-bottom:1rem">
+      <button class="btn-gold" onclick="startTopicQuiz(${id})">🎯 تدرب على هذا الموضوع (${QB[id]?.length||0} أسئلة)</button>
+    </div>
+  `;
+}
+
+function closeLesson(){
+  document.getElementById('topicsGrid').style.display='grid';
+  document.getElementById('lessonView').style.display='none';
+}
+
+// ============================================================
+// QUIZ ENGINE
+// ============================================================
+function shuffle(arr){
+  let a=[...arr];
+  for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+function startTopicQuiz(id){
+  let t=TOPICS.find(x=>x.id===id);
+  let qs=shuffle([...(QB[id]||[])]);
+  quiz={qs,idx:0,score:0,ok:0,ng:0,topicId:id,timePerQ:60,name:t.name,mode:'topic'};
+  goPage('challenge');
+  document.getElementById('challengeModes').style.display='none';
+  document.getElementById('quizView').style.display='block';
+  renderQ();
+}
+
+function startChallenge(mode){
+  let allQs=Object.values(QB).flat();
+  let qs,time,name;
+  if(mode==='quick'){qs=shuffle(allQs).slice(0,10);time=60;name='تحدي سريع ⚡';}
+  else if(mode==='hard'){qs=shuffle(allQs).slice(0,20);time=45;name='وضع الإتقان 🔥';}
+  else if(mode==='practice'){qs=shuffle(allQs).slice(0,15);time=9999;name='مراجعة شاملة 📖';}
+  else return;
+  quiz={qs,idx:0,score:0,ok:0,ng:0,topicId:null,timePerQ:time,name,mode};
+  goPage('challenge');
+  document.getElementById('challengeModes').style.display='none';
+  document.getElementById('quizView').style.display='block';
+  renderQ();
+}
+
+function showTopicPicker(){
+  let el=document.getElementById('topicPickerChallenge');
+  if(el.style.display==='none'){
+    el.style.display='block';
+    el.innerHTML=`
+      <div class="sec-hdr" style="margin-top:0.5rem"><h2>اختر الموضوع</h2></div>
+      <div class="topics-grid">
+        ${TOPICS.map(t=>`<div class="tcard" onclick="startTopicQuiz(${t.id})">
+          <div class="tcard-name">${t.name}</div>
+          <div style="margin-top:8px">${getTag(t.cat)}</div>
+        </div>`).join('')}
+      </div>
+    `;
+  }else{
+    el.style.display='none';
+  }
+}
+
+function renderQ(){
+  if(quiz.idx>=quiz.qs.length){showResult();return;}
+  let q=quiz.qs[quiz.idx];
+  let prog=Math.round(quiz.idx/quiz.qs.length*100);
+  let tLeft=quiz.timePerQ;
+  if(timerI) clearInterval(timerI);
+
+  document.getElementById('quizView').innerHTML=`
+    <div class="quiz-wrap">
+      <div class="quiz-hdr">
+        <span class="quiz-name">${quiz.name}</span>
+        <div class="qpbar"><div class="qpbar-fill" style="width:${prog}%"></div></div>
+        <div class="timer ok" id="timer">${quiz.timePerQ<9999?tLeft+'ث':'∞'}</div>
+      </div>
+      <div class="qcard">
+        <div class="q-text">السؤال ${quiz.idx+1} من ${quiz.qs.length}: ${q.q}</div>
+        <div class="opts" id="opts">
+          ${q.opts.map((o,i)=>`<button class="opt" onclick="pick(${i})">${['أ','ب','ج','د'][i]}) ${o}</button>`).join('')}
+        </div>
+        <div class="exp-box" id="expBox">💡 <strong>الشرح:</strong> ${q.exp}</div>
+      </div>
+      <div class="quiz-actions">
+        <button class="btn-quit" onclick="quitQ()">⬅ إنهاء مبكر</button>
+        <button class="btn-next" id="nxtBtn" onclick="nextQ()">التالي ←</button>
+      </div>
+    </div>
+  `;
+
+  // تشغيل المؤقت
+  if(quiz.timePerQ<9999){
+    timerI=setInterval(()=>{
+      tLeft--;
+      let tb=document.getElementById('timer');
+      if(tb){
+        tb.textContent=tLeft+'ث';
+        if(tLeft<=10){tb.classList.remove('ok');}
+      }
+      if(tLeft<=0){clearInterval(timerI);autoWrong();}
+    },1000);
+  }
+}
+
+function pick(i){
+  if(timerI) clearInterval(timerI);
+  let q=quiz.qs[quiz.idx];
+  let ok=i===q.ans;
+  document.querySelectorAll('.opt').forEach((b,j)=>{
+    b.disabled=true;
+    if(j===q.ans) b.classList.add('correct');
+    else if(j===i&&!ok) b.classList.add('wrong');
+  });
+  US.total++;
+  if(ok){
+    quiz.ok++;US.correct++;
+    let pts=quiz.timePerQ<9999?15:10;
+    quiz.score+=pts;
+    addXp(pts);
+    toast('إجابة صحيحة ✓','ok');
+  }else{
+    quiz.ng++;
+    toast('خطأ! راجع الشرح 👇','err');
+  }
+  document.getElementById('expBox').classList.add('show');
+  document.getElementById('nxtBtn').style.display='block';
+  saveState();
+}
+
+function autoWrong(){
+  let q=quiz.qs[quiz.idx];
+  document.querySelectorAll('.opt').forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.ans) b.classList.add('correct');
+  });
+  US.total++;quiz.ng++;
+  document.getElementById('expBox').classList.add('show');
+  document.getElementById('nxtBtn').style.display='block';
+  toast('انتهى الوقت! ⏰','err');
+  saveState();
+}
+
+function nextQ(){quiz.idx++;renderQ();}
+function quitQ(){if(timerI) clearInterval(timerI);showResult();}
+
+function showResult(){
+  if(timerI) clearInterval(timerI);
+  let pct=quiz.qs.length>0?Math.round(quiz.ok/quiz.qs.length*100):0;
+  let cls=pct>=80?'great':pct>=50?'good':'poor';
+  let emoji=pct>=80?'🏆':pct>=60?'🌟':pct>=40?'💪':'📚';
+  let msg=pct>=80?'ممتاز جداً! أنت في القمة!':pct>=60?'جيد جداً! استمر في التدريب':pct>=40?'جيد! راجع الموضوع وحاول مجدداً':'لا بأس! راجع الشرح وستتحسن';
+  // حفظ إكمال الموضوع
+  if(quiz.topicId&&pct>=50){
+    US.topics[quiz.topicId]=true;
+    US.tscores[quiz.topicId]=Math.max(US.tscores[quiz.topicId]||0,pct);
+  }
+  US.challenges=(US.challenges||0)+1;
+  saveState();
+  document.getElementById('quizView').innerHTML=`
+    <div class="quiz-wrap">
+      <div class="result-card">
+        <div class="res-emoji">${emoji}</div>
+        <div class="res-pct ${cls}">${pct}%</div>
+        <div class="res-msg">${msg}</div>
+        <div class="res-stats">
+          <div class="rstat"><div class="rstat-n" style="color:var(--green)">${quiz.ok}</div><div class="rstat-l">صحيحة</div></div>
+          <div class="rstat"><div class="rstat-n" style="color:var(--red)">${quiz.ng}</div><div class="rstat-l">خاطئة</div></div>
+          <div class="rstat"><div class="rstat-n">${quiz.score}</div><div class="rstat-l">نقاط</div></div>
+        </div>
+        ${quiz.topicId&&pct>=50?'<div style="background:rgba(29,185,84,0.1);padding:0.7rem;border-radius:8px;margin-bottom:1rem;font-size:14px">🎉 تم إكمال الموضوع! أحسنت!</div>':''}
+        <div class="res-btns">
+          ${quiz.topicId
+            ?`<button class="btn-retry" onclick="startTopicQuiz(${quiz.topicId})">🔄 إعادة المحاولة</button>`
+            :`<button class="btn-retry" onclick="startChallenge('${quiz.mode||'quick'}')">🔄 جولة جديدة</button>`
+          }
+          <button class="btn-back2" onclick="backToModes()">🏠 العودة للقائمة</button>
+        </div>
+      </div>
+    </div>
+  `;
+  renderLeaderboard();
+  renderProgress();
+}
+
+function backToModes(){
+  document.getElementById('quizView').style.display='none';
+  document.getElementById('challengeModes').style.display='block';
+  quiz=null;
+}
+
+// ============================================================
+// نظام التحدي بين الأصدقاء
+// الكود يُحفظ في localStorage ويمكن استبداله بـ Supabase
+// ============================================================
+function createChallenge(){
+  // توليد كود عشوائي 6 خانات
+  let code=Math.random().toString(36).substring(2,8).toUpperCase();
+  let allQs=Object.values(QB).flat();
+  let qs=shuffle(allQs).slice(0,10);
+  // حفظ بيانات التحدي
+  challenges[code]={
+    code,
+    creator:CU,
+    qs,
+    scores:{[CU]:{score:0,done:false}},
+    created:Date.now()
+  };
+  saveChallenges();
+  // إظهار الكود
+  document.getElementById('challengeCodeBox').style.display='block';
+  document.getElementById('challengeCode').textContent=code;
+  // رابط المشاركة
+  let url=window.location.href.split('?')[0]+'?challenge='+code;
+  toast('تم إنشاء التحدي! الكود: '+code,'info');
+}
+
+function copyCode(){
+  let code=document.getElementById('challengeCode').textContent;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(code)
+      .then(()=>toast('تم نسخ الكود: '+code+' ✓','ok'))
+      .catch(()=>toast('الكود: '+code,'info'));
+  }else{
+    toast('الكود: '+code,'info');
+  }
+}
+
+function joinChallenge(){
+  let code=document.getElementById('joinInput').value.trim().toUpperCase();
+  if(!code||code.length!==6){toast('أدخل كود صحيح مكون من 6 خانات','err');return;}
+  // تحديث البيانات من localStorage
+  let chSaved=localStorage.getItem('qudrat_challenges');
+  if(chSaved) challenges=JSON.parse(chSaved);
+  let ch=challenges[code];
+  if(!ch){toast('الكود غير موجود! تأكد من الكود واطلب من صديقك إعادة إرساله','err');return;}
+  // إضافة اللاعب الثاني
+  if(!ch.scores[CU]) ch.scores[CU]={score:0,done:false};
+  saveChallenges();
+  toast('انضممت للتحدي! جاهز؟ 🎮','ok');
+  startFriendQuiz(code);
+}
+
+function startFriendQuiz(code){
+  let ch=challenges[code];
+  quiz={
+    qs:ch.qs,idx:0,score:0,ok:0,ng:0,
+    topicId:null,timePerQ:60,name:'⚔ تحدي الأصدقاء',
+    mode:'friend',challengeCode:code
+  };
+  document.getElementById('challengeModes').style.display='none';
+  document.getElementById('quizView').style.display='block';
+  renderFriendQ();
+}
+
+function renderFriendQ(){
+  if(quiz.idx>=quiz.qs.length){endFriendQuiz();return;}
+  let q=quiz.qs[quiz.idx];
+  let prog=Math.round(quiz.idx/quiz.qs.length*100);
+  let ch=challenges[quiz.challengeCode];
+  let players=Object.entries(ch.scores);
+  let tLeft=quiz.timePerQ;
+  if(timerI) clearInterval(timerI);
+
+  // لوحة المقارنة بين اللاعبين
+  let vsHtml='';
+  if(players.length>=2){
+    let p1=players[0];let p2=players[1];
+    vsHtml=`
+      <div style="background:var(--card);border-radius:12px;padding:1rem;margin-bottom:1rem;border:1px solid var(--border)">
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;text-align:center">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--gold)">${p1[0]} ${p1[0]===CU?'(أنت)':''}</div>
+            <div style="font-family:'Tajawal';font-size:28px;font-weight:900;color:var(--gold)">${p1[1].score}</div>
+          </div>
+          <div style="font-size:16px;font-weight:900;color:var(--text3)">VS</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--blue)">${p2[0]} ${p2[0]===CU?'(أنت)':''}</div>
+            <div style="font-family:'Tajawal';font-size:28px;font-weight:900;color:var(--blue)">${p2[1].score}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  document.getElementById('quizView').innerHTML=`
+    <div class="quiz-wrap">
+      ${vsHtml}
+      <div class="quiz-hdr">
+        <span class="quiz-name">⚔ تحدي الأصدقاء</span>
+        <div class="qpbar"><div class="qpbar-fill" style="width:${prog}%"></div></div>
+        <div class="timer ok" id="timer">${tLeft}ث</div>
+      </div>
+      <div class="qcard">
+        <div class="q-text">السؤال ${quiz.idx+1} من ${quiz.qs.length}: ${q.q}</div>
+        <div class="opts" id="opts">
+          ${q.opts.map((o,i)=>`<button class="opt" onclick="pickFriend(${i})">${['أ','ب','ج','د'][i]}) ${o}</button>`).join('')}
+        </div>
+        <div class="exp-box" id="expBox">💡 <strong>الشرح:</strong> ${q.exp}</div>
+      </div>
+      <div class="quiz-actions">
+        <button class="btn-quit" onclick="quitQ()">⬅ إنهاء</button>
+        <button class="btn-next" id="nxtBtn" onclick="nextFriendQ()">التالي ←</button>
+      </div>
+    </div>
+  `;
+
+  timerI=setInterval(()=>{
+    tLeft--;
+    let tb=document.getElementById('timer');
+    if(tb){tb.textContent=tLeft+'ث';if(tLeft<=10)tb.classList.remove('ok');}
+    if(tLeft<=0){clearInterval(timerI);autoWrongFriend();}
+  },1000);
+}
+
+function pickFriend(i){
+  if(timerI) clearInterval(timerI);
+  let q=quiz.qs[quiz.idx];
+  let ok=i===q.ans;
+  document.querySelectorAll('.opt').forEach((b,j)=>{
+    b.disabled=true;
+    if(j===q.ans)b.classList.add('correct');
+    else if(j===i&&!ok)b.classList.add('wrong');
+  });
+  US.total++;
+  if(ok){
+    quiz.ok++;US.correct++;
+    let pts=15;quiz.score+=pts;
+    addXp(pts);toast('+15 نقطة ✓','ok');
+  }else{
+    quiz.ng++;toast('خطأ!','err');
+  }
+  // تحديث النقاط في التحدي
+  challenges[quiz.challengeCode].scores[CU].score=quiz.score;
+  saveChallenges();saveState();
+  document.getElementById('expBox').classList.add('show');
+  document.getElementById('nxtBtn').style.display='block';
+}
+
+function autoWrongFriend(){
+  let q=quiz.qs[quiz.idx];
+  document.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;if(i===q.ans)b.classList.add('correct');});
+  US.total++;quiz.ng++;
+  document.getElementById('expBox').classList.add('show');
+  document.getElementById('nxtBtn').style.display='block';
+  toast('انتهى الوقت! ⏰','err');
+  saveState();
+}
+
+function nextFriendQ(){quiz.idx++;renderFriendQ();}
+
+function endFriendQuiz(){
+  if(timerI) clearInterval(timerI);
+  // تحديث بيانات الانتهاء
+  let chSaved=localStorage.getItem('qudrat_challenges');
+  if(chSaved) challenges=JSON.parse(chSaved);
+  challenges[quiz.challengeCode].scores[CU]={score:quiz.score,done:true};
+  saveChallenges();
+  // حساب النتيجة
+  let ch=challenges[quiz.challengeCode];
+  let players=Object.entries(ch.scores).sort((a,b)=>b[1].score-a[1].score);
+  let winner=players[0][0];
+  let iWon=winner===CU;
+  if(iWon) US.wins=(US.wins||0)+1;
+  US.challenges=(US.challenges||0)+1;
+  saveState();
+
+  let resultsHtml=players.map((p,i)=>`
+    <div style="display:flex;align-items:center;gap:12px;padding:10px;
+      background:${p[0]===CU?'rgba(59,125,216,0.1)':'var(--bg2)'};
+      border-radius:10px;margin-bottom:8px;
+      border:1px solid ${p[0]===CU?'rgba(59,125,216,0.3)':'transparent'}">
+      <div style="font-size:24px">${i===0?'🥇':'🥈'}</div>
+      <div style="flex:1">
+        <div style="font-weight:700">${p[0]} ${p[0]===CU?'<span style="color:var(--blue);font-size:12px">(أنت)</span>':''}</div>
+        <div style="font-size:12px;color:var(--text2)">${p[1].done?'أنهى التحدي ✓':'لم ينتهِ بعد'}</div>
+      </div>
+      <div style="font-size:22px;font-weight:800;color:var(--gold)">${p[1].score} نقطة</div>
+    </div>
+  `).join('');
+
+  document.getElementById('quizView').innerHTML=`
+    <div class="quiz-wrap">
+      <div class="result-card">
+        <div class="res-emoji">${iWon?'🏆':'🎯'}</div>
+        <div class="res-pct ${iWon?'great':'good'}">${iWon?'أنت الفائز!':'أبلت حسناً'}</div>
+        <div class="res-msg">نتيجة التحدي النهائية</div>
+        <div style="margin:1.5rem 0">${resultsHtml}</div>
+        <div class="res-btns">
+          <button class="btn-retry" onclick="startFriendQuiz('${quiz.challengeCode}')">🔄 إعادة التحدي</button>
+          <button class="btn-back2" onclick="backToModes()">🏠 العودة</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderChallengeHistory(){
+  let el=document.getElementById('challengeHistory');
+  if(!el) return;
+  let chSaved=localStorage.getItem('qudrat_challenges');
+  if(chSaved) challenges=JSON.parse(chSaved);
+  let myCh=Object.values(challenges).filter(c=>c.scores&&c.scores[CU]);
+  if(!myCh.length){
+    el.innerHTML='<p style="color:var(--text2);font-size:14px">لا يوجد تحديات سابقة. أنشئ تحدياً مع صديقك! 🎮</p>';
+    return;
+  }
+  el.innerHTML=myCh.slice(-8).reverse().map(c=>{
+    let s=c.scores[CU]||{};
+    let opponent=Object.keys(c.scores).find(k=>k!==CU);
+    let oppScore=opponent?c.scores[opponent].score:null;
+    let won=oppScore!==null?(s.score>oppScore?true:(s.score===oppScore?null:false)):null;
+    let icon=won===null?'⚡':won?'🏆':'😔';
+    let resultText=won===null?'لعبت منفرداً':won?'فزت':'خسرت';
+    return `<div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg2);border-radius:10px;margin-bottom:8px">
+      <div style="font-size:22px">${icon}</div>
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:14px">كود: ${c.code} <span style="color:${won?'var(--green)':won===false?'var(--red)':'var(--text2)'};font-size:12px">${resultText}</span></div>
+        <div style="font-size:12px;color:var(--text3)">${opponent?'ضد: '+opponent:'تحدي فردي'}</div>
+      </div>
+      <div style="font-weight:800;color:var(--gold);font-size:16px">${s.score} نقطة</div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// LEADERBOARD
+// ============================================================
+function renderLeaderboard(){
+  let sorted=[...LB].sort((a,b)=>b.xp-a.xp).slice(0,20);
+  let top3=sorted.slice(0,3);
+  let rest=sorted.slice(3);
+  // ترتيب المنصة: فضي، ذهبي، برونزي
+  let display=[top3[1]||null,top3[0]||null,top3[2]||null].filter(Boolean);
+  let avClass=['silver','gold','bronze'];
+  let medals=['🥈','🥇','🥉'];
+  document.getElementById('lbPodium').innerHTML=display.map((p,i)=>`
+    <div class="podium-item">
+      <div style="font-size:24px">${medals[i]}</div>
+      <div class="podium-av ${avClass[i]}">${p.n[0]}</div>
+      <div class="podium-name">${p.n}</div>
+      <div class="podium-pts">⭐ ${p.xp} XP</div>
+    </div>
+  `).join('');
+  document.getElementById('lbList').innerHTML=rest.length?rest.map((p,i)=>`
+    <div class="lb-row ${p.n===CU?'mine':''}">
+      <div class="lb-rank">${i+4}</div>
+      <div class="lb-av">${p.n[0]}</div>
+      <div class="lb-info">
+        <div class="lb-name">${p.n} ${p.n===CU?'<span style="color:var(--blue);font-size:11px">(أنت)</span>':''}</div>
+        <div class="lb-sub">${p.g||'غير محدد'} · ${p.t} سؤال · ${p.t>0?Math.round(p.c/p.t*100):0}% دقة</div>
+      </div>
+      <div class="lb-pts">⭐ ${p.xp}</div>
+    </div>
+  `).join(''):'<p style="text-align:center;color:var(--text2);padding:1rem">لا يوجد مزيد من المتدربين بعد — ادعُ أصدقاءك!</p>';
+}
+
+// ============================================================
+// PROGRESS
+// ============================================================
+function renderProgress(){
+  let pct=US.total>0?Math.round(US.correct/US.total*100):0;
+  let done=Object.keys(US.topics).length;
+  let el=document.getElementById('progCards');
+  if(el) el.innerHTML=[
+    {n:US.xp,l:'نقاط XP الكلية'},
+    {n:US.total,l:'أسئلة محلولة'},
+    {n:pct+'%',l:'نسبة الدقة'},
+    {n:done+'/31',l:'مواضيع مكتملة'}
+  ].map(c=>`<div class="pcard"><div class="pcard-n">${c.n}</div><div class="pcard-l">${c.l}</div></div>`).join('');
+  let pl=document.getElementById('progList');
+  if(pl) pl.innerHTML=TOPICS.map(t=>{
+    let d=!!US.topics[t.id];
+    let sc=US.tscores[t.id]||0;
+    return `<div class="prog-list-item">
+      <div class="prog-icon" style="background:${d?'rgba(29,185,84,0.15)':'var(--bg2)'};color:${d?'var(--green)':'var(--text3)'}">
+        ${d?'✓':t.id}
+      </div>
+      <div class="prog-info">
+        <div class="prog-title">${t.name}</div>
+        <div class="prog-bar-s"><div class="prog-bar-f" style="width:${sc}%"></div></div>
+      </div>
+      <button class="btn-gold" style="padding:6px 14px;font-size:12px;white-space:nowrap" onclick="startTopicQuiz(${t.id})">
+        ${d?'🔄 إعادة':'🎯 تدرب'}
+      </button>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// INIT — بدء التطبيق
+// ============================================================
+document.getElementById('page-home').classList.remove('active');
+</script>
+</body>
+</html>
