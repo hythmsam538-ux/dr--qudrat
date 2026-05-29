@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدكتور في القدرات — المنصة الكاملة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0f1a;--ink2:#1e2640;--ink3:#3a4460;
+  --bg:#f0ede8;--bg2:#ffffff;--bg3:#f8f6f2;
+  --gold:#d4892a;--gold2:#f5c842;--gold-light:#fdf3de;
+  --red:#c0392b;--red-light:#fdf0ef;
+  --blue:#1a3fff;--blue-light:#e8eeff;
+  --green:#0d7a4e;--green-light:#e6f5ee;
+  --purple:#7c3aed;--purple-light:#f3eeff;
+  --teal:#0891b2;--teal-light:#e0f7fa;
+  --border:#ddd9d2;--border2:#c8c3bb;
+  --shadow:0 4px 24px rgba(0,0,0,0.10);
+  --shadow-lg:0 12px 48px rgba(0,0,0,0.15);
+  --r:14px;--r-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden}
+
+/* ═══ SCREENS ═══ */
+.screen{display:none;min-height:100vh}
+.screen.active{display:flex;flex-direction:column}
+
+/* ═══ INTRO / SPLASH ═══ */
+#screen-intro{
+  background:var(--ink);
+  align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.intro-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 20% 50%, rgba(212,137,42,0.18) 0%, transparent 60%),
+             radial-gradient(ellipse at 80% 20%, rgba(26,63,255,0.12) 0%, transparent 50%),
+             radial-gradient(ellipse at 60% 80%, rgba(124,58,237,0.10) 0%, transparent 50%);
+}
+.intro-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.intro-content{position:relative;z-index:2;text-align:center;max-width:700px;padding:2rem}
+.intro-badge{
+  display:inline-block;padding:6px 20px;border-radius:30px;
+  background:rgba(212,137,42,0.15);color:var(--gold2);
+  border:1px solid rgba(212,137,42,0.3);font-size:13px;font-weight:600;
+  margin-bottom:2rem;letter-spacing:0.05em;
+}
+.intro-title{
+  font-family:'Tajawal',sans-serif;font-size:72px;font-weight:900;
+  color:#fff;line-height:1.05;margin-bottom:1rem;
+}
+.intro-title span{
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.intro-sub{font-size:18px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:3rem;max-width:500px;margin-inline:auto;margin-bottom:3rem}
+.intro-features{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.intro-feat{
+  padding:10px 18px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  border-radius:30px;font-size:13px;color:rgba(255,255,255,0.7);
+}
+.intro-start-btn{
+  padding:18px 56px;background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:var(--ink);border:none;border-radius:50px;font-family:'Cairo',sans-serif;
+  font-size:18px;font-weight:800;cursor:pointer;
+  box-shadow:0 8px 32px rgba(212,137,42,0.4);transition:all .25s;
+}
+.intro-start-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,137,42,0.6)}
+.intro-book-tag{
+  margin-top:2rem;font-size:13px;color:rgba(255,255,255,0.3);
+}
+.floating-math{
+  position:absolute;font-size:28px;opacity:0.06;color:#fff;
+  animation:floatMath linear infinite;
+  font-family:'Tajawal',sans-serif;font-weight:900;
+}
+@keyframes floatMath{0%{transform:translateY(110vh) rotate(0deg);opacity:0}10%{opacity:0.06}90%{opacity:0.04}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
+
+/* ═══ LOGIN ═══ */
+#screen-login{
+  background:linear-gradient(135deg, #0b0f1a 0%, #1a2035 100%);
+  align-items:center;justify-content:center;padding:2rem;position:relative;overflow:hidden;
+}
+#screen-login::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 40%, rgba(212,137,42,0.12) 0%, transparent 60%);
+}
+.login-card{
+  background:var(--bg2);border-radius:24px;padding:3rem;width:100%;max-width:480px;
+  box-shadow:var(--shadow-lg);position:relative;z-index:1;
+}
+.login-logo{text-align:center;margin-bottom:2rem}
+.login-logo-icon{font-size:52px;display:block;margin-bottom:10px}
+.login-logo h1{font-family:'Tajawal',sans-serif;font-size:28px;font-weight:900;color:var(--ink)}
+.login-logo h1 span{color:var(--gold)}
+.login-logo p{font-size:14px;color:var(--ink3);margin-top:4px}
+.login-section-title{font-size:11px;font-weight:700;color:var(--ink3);letter-spacing:0.1em;margin-bottom:1rem}
+.login-field{margin-bottom:1rem}
+.login-field label{display:block;font-size:14px;font-weight:600;color:var(--ink2);margin-bottom:6px}
+.login-input{
+  width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:var(--r-sm);
+  font-family:'Cairo',sans-serif;font-size:15px;color:var(--ink);background:var(--bg3);
+  outline:none;transition:all .2s;
+}
+.login-input:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(212,137,42,0.1)}
+.grade-select{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.grade-opt{
+  padding:12px;border:1.5px solid var(--border);border-radius:var(--r-sm);
+  text-align:center;cursor:pointer;font-size:14px;font-weight:600;
+  color:var(--ink2);background:var(--bg3);transition:all .2s;
+}
+.grade-opt.sel{border-color:var(--gold);background:var(--gold-light);color:var(--gold)}
+.login-btn{
+  width:100%;padding:15px;background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:var(--ink);border:none;border-radius:var(--r-sm);font-family:'Cairo',sans-serif;
+  font-size:16px;font-weight:800;cursor:pointer;margin-top:1.5rem;
+  transition:all .2s;box-shadow:0 4px 16px rgba(212,137,42,0.3);
+}
+.login-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(212,137,42,0.4)}
+.login-divider{text-align:center;color:var(--border2);font-size:13px;margin:1rem 0;position:relative}
+.login-divider::before,.login-divider::after{content:'';position:absolute;top:50%;width:40%;height:1px;background:var(--border)}
+.login-divider::before{right:0}.login-divider::after{left:0}
+.existing-users{display:flex;flex-direction:column;gap:8px;max-height:180px;overflow-y:auto}
+.existing-user-btn{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  border:1px solid var(--border);border-radius:var(--r-sm);cursor:pointer;
+  background:var(--bg3);transition:all .2s;
+}
+.existing-user-btn:hover{border-color:var(--gold);background:var(--gold-light)}
+.eu-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--ink);flex-shrink:0}
+.eu-info{text-align:right}
+.eu-name{font-size:14px;font-weight:600;color:var(--ink)}
+.eu-meta{font-size:12px;color:var(--ink3)}
+
+/* ═══ MAIN APP ═══ */
+#screen-app{background:var(--bg);min-height:100vh}
+
+/* NAV */
+.topnav{
+  background:var(--ink);position:sticky;top:0;z-index:100;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:62px;max-width:1400px;margin:0 auto}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-logo-text{font-family:'Tajawal',sans-serif;font-size:19px;font-weight:900;color:#fff}
+.nav-logo-text span{color:var(--gold2)}
+.nav-tabs{display:flex;gap:2px}
+.nav-tab{
+  padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;
+  color:rgba(255,255,255,0.5);cursor:pointer;border:none;background:transparent;
+  font-family:'Cairo',sans-serif;transition:all .2s;white-space:nowrap;
+}
+.nav-tab.active,.nav-tab:hover{background:rgba(245,200,66,0.12);color:var(--gold2)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-user-chip{
+  display:flex;align-items:center;gap:8px;padding:6px 14px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  border-radius:30px;cursor:pointer;transition:all .2s;
+}
+.nav-user-chip:hover{background:rgba(255,255,255,0.1)}
+.nav-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--ink)}
+.nav-uname{font-size:13px;font-weight:600;color:#fff}
+.nav-xp{font-size:12px;color:var(--gold2);font-weight:700}
+
+/* PAGES */
+.page{display:none;padding:2rem;max-width:1400px;margin:0 auto}
+.page.active{display:block}
+
+/* ═══ HOME PAGE ═══ */
+.welcome-banner{
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink2) 100%);
+  border-radius:var(--r);padding:2.5rem 3rem;margin-bottom:2rem;
+  display:flex;justify-content:space-between;align-items:center;overflow:hidden;position:relative;
+}
+.welcome-banner::before{
+  content:'';position:absolute;right:-80px;top:-80px;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(245,200,66,0.1) 0%,transparent 70%);
+}
+.wb-text h2{font-family:'Tajawal',sans-serif;font-size:30px;font-weight:900;color:#fff;margin-bottom:6px}
+.wb-text p{font-size:15px;color:rgba(255,255,255,0.55);max-width:500px;line-height:1.7}
+.wb-stats{display:flex;gap:2rem;position:relative;z-index:1}
+.wb-stat{text-align:center}
+.wb-stat-num{font-size:32px;font-weight:900;color:var(--gold2);font-family:'Tajawal',sans-serif;display:block}
+.wb-stat-label{font-size:12px;color:rgba(255,255,255,0.4)}
+
+.section-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.5rem}
+.section-hdr h2{font-size:20px;font-weight:800;color:var(--ink)}
+.section-hdr a{font-size:13px;color:var(--gold);cursor:pointer;font-weight:600}
+
+/* CHAPTERS GRID */
+.chapters-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:2.5rem}
+.chapter-card{
+  background:var(--bg2);border-radius:var(--r);border:1px solid var(--border);
+  overflow:hidden;cursor:pointer;transition:all .25s;
+}
+.chapter-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border2)}
+.cc-header{padding:1.5rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.cc-num{font-size:64px;font-weight:900;font-family:'Tajawal',sans-serif;line-height:1;opacity:0.08;position:absolute;left:1rem;top:0.5rem}
+.cc-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;margin-bottom:8px;position:relative;z-index:1}
+.cc-title{font-size:20px;font-weight:800;position:relative;z-index:1;margin-bottom:4px}
+.cc-sub{font-size:13px;color:var(--ink3);position:relative;z-index:1}
+.cc-body{padding:1rem 1.5rem}
+.cc-lessons{display:flex;flex-direction:column;gap:6px}
+.cc-lesson{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink2);padding:4px 0}
+.cc-lesson-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.cc-progress{margin-top:12px}
+.cc-prog-bar{height:4px;background:var(--bg);border-radius:2px;overflow:hidden}
+.cc-prog-fill{height:100%;border-radius:2px;transition:width .5s}
+.cc-prog-label{font-size:11px;color:var(--ink3);margin-top:4px}
+.cc-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:8px}
+.cc-btn{flex:1;padding:9px;border-radius:var(--r-sm);font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;text-align:center}
+.cc-btn-primary{background:var(--ink);color:#fff}
+.cc-btn-primary:hover{background:var(--ink2)}
+.cc-btn-sec{background:var(--bg3);color:var(--ink2);border:1px solid var(--border)}
+.cc-btn-sec:hover{background:var(--border)}
+
+/* QUICK STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:2.5rem}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:14px}
+.sc-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.sc-num{font-size:24px;font-weight:900;font-family:'Tajawal',sans-serif;line-height:1}
+.sc-label{font-size:12px;color:var(--ink3);margin-top:2px}
+
+/* ═══ TOPICS PAGE ═══ */
+.topics-page-layout{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:start}
+.topics-sidebar{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;position:sticky;top:80px}
+.ts-chapter{border-bottom:1px solid var(--border)}
+.ts-ch-hdr{padding:12px 16px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .2s}
+.ts-ch-hdr:hover{background:var(--bg3)}
+.ts-ch-hdr.active-ch{background:var(--gold-light);color:var(--gold)}
+.ts-ch-num{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.ts-lessons{display:none;padding:4px 0}
+.ts-lessons.open{display:block}
+.ts-lesson{padding:8px 16px 8px 32px;font-size:13px;color:var(--ink2);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.ts-lesson:hover{background:var(--bg3);color:var(--ink)}
+.ts-lesson.active-lesson{color:var(--blue);font-weight:600}
+.ts-lesson-done{color:var(--green)!important}
+
+.topic-content-area{display:flex;flex-direction:column;gap:16px}
+.lesson-panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.lp-header{padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.lp-title-area h2{font-size:22px;font-weight:800;margin-bottom:4px}
+.lp-title-area p{font-size:14px;color:var(--ink3)}
+.lp-actions{display:flex;gap:8px}
+.btn-sm{padding:8px 16px;border-radius:var(--r-sm);font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-primary-sm{background:var(--ink);color:#fff}
+.btn-primary-sm:hover{background:var(--ink2)}
+.btn-gold-sm{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--ink)}
+.btn-sec-sm{background:var(--bg3);color:var(--ink2);border:1px solid var(--border)}
+.btn-danger-sm{background:var(--red-light);color:var(--red);border:1px solid rgba(192,57,43,0.2)}
+
+.lp-body{padding:2rem}
+/* Lesson content */
+.lesson-rule{margin-bottom:1.5rem}
+.lr-title{font-size:15px;font-weight:700;color:var(--gold);border-right:3px solid var(--gold);padding-right:10px;margin-bottom:8px}
+.lr-text{font-size:15px;line-height:2;color:var(--ink2)}
+.formula-box{background:var(--ink);color:var(--gold2);border-radius:var(--r-sm);padding:1rem 1.5rem;font-size:16px;font-weight:700;text-align:center;margin:1rem 0;font-family:'Tajawal',sans-serif;letter-spacing:0.3px}
+.tip-box{background:var(--gold-light);border:1px solid rgba(212,137,42,0.2);border-radius:var(--r-sm);padding:12px 16px;display:flex;gap:10px;margin:1rem 0}
+.tip-text{font-size:14px;line-height:1.8;color:var(--ink2)}
+.example-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:1.5rem;margin:1rem 0}
+.ex-lbl{font-size:12px;font-weight:700;color:var(--teal);letter-spacing:0.08em;margin-bottom:8px}
+.ex-q{font-size:15px;font-weight:600;margin-bottom:10px;line-height:1.8}
+.ex-steps{list-style:none;counter-reset:s}
+.ex-steps li{counter-increment:s;padding:5px 0 5px 0;font-size:14px;color:var(--ink2);line-height:1.8;position:relative;padding-right:24px}
+.ex-steps li::before{content:counter(s);position:absolute;right:0;top:5px;width:18px;height:18px;background:var(--teal);color:#fff;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.ex-ans{margin-top:10px;background:var(--green-light);border:1px solid rgba(13,122,78,0.2);border-radius:6px;padding:8px 12px;font-size:14px;font-weight:700;color:var(--green)}
+.lesson-done-bar{background:var(--green-light);border-top:1px solid rgba(13,122,78,0.15);padding:12px 2rem;display:flex;align-items:center;justify-content:space-between}
+.ldb-text{font-size:14px;font-weight:600;color:var(--green)}
+.lesson-placeholder{text-align:center;padding:4rem 2rem;color:var(--ink3)}
+.lp-icon{font-size:56px;margin-bottom:1rem;opacity:0.3}
+.lp-ph-title{font-size:18px;font-weight:600;color:var(--ink2);margin-bottom:6px}
+
+/* ═══ PRACTICE / EXAM ═══ */
+.practice-layout{max-width:780px;margin:0 auto}
+.q-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:1rem}
+.q-card-top{padding:1.5rem 2rem;border-bottom:1px solid var(--border)}
+.q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.q-topic-pill{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.q-num{font-size:13px;color:var(--ink3)}
+.q-timer-display{display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;font-size:14px;font-weight:700;color:var(--ink)}
+.q-timer-display.warn{color:var(--red);animation:blink .6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
+.q-text{font-size:17px;line-height:2;font-weight:500}
+.q-opts{display:flex;flex-direction:column;gap:8px;padding:1.5rem 2rem}
+.q-opt{
+  display:flex;align-items:center;gap:14px;padding:13px 18px;
+  border:1.5px solid var(--border);border-radius:var(--r-sm);cursor:pointer;
+  font-size:15px;font-family:'Cairo',sans-serif;color:var(--ink);background:var(--bg3);
+  transition:all .2s;text-align:right;
+}
+.q-opt:hover{border-color:var(--gold);background:var(--gold-light)}
+.q-opt.sel{border-color:var(--gold);background:var(--gold-light);color:var(--gold)}
+.q-opt.correct{border-color:var(--green)!important;background:var(--green-light)!important;color:var(--green)!important}
+.q-opt.wrong{border-color:var(--red)!important;background:var(--red-light)!important;color:var(--red)!important}
+.q-opt-letter{width:30px;height:30px;border-radius:8px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;border:1px solid var(--border)}
+.q-exp{padding:0 2rem 1.5rem;font-size:14px;color:var(--ink2);line-height:1.8;display:none;background:rgba(13,122,78,0.04);border-top:1px solid rgba(13,122,78,0.1)}
+.q-exp.show{display:block;padding-top:1rem}
+.q-footer{padding:1rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.prog-strip{background:var(--bg3);border-radius:3px;height:5px;margin-bottom:1rem;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));border-radius:3px;transition:width .4s}
+
+/* RESULTS */
+.results-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:3rem;text-align:center;max-width:600px;margin:0 auto}
+.results-ring{width:160px;height:160px;border-radius:50%;margin:0 auto 2rem;display:flex;align-items:center;justify-content:center}
+.rr-inner{width:130px;height:130px;background:var(--bg2);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rr-pct{font-size:38px;font-weight:900;font-family:'Tajawal',sans-serif}
+.rr-label{font-size:12px;color:var(--ink3)}
+.results-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:1.5rem 0}
+.rb{background:var(--bg3);border-radius:var(--r-sm);padding:1rem;text-align:center}
+.rb-n{font-size:26px;font-weight:900;font-family:'Tajawal',sans-serif}
+.rb-l{font-size:12px;color:var(--ink3);margin-top:3px}
+
+/* ═══ EXAM PAGE ═══ */
+.exam-setup-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;max-width:700px;margin:0 auto}
+.exam-info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:2rem}
+.eig-card{background:var(--bg3);border-radius:var(--r-sm);padding:1.2rem;text-align:center;border:1px solid var(--border)}
+.eig-icon{font-size:28px;margin-bottom:6px}
+.eig-num{font-size:28px;font-weight:900;color:var(--gold);font-family:'Tajawal',sans-serif}
+.eig-label{font-size:12px;color:var(--ink3)}
+.exam-mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
+.em-card{background:var(--bg3);border:2px solid var(--border);border-radius:var(--r-sm);padding:1.5rem;text-align:center;cursor:pointer;transition:all .2s}
+.em-card.sel{border-color:var(--gold);background:var(--gold-light)}
+.em-icon{font-size:28px;margin-bottom:8px}
+.em-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.em-desc{font-size:12px;color:var(--ink3)}
+.exam-rules-box{background:var(--bg3);border-radius:var(--r-sm);padding:1.5rem;margin-bottom:2rem;border:1px solid var(--border)}
+.exam-rules-box h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.exam-rules-box li{font-size:14px;color:var(--ink2);line-height:1.8;list-style:none;padding:3px 0}
+/* Exam running */
+.exam-nav-dots{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.5rem}
+.end-btn{padding:10px 20px;border-radius:var(--r-sm);background:var(--red-light);color:var(--red);border:1px solid rgba(192,57,43,0.2);font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.end-btn:hover{background:var(--red);color:#fff}
+
+/* ═══ LEADERBOARD ═══ */
+.lb-layout{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
+.lb-main{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.lb-hdr{padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.lb-hdr h2{font-size:20px;font-weight:800}
+.lb-filter{display:flex;gap:6px}
+.lb-f-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--bg3);font-family:'Cairo',sans-serif;font-size:13px;cursor:pointer;transition:all .2s}
+.lb-f-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.lb-podium{display:flex;align-items:flex-end;justify-content:center;gap:8px;padding:2rem;background:linear-gradient(180deg,var(--ink) 0%,var(--ink2) 100%)}
+.pod-item{display:flex;flex-direction:column;align-items:center;gap:6px}
+.pod-avatar{border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--ink);font-family:'Tajawal',sans-serif}
+.pod-rank{font-size:22px}
+.pod-name{font-size:13px;font-weight:600;color:#fff;max-width:80px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pod-score{font-size:12px;color:rgba(255,255,255,0.5)}
+.pod-base{border-radius:var(--r-sm) var(--r-sm) 0 0}
+.lb-list{padding:0}
+.lb-row{display:flex;align-items:center;gap:14px;padding:14px 2rem;border-bottom:1px solid var(--border);transition:background .15s}
+.lb-row:hover{background:var(--bg3)}
+.lb-row.me{background:var(--gold-light)!important}
+.lb-rank-num{font-size:16px;font-weight:800;width:32px;text-align:center;flex-shrink:0;color:var(--ink3)}
+.lb-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.lb-name-col{flex:1}
+.lb-uname{font-size:14px;font-weight:600}
+.lb-grade{font-size:12px;color:var(--ink3)}
+.lb-score-col{text-align:left}
+.lb-sc{font-size:18px;font-weight:900;color:var(--gold);font-family:'Tajawal',sans-serif}
+.lb-sc-label{font-size:11px;color:var(--ink3)}
+.lb-side{display:flex;flex-direction:column;gap:14px}
+.lb-my-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem}
+.lb-my-card h3{font-size:16px;font-weight:700;margin-bottom:1rem}
+.my-stat-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+.my-stat-row:last-child{border-bottom:none}
+.my-stat-val{font-weight:700;color:var(--gold)}
+
+/* ═══ FOLDER PAGE ═══ */
+.folder-layout{display:grid;grid-template-columns:380px 1fr;gap:24px;align-items:start}
+.folder-add-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;position:sticky;top:80px}
+.fa-title{font-size:17px;font-weight:700;margin-bottom:1.2rem}
+.fa-field{margin-bottom:12px}
+.fa-label{display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:5px}
+.fa-input{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-family:'Cairo',sans-serif;font-size:14px;color:var(--ink);background:var(--bg3);outline:none;transition:all .2s}
+.fa-input:focus{border-color:var(--gold);background:#fff}
+textarea.fa-input{resize:vertical;min-height:72px}
+.err-card{background:var(--bg2);border:1px solid var(--border);border-right:3px solid var(--red);border-radius:var(--r-sm);padding:1.2rem;margin-bottom:10px;animation:slideIn .25s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+.ec-hdr{display:flex;justify-content:space-between;margin-bottom:8px}
+.ec-tp{font-size:12px;font-weight:700;color:var(--blue)}
+.ec-df{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.ec-df.easy{background:var(--green-light);color:var(--green)}
+.ec-df.med{background:var(--gold-light);color:var(--gold)}
+.ec-df.hard{background:var(--red-light);color:var(--red)}
+.ec-q{font-size:14px;margin-bottom:6px;line-height:1.7}
+.ec-ans-row{display:flex;gap:10px;font-size:13px;margin-bottom:4px}
+.wrong-a{color:var(--red)}.right-a{color:var(--green)}
+.ec-note{font-size:13px;color:var(--ink3);border-top:1px solid var(--border);padding-top:6px;margin-top:6px;line-height:1.7}
+.del-btn{background:none;border:none;color:var(--ink3);cursor:pointer;font-size:15px;padding:2px;transition:color .2s}
+.del-btn:hover{color:var(--red)}
+.filt-row{display:flex;gap:6px;margin-bottom:1rem}
+.filt-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:var(--bg3);font-family:'Cairo',sans-serif;font-size:13px;cursor:pointer;transition:all .2s}
+.filt-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ═══ GAMES PAGE ═══ */
+.games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:2rem}
+.gc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:2rem;text-align:center;cursor:pointer;transition:all .25s}
+.gc:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.gc-em{font-size:48px;margin-bottom:12px}
+.gc-ttl{font-size:19px;font-weight:800;margin-bottom:6px;font-family:'Tajawal',sans-serif}
+.gc-desc{font-size:14px;color:var(--ink3);line-height:1.6;margin-bottom:14px}
+.gc-best{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:14px}
+.game-arena{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:2rem;max-width:700px;margin:0 auto;display:none}
+.g-score-row{display:flex;justify-content:center;gap:2rem;margin-bottom:1.5rem}
+.g-sc-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:1rem 1.5rem;text-align:center}
+.g-sc-n{font-size:30px;font-weight:900;color:var(--gold);font-family:'Tajawal',sans-serif}
+.g-sc-l{font-size:12px;color:var(--ink3);margin-top:4px}
+.lives-row{display:flex;gap:6px;justify-content:center;font-size:24px;margin-bottom:1rem}
+
+/* ═══ CHALLENGE PAGE ═══ */
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto 2rem}
+.ch-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem}
+.ch-card h3{font-size:17px;font-weight:700;margin-bottom:1.2rem}
+.ch-link-result{margin-top:1rem;padding:1rem;background:var(--bg3);border-radius:var(--r-sm);border:1px solid var(--border);display:none}
+.ch-code-display{font-size:32px;font-weight:900;color:var(--gold);letter-spacing:6px;text-align:center;margin:6px 0;font-family:'Tajawal',sans-serif}
+.cg-scoreboard{display:flex;justify-content:space-around;background:var(--ink);border-radius:var(--r);padding:1.5rem;margin-bottom:1.5rem}
+.cg-player{text-align:center}
+.cg-pname{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:4px}
+.cg-psc{font-size:42px;font-weight:900;color:var(--gold2);font-family:'Tajawal',sans-serif}
+.vs-mid{font-size:18px;color:rgba(255,255,255,0.3);display:flex;align-items:center;font-weight:700}
+
+/* ═══ SHARED BUTTONS ═══ */
+.btn-lg{padding:14px 32px;border-radius:var(--r-sm);font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;cursor:pointer;border:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--ink);box-shadow:0 4px 16px rgba(212,137,42,0.3)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(212,137,42,0.5)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--ink2)}
+.btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--border)}
+.btn-outline:hover{background:var(--bg3)}
+.w-full{width:100%}
+
+/* ═══ TOAST ═══ */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:12px 24px;border-radius:30px;font-size:14px;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;box-shadow:var(--shadow-lg)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{background:var(--green)}.toast.err{background:var(--red)}
+.xp-pop{position:fixed;top:75px;right:2rem;background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--ink);padding:10px 20px;border-radius:30px;font-size:14px;font-weight:800;z-index:9999;opacity:0;transition:all .4s;transform:translateY(-10px);box-shadow:var(--shadow)}
+.xp-pop.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .chapters-grid,.stats-row{grid-template-columns:1fr 1fr}
+  .topics-page-layout,.folder-layout,.lb-layout{grid-template-columns:1fr}
+  .nav-tabs{display:none}
+  .intro-title{font-size:48px}
+  .wb-stats{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ INTRO SCREEN ══════════ -->
+<div id="screen-intro" class="screen active">
+  <div class="intro-bg"></div>
+  <div class="intro-grid"></div>
+  <div id="math-floats"></div>
+  <div class="intro-content">
+    <div class="intro-badge">📚 مبني على كتاب المعاصر 10 — تأسيس كمي</div>
+    <h1 class="intro-title">الدكتور في<br><span>القدرات</span></h1>
+    <p class="intro-sub">منصة التأسيس الكمي الأولى — شرح مبسط، أسئلة عشوائية لا تنتهي، محاكاة حقيقية، تحديات مع الأصحاب</p>
+    <div class="intro-features">
+      <div class="intro-feat">📖 3 أبواب — 18 درساً</div>
+      <div class="intro-feat">✅ 300+ سؤال</div>
+      <div class="intro-feat">⏱ محاكاة 120 دقيقة</div>
+      <div class="intro-feat">🏆 لوحة متصدرين</div>
+      <div class="intro-feat">⚔️ تحدى صاحبك</div>
+      <div class="intro-feat">🎮 3 ألعاب</div>
+    </div>
+    <button class="intro-start-btn" onclick="goToLogin()">ابدأ رحلتك 🚀</button>
+    <p class="intro-book-tag">مبني على كتاب المعاصر تأسيس كمي — تأليف عماد الجزيري</p>
+  </div>
+</div>
+
+<!-- ══════════ LOGIN SCREEN ══════════ -->
+<div id="screen-login" class="screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="login-logo-icon">🎓</span>
+      <h1>الدكتور في <span>القدرات</span></h1>
+      <p>سجّل بياناتك للبدء — أو اختر حسابك</p>
+    </div>
+    <div id="login-new">
+      <p class="login-section-title">حساب جديد</p>
+      <div class="login-field">
+        <label>اسمك الكامل</label>
+        <input id="ln-name" class="login-input" type="text" placeholder="أحمد محمد السالم">
+      </div>
+      <div class="login-field">
+        <label>صفّك / مرحلتك الدراسية</label>
+        <div class="grade-select" id="grade-sel">
+          <div class="grade-opt" onclick="selGrade(this,'الثاني ثانوي')">الثاني ثانوي</div>
+          <div class="grade-opt" onclick="selGrade(this,'الثالث ثانوي')">الثالث ثانوي</div>
+          <div class="grade-opt" onclick="selGrade(this,'طالب جامعي')">طالب جامعي</div>
+          <div class="grade-opt" onclick="selGrade(this,'خريج / موظف')">خريج / موظف</div>
+        </div>
+      </div>
+      <button class="login-btn" onclick="loginNew()">ابدأ الآن ✨</button>
+    </div>
+    <div id="login-existing" style="display:none">
+      <div class="login-divider">أو اختر حسابك</div>
+      <div class="existing-users" id="existing-users-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MAIN APP ══════════ -->
+<div id="screen-app" class="screen">
+  <!-- NAV -->
+  <nav class="topnav">
+    <div class="nav-inner">
+      <div class="nav-logo" onclick="navTo('home')">
+        <span style="font-size:22px">🎓</span>
+        <span class="nav-logo-text">الدكتور في <span>القدرات</span></span>
+      </div>
+      <div class="nav-tabs">
+        <button class="nav-tab active" onclick="navTo('home')">الرئيسية</button>
+        <button class="nav-tab" onclick="navTo('topics')">المواضيع</button>
+        <button class="nav-tab" onclick="navTo('exam')">محاكاة</button>
+        <button class="nav-tab" onclick="navTo('challenge')">تحدي</button>
+        <button class="nav-tab" onclick="navTo('folder')">مجلدي</button>
+        <button class="nav-tab" onclick="navTo('games')">ألعاب</button>
+        <button class="nav-tab" onclick="navTo('leaderboard')">المتصدرون</button>
+      </div>
+      <div class="nav-right">
+        <div class="nav-user-chip" onclick="navTo('leaderboard')">
+          <div class="nav-avatar" id="nav-av">أ</div>
+          <div>
+            <div class="nav-uname" id="nav-uname">—</div>
+            <div class="nav-xp" id="nav-xp">⚡ 0 XP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <div id="page-home" class="page active">
+    <div class="welcome-banner">
+      <div class="wb-text">
+        <h2 id="wb-greeting">مرحباً 👋</h2>
+        <p>استمر في رحلتك نحو تحقيق أعلى نتيجة في القدرات الكمية. كل سؤال تحله يقربك من هدفك.</p>
+      </div>
+      <div class="wb-stats">
+        <div class="wb-stat"><span class="wb-stat-num" id="wb-solved">0</span><span class="wb-stat-label">أسئلة محلولة</span></div>
+        <div class="wb-stat"><span class="wb-stat-num" id="wb-acc">0%</span><span class="wb-stat-label">نسبة الدقة</span></div>
+        <div class="wb-stat"><span class="wb-stat-num" id="wb-xp">0</span><span class="wb-stat-label">نقطة XP</span></div>
+      </div>
+    </div>
+    <div class="stats-row" id="home-stats"></div>
+    <div class="section-hdr"><h2>📚 أبواب الكتاب</h2><a onclick="navTo('topics')">عرض الكل ←</a></div>
+    <div class="chapters-grid" id="chapters-grid"></div>
+    <div class="section-hdr"><h2>⚡ تدريب سريع</h2></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:2.5rem">
+      <button class="btn-lg btn-gold" onclick="quickPractice(10,'all')">تدريب 10 أسئلة عشوائية</button>
+      <button class="btn-lg btn-dark" onclick="navTo('exam')">محاكاة الاختبار الكامل</button>
+      <button class="btn-lg btn-outline" onclick="navTo('games')">🎮 العب وتعلّم</button>
+    </div>
+  </div>
+
+  <!-- TOPICS -->
+  <div id="page-topics" class="page">
+    <div class="topics-page-layout">
+      <div class="topics-sidebar" id="topics-sidebar"></div>
+      <div class="topic-content-area" id="topic-content"></div>
+    </div>
+  </div>
+
+  <!-- EXAM -->
+  <div id="page-exam" class="page">
+    <div id="exam-setup-view">
+      <div class="exam-setup-card">
+        <h2 style="font-size:24px;font-weight:900;margin-bottom:6px">محاكاة الاختبار الحقيقي</h2>
+        <p style="color:var(--ink3);margin-bottom:2rem;font-size:14px">نفس الأسئلة، نفس الوقت، نفس الضغط</p>
+        <div class="exam-info-grid">
+          <div class="eig-card"><div class="eig-icon">📝</div><div class="eig-num">48</div><div class="eig-label">سؤال كمي</div></div>
+          <div class="eig-card"><div class="eig-icon">⏱️</div><div class="eig-num">120</div><div class="eig-label">دقيقة</div></div>
+          <div class="eig-card"><div class="eig-icon">🎯</div><div class="eig-num">800</div><div class="eig-label">درجة نهائية</div></div>
+        </div>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:12px">اختر نوع المحاكاة</h3>
+        <div class="exam-mode-grid">
+          <div class="em-card sel" onclick="selExamMode(this,'full')"><div class="em-icon">🎯</div><div class="em-title">كامل</div><div class="em-desc">48 سؤال — 120 دقيقة</div></div>
+          <div class="em-card" onclick="selExamMode(this,'half')"><div class="em-icon">⚡</div><div class="em-title">نصف</div><div class="em-desc">24 سؤال — 60 دقيقة</div></div>
+          <div class="em-card" onclick="selExamMode(this,'quick')"><div class="em-icon">🔥</div><div class="em-title">سريع</div><div class="em-desc">10 أسئلة — 25 دقيقة</div></div>
+        </div>
+        <div class="exam-rules-box">
+          <h3>تعليمات الاختبار</h3>
+          <li>🕐 الوقت الكلي للقسم الكمي 120 دقيقة — بدون توقف</li>
+          <li>📊 الأسئلة تغطي جميع أبواب الكتاب</li>
+          <li>⚠️ لا يوجد خصم على الإجابات الخاطئة</li>
+          <li>🔢 يمكن العودة لأي سؤال قبل التسليم</li>
+          <li>💡 النتيجة تُعرض فوراً بعد التسليم</li>
+        </div>
+        <button class="btn-lg btn-gold w-full" onclick="startExam()">ابدأ المحاكاة الآن 🚀</button>
+      </div>
+    </div>
+    <div id="exam-running-view" style="display:none" class="practice-layout"></div>
+    <div id="exam-result-view" style="display:none"></div>
+  </div>
+
+  <!-- CHALLENGE -->
+  <div id="page-challenge" class="page">
+    <div style="margin-bottom:2rem">
+      <h2 style="font-size:28px;font-weight:900;margin-bottom:6px">⚔️ تحدى صاحبك</h2>
+      <p style="color:var(--ink3)">أنشئ تحدياً وشارك الكود — تنافسوا في نفس الوقت</p>
+    </div>
+    <div class="challenge-grid">
+      <div class="ch-card">
+        <h3>🔥 أنشئ تحدياً</h3>
+        <div class="fa-field"><label class="fa-label">اسمك</label><input id="ch-myname" class="fa-input" placeholder="اسمك هنا"></div>
+        <div class="fa-field"><label class="fa-label">عدد الأسئلة</label>
+          <select id="ch-qcount" class="fa-input"><option value="5">5 أسئلة</option><option value="10" selected>10 أسئلة</option><option value="20">20 سؤالاً</option></select>
+        </div>
+        <div class="fa-field"><label class="fa-label">وقت كل سؤال</label>
+          <select id="ch-qtime" class="fa-input"><option value="30">30 ثانية</option><option value="60" selected>60 ثانية</option><option value="90">90 ثانية</option></select>
+        </div>
+        <button class="btn-lg btn-gold w-full" onclick="createChallenge()">أنشئ التحدي 🔗</button>
+        <div id="ch-result" class="ch-link-result">
+          <p style="font-size:13px;color:var(--ink3);margin-bottom:4px">شارك هذا الكود مع صاحبك:</p>
+          <div class="ch-code-display" id="ch-code-show">XXXX</div>
+          <button class="btn-sm btn-sec-sm" onclick="copyChalCode()">نسخ الكود</button>
+        </div>
+      </div>
+      <div class="ch-card">
+        <h3>🤝 انضم لتحدٍّ</h3>
+        <div class="fa-field"><label class="fa-label">اسمك</label><input id="ch-joinname" class="fa-input" placeholder="اسمك هنا"></div>
+        <div class="fa-field"><label class="fa-label">كود التحدي</label>
+          <input id="ch-joincode" class="fa-input" placeholder="XXXX" style="text-align:center;letter-spacing:6px;font-size:22px;font-weight:900">
+        </div>
+        <button class="btn-lg btn-dark w-full" onclick="joinChallenge()">انضم الآن ⚔️</button>
+      </div>
+    </div>
+    <div id="challenge-game-area"></div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+      <div style="padding:1.5rem 2rem;border-bottom:1px solid var(--border)"><h3 style="font-size:18px;font-weight:700">🏅 لوحة المتصدرين — التحديات</h3></div>
+      <div id="challenge-lb" style="padding:1rem 2rem"></div>
+    </div>
+  </div>
+
+  <!-- FOLDER -->
+  <div id="page-folder" class="page">
+    <div style="margin-bottom:2rem">
+      <h2 style="font-size:28px;font-weight:900;margin-bottom:6px">📁 مجلد أخطائي</h2>
+      <p style="color:var(--ink3)">سجّل كل خطأ وملاحظة — الخطأ المكتوب لا يتكرر</p>
+    </div>
+    <div class="folder-layout">
+      <div class="folder-add-card">
+        <div class="fa-title">➕ أضف خطأً جديداً</div>
+        <div class="fa-field"><label class="fa-label">الموضوع</label><select id="fa-topic" class="fa-input"></select></div>
+        <div class="fa-field"><label class="fa-label">الصعوبة</label>
+          <select id="fa-diff" class="fa-input"><option value="easy">سهل</option><option value="med" selected>متوسط</option><option value="hard">صعب</option></select>
+        </div>
+        <div class="fa-field"><label class="fa-label">السؤال</label><textarea id="fa-q" class="fa-input" rows="3" placeholder="انسخ السؤال هنا..."></textarea></div>
+        <div class="fa-field"><label class="fa-label">إجابتك الخاطئة</label><input id="fa-wrong" class="fa-input" placeholder="ما الذي أجبت به؟"></div>
+        <div class="fa-field"><label class="fa-label">الإجابة الصحيحة</label><input id="fa-right" class="fa-input" placeholder="ما الإجابة الصحيحة؟"></div>
+        <div class="fa-field"><label class="fa-label">لماذا أخطأت؟</label><textarea id="fa-note" class="fa-input" rows="2" placeholder="اكتب سبب الخطأ..."></textarea></div>
+        <button class="btn-lg btn-gold w-full" onclick="saveError()" style="font-size:14px;padding:12px">حفظ في المجلد 💾</button>
+      </div>
+      <div>
+        <div class="filt-row">
+          <button class="filt-btn active" onclick="filterFolderErrors('all',this)">الكل <span id="fa-total-badge"></span></button>
+          <button class="filt-btn" onclick="filterFolderErrors('easy',this)">سهل</button>
+          <button class="filt-btn" onclick="filterFolderErrors('med',this)">متوسط</button>
+          <button class="filt-btn" onclick="filterFolderErrors('hard',this)">صعب</button>
+        </div>
+        <div id="folder-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAMES -->
+  <div id="page-games" class="page">
+    <div style="margin-bottom:2rem">
+      <h2 style="font-size:28px;font-weight:900;margin-bottom:6px">🎮 ألعاب القدرات</h2>
+      <p style="color:var(--ink3)">تعلّم وأنت تلعب — كل لعبة تُعلّمك شيئاً جديداً</p>
+    </div>
+    <div class="games-grid">
+      <div class="gc" onclick="launchGame('lightning')"><div class="gc-em">⚡</div><div class="gc-ttl">البرق</div><div class="gc-desc">أجب على أكبر عدد من الأسئلة في 60 ثانية</div><div class="gc-best">أفضلك: <span id="best-lightning">0</span></div><button class="btn-lg btn-gold">العب الآن</button></div>
+      <div class="gc" onclick="launchGame('survival')"><div class="gc-em">🏰</div><div class="gc-ttl">البقاء</div><div class="gc-desc">3 قلوب فقط — كم تتحمل؟</div><div class="gc-best">أفضلك: <span id="best-survival">0</span></div><button class="btn-lg btn-dark">العب الآن</button></div>
+      <div class="gc" onclick="launchGame('streak')"><div class="gc-em">🔥</div><div class="gc-ttl">التسلسل</div><div class="gc-desc">أطول سلسلة صح بدون خطأ</div><div class="gc-best">أفضلك: <span id="best-streak">0</span></div><button class="btn-lg btn-outline">العب الآن</button></div>
+    </div>
+    <div class="game-arena" id="game-arena"></div>
+  </div>
+
+  <!-- LEADERBOARD -->
+  <div id="page-leaderboard" class="page">
+    <div style="margin-bottom:2rem">
+      <h2 style="font-size:28px;font-weight:900;margin-bottom:6px">🏆 لوحة المتصدرين</h2>
+      <p style="color:var(--ink3)">تنافس مع جميع الطلاب الذين يستخدمون المنصة</p>
+    </div>
+    <div class="lb-layout">
+      <div class="lb-main">
+        <div class="lb-hdr">
+          <h2>المتصدرون</h2>
+          <div class="lb-filter">
+            <button class="lb-f-btn active" onclick="filterLB('xp',this)">نقاط XP</button>
+            <button class="lb-f-btn" onclick="filterLB('solved',this)">أسئلة محلولة</button>
+            <button class="lb-f-btn" onclick="filterLB('acc',this)">الدقة</button>
+          </div>
+        </div>
+        <div id="lb-podium" class="lb-podium"></div>
+        <div id="lb-list" class="lb-list"></div>
+      </div>
+      <div class="lb-side">
+        <div class="lb-my-card">
+          <h3>إحصائياتك</h3>
+          <div id="my-stats-list"></div>
+        </div>
+        <div class="lb-my-card">
+          <h3>🔥 نصيحة اليوم</h3>
+          <p id="daily-tip" style="font-size:14px;color:var(--ink2);line-height:1.8"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRACTICE (modal-like page) -->
+  <div id="page-practice" class="page">
+    <div class="practice-layout" id="practice-content"></div>
+  </div>
+</div>
+
+<!-- TOAST & XP POP -->
+<div id="toast" class="toast"></div>
+<div id="xp-pop" class="xp-pop"></div>
+
+<script>
+// ═══════════════════════════════════════
+//  DATA: Topics from المعاصر 10
+// ═══════════════════════════════════════
+const CHAPTERS = [
+  {
+    id:'ch1', num:1, title:'أساسيات القدرات', color:'#c0392b', light:'#fdf0ef', badge:'الباب الأول',
+    desc:'الأعداد، الكسور، الجذور، الأسس، السرعة والزمن',
+    icon:'🔢',
+    lessons:[
+      { id:'l1-1', title:'الأعداد العشرية', icon:'0.5', desc:'جمع وطرح وضرب وقسمة الأعداد العشرية، المقارنة بين الأعداد العشرية',
+        content:[
+          {type:'rule',title:'جمع الأعداد العشرية — الطريقة الرأسية',text:'نضع الأعداد فوق بعضها بحيث تكون العلامات العشرية تحت بعضها، ثم نجمع رأسياً كما في الأعداد الصحيحة.'},
+          {type:'formula',text:'قاعدة: وازن العلامات العشرية أولاً ثم اجمع'},
+          {type:'tip',text:'عند المقارنة بين عددين عشريين: اجعل عدد الأرقام بعد العلامة متساوياً بإضافة أصفار، ثم قارن كأنهما عددان صحيحان.'},
+          {type:'example',q:'ما قيمة: 1.76 + 5.13 ؟',steps:['نضع الأعداد فوق بعضها: 1.76 فوق 5.13','نجمع: 6+3=9، 7+1=8، 1+5=6','النتيجة: 6.89'],ans:'الإجابة: 6.89'},
+          {type:'example',q:'ما قيمة: 1.2 + 2.45 ؟',steps:['نجعل العلامات متساوية: 1.20 + 2.45','نجمع: 1.20 + 2.45 = 3.65'],ans:'الإجابة: 3.65'},
+          {type:'rule',title:'ضرب الأعداد العشرية',text:'اضرب العددين بدون علامات، ثم ضع الفاصلة بحيث يكون عدد الأرقام بعدها = مجموع الأرقام العشرية في العددين.'},
+          {type:'formula',text:'عدد الأرقام بعد الفاصلة في الناتج = مجموع الأرقام بعد الفاصلة في العددين'},
+          {type:'example',q:'ما قيمة: 0.3 × 0.3 × 0.3 = ؟',steps:['0.3 × 0.3 × 0.3 = 27 بدون فاصلة','عدد الأرقام العشرية = 1+1+1 = 3','نضع الفاصلة: 0.027'],ans:'الإجابة: 0.027'},
+        ]
+      },
+      { id:'l1-2', title:'الكسور', icon:'½', desc:'جمع وطرح وضرب وقسمة الكسور، الكسور المختلطة، تبسيط الكسور',
+        content:[
+          {type:'rule',title:'جمع وطرح الكسور',text:'لجمع كسرين ذوي مقامين مختلفين، نوحّد المقامات أولاً بإيجاد المضاعف المشترك الأصغر.'},
+          {type:'formula',text:'أ/ب + ج/د = (أد + بج) / بد\nأ/ب − ج/د = (أد − بج) / بد'},
+          {type:'tip',text:'لتبسيط كسر: اقسم البسط والمقام على أكبر قاسم مشترك بينهما.'},
+          {type:'example',q:'ما قيمة: 2/3 + 3/4 ؟',steps:['المقام المشترك = 12','2/3 = 8/12، 3/4 = 9/12','8/12 + 9/12 = 17/12'],ans:'الإجابة: 17/12 = 1 و5/12'},
+          {type:'rule',title:'ضرب وقسمة الكسور',text:'الضرب: نضرب البسط في البسط والمقام في المقام. القسمة: نقلب الكسر الثاني ونضرب.'},
+          {type:'formula',text:'أ/ب × ج/د = (أج)/(بد)\nأ/ب ÷ ج/د = أ/ب × د/ج'},
+          {type:'example',q:'ما قيمة: 3/4 ÷ 9/16 ؟',steps:['نقلب الكسر الثاني: 9/16 تصبح 16/9','3/4 × 16/9 = 48/36','نبسّط: 48/36 = 4/3'],ans:'الإجابة: 4/3 = 1 و1/3'},
+        ]
+      },
+      { id:'l1-3', title:'الجذور', icon:'√', desc:'جذر الأعداد الصحيحة والكسور، تبسيط الجذور، عمليات على الجذور',
+        content:[
+          {type:'rule',title:'الجذر التربيعي',text:'الجذر التربيعي للعدد أ هو العدد الذي إذا ضُرب في نفسه أعطى أ. يُرمز له بـ √أ.'},
+          {type:'formula',text:'√(أ × ب) = √أ × √ب\n√(أ/ب) = √أ / √ب'},
+          {type:'tip',text:'جذور يجب حفظها: √1=1، √4=2، √9=3، √16=4، √25=5، √36=6، √49=7، √64=8، √81=9، √100=10، √121=11، √144=12'},
+          {type:'example',q:'ما قيمة: √48 ؟',steps:['48 = 16 × 3','√48 = √16 × √3 = 4√3'],ans:'الإجابة: 4√3'},
+          {type:'example',q:'ما قيمة: √(9/16) ؟',steps:['√(9/16) = √9 / √16 = 3/4'],ans:'الإجابة: 3/4'},
+        ]
+      },
+      { id:'l1-4', title:'الأسس', icon:'xⁿ', desc:'قوانين الأسس، ضرب وقسمة الأسس، الأسس السالبة والكسرية',
+        content:[
+          {type:'formula',text:'أⁿ × أᵐ = أⁿ⁺ᵐ\nأⁿ ÷ أᵐ = أⁿ⁻ᵐ\n(أⁿ)ᵐ = أⁿᵐ\nأ⁰ = 1\nأ⁻ⁿ = 1/أⁿ'},
+          {type:'tip',text:'أي عدد (غير الصفر) مرفوع للقوة صفر = 1. مثال: 5⁰ = 1، (−3)⁰ = 1'},
+          {type:'example',q:'ما قيمة: 2³ × 2⁴ ؟',steps:['نجمع الأسس: 2^(3+4) = 2⁷','2⁷ = 128'],ans:'الإجابة: 128'},
+          {type:'example',q:'ما قيمة: (3²)³ ؟',steps:['نضرب الأسس: 3^(2×3) = 3⁶','3⁶ = 729'],ans:'الإجابة: 729'},
+          {type:'rule',title:'الأسس السالبة',text:'العدد ذو الأس السالب يُقلب. مثلاً: 2⁻³ = 1/2³ = 1/8'},
+        ]
+      },
+      { id:'l1-5', title:'المسافة والزمن والسرعة', icon:'🚗', desc:'العلاقة بين المسافة والسرعة والزمن، حل المسائل التطبيقية',
+        content:[
+          {type:'formula',text:'السرعة = المسافة ÷ الزمن\nالمسافة = السرعة × الزمن\nالزمن = المسافة ÷ السرعة'},
+          {type:'tip',text:'تحويل الوحدات: 1 ساعة = 60 دقيقة = 3600 ثانية. 1 كم/س = 1000م ÷ 3600ث ≈ 0.278 م/ث'},
+          {type:'example',q:'قطار يسير بسرعة 90 كم/س. كم يقطع في 40 دقيقة؟',steps:['40 دقيقة = 40/60 = 2/3 ساعة','المسافة = 90 × 2/3 = 60 كم'],ans:'الإجابة: 60 كم'},
+          {type:'example',q:'سيارة قطعت 240 كم في 3 ساعات. ما سرعتها؟',steps:['السرعة = المسافة ÷ الزمن','= 240 ÷ 3 = 80 كم/س'],ans:'الإجابة: 80 كم/س'},
+          {type:'rule',title:'مسائل اللقاء',text:'إذا تحرك جسمان باتجاه بعضهما: الزمن حتى اللقاء = المسافة الكلية ÷ (سرعة₁ + سرعة₂)'},
+        ]
+      },
+    ]
+  },
+  {
+    id:'ch2', num:2, title:'النسب والنسبة المئوية', color:'#7c3aed', light:'#f3eeff', badge:'الباب الثاني',
+    desc:'النسبة المئوية، الربح والخسارة، التناسب، الوسط الحسابي',
+    icon:'📊',
+    lessons:[
+      { id:'l2-1', title:'النسبة المئوية في الربح والخسارة', icon:'%', desc:'حساب نسبة الربح والخسارة، المكسب والخسارة، التطبيقات التجارية',
+        content:[
+          {type:'formula',text:'نسبة الربح = (الربح ÷ سعر الشراء) × 100\nnسبة الخسارة = (الخسارة ÷ سعر الشراء) × 100'},
+          {type:'tip',text:'سعر البيع = سعر الشراء + الربح  |  الربح = سعر البيع − سعر الشراء'},
+          {type:'example',q:'اشترى تاجر بضاعة بـ 500 ريال وباعها بـ 600 ريال. ما نسبة الربح؟',steps:['الربح = 600 − 500 = 100 ريال','نسبة الربح = (100 ÷ 500) × 100 = 20%'],ans:'الإجابة: 20%'},
+          {type:'example',q:'اشترى بضاعة بـ 800 وباعها بـ 680. ما نسبة الخسارة؟',steps:['الخسارة = 800 − 680 = 120','نسبة الخسارة = (120 ÷ 800) × 100 = 15%'],ans:'الإجابة: 15%'},
+        ]
+      },
+      { id:'l2-2', title:'السعر الأصلي والربح المركب والتخفيض', icon:'🏷️', desc:'إيجاد السعر الأصلي، الربح المركب، التخفيض المتتالي',
+        content:[
+          {type:'formula',text:'سعر البيع = سعر الشراء × (1 + نسبة الربح/100)\nسعر الشراء = سعر البيع ÷ (1 + نسبة الربح/100)'},
+          {type:'tip',text:'عند التخفيض المتتالي: احسب كل تخفيض على السعر الجديد وليس الأصلي.'},
+          {type:'example',q:'بعد تخفيض 20% أصبح سعر منتج 400 ريال. ما السعر الأصلي؟',steps:['السعر الأصلي × (1 − 0.20) = 400','السعر الأصلي × 0.80 = 400','السعر الأصلي = 400 ÷ 0.80 = 500 ريال'],ans:'الإجابة: 500 ريال'},
+          {type:'example',q:'زاد سعر منتج 10% ثم نقص 10%. ما التغير الإجمالي؟',steps:['100 → ×1.10 = 110 → ×0.90 = 99','التغير = 99 − 100 = −1 ريال أي نقص 1%'],ans:'الإجابة: نقص 1%'},
+        ]
+      },
+      { id:'l2-3', title:'التناسب الطردي والعكسي', icon:'⚖️', desc:'التناسب المباشر والعكسي، الضرب التبادلي، حل المسائل',
+        content:[
+          {type:'rule',title:'التناسب الطردي',text:'عندما يزداد أحد الكميتين تزداد الأخرى بنفس النسبة.'},
+          {type:'formula',text:'أ₁/ب₁ = أ₂/ب₂  →  أ₁ × ب₂ = أ₂ × ب₁ (ضرب متقاطع)'},
+          {type:'rule',title:'التناسب العكسي',text:'عندما تزداد إحدى الكميتين تقل الأخرى بنفس النسبة.'},
+          {type:'formula',text:'أ₁ × ب₁ = أ₂ × ب₂'},
+          {type:'example',q:'6 عمال يُنهون عملاً في 8 أيام. كم يوماً يحتاج 4 عمال؟',steps:['التناسب عكسي: العمال × الأيام = ثابت','6 × 8 = 4 × س','48 = 4س → س = 12 يوماً'],ans:'الإجابة: 12 يوماً'},
+          {type:'example',q:'5 كجم تكلف 75 ريالاً. كم يكلف 8 كجم؟',steps:['تناسب طردي: 5/75 = 8/س','5س = 600 → س = 120 ريال'],ans:'الإجابة: 120 ريال'},
+        ]
+      },
+      { id:'l2-4', title:'الوسط الحسابي', icon:'x̄', desc:'حساب الوسط الحسابي والوسيط والمنوال، مسائل الوسط المجهول',
+        content:[
+          {type:'formula',text:'الوسط الحسابي = مجموع القيم ÷ عددها'},
+          {type:'tip',text:'إذا طُلب إيجاد قيمة مجهولة لتحقيق وسط معين: المجهول = (الوسط المطلوب × عدد القيم) − مجموع القيم المعروفة'},
+          {type:'example',q:'وسط 5 درجات = 80. إذا أضفنا درجة 95، ما الوسط الجديد؟',steps:['مجموع الـ5 درجات = 80 × 5 = 400','المجموع الجديد = 400 + 95 = 495','الوسط الجديد = 495 ÷ 6 = 82.5'],ans:'الإجابة: 82.5'},
+          {type:'example',q:'وسط 6 أرقام = 15. ثلاثة منها: 12، 16، 18. ما مجموع الثلاثة الباقية؟',steps:['مجموع الـ6 = 15 × 6 = 90','مجموع المعروفة = 12+16+18 = 46','مجموع الباقية = 90 − 46 = 44'],ans:'الإجابة: 44'},
+        ]
+      },
+    ]
+  },
+  {
+    id:'ch3', num:3, title:'الهندسة', color:'#0891b2', light:'#e0f7fa', badge:'الباب الثالث',
+    desc:'الزوايا، المثلث، المستطيل، المربع، الدائرة، الأشكال ثلاثية الأبعاد',
+    icon:'📐',
+    lessons:[
+      { id:'l3-1', title:'الزوايا والمضلعات', icon:'∠', desc:'أنواع الزوايا، مجموع زوايا المضلعات، الزوايا المتكاملة والمتتامة',
+        content:[
+          {type:'formula',text:'مجموع زوايا أي مضلع = (ن − 2) × 180°\nحيث ن = عدد الأضلاع'},
+          {type:'tip',text:'المثلث: 180° | الرباعي: 360° | الخماسي: 540° | السداسي: 720°'},
+          {type:'rule',title:'أنواع الزوايا',text:'حادة < 90° | قائمة = 90° | منفرجة: 90° < ز < 180° | مستقيمة = 180° | عكسية = 360°'},
+          {type:'example',q:'في مضلع منتظم عدد أضلاعه 6. ما قياس كل زاوية داخلية؟',steps:['مجموع الزوايا = (6−2) × 180 = 720°','كل زاوية = 720 ÷ 6 = 120°'],ans:'الإجابة: 120°'},
+        ]
+      },
+      { id:'l3-2', title:'المثلث وجميع معلوماته', icon:'△', desc:'أنواع المثلثات، المساحة، القاعدة والارتفاع، نظرية فيثاغورس',
+        content:[
+          {type:'formula',text:'مساحة المثلث = ½ × القاعدة × الارتفاع\nنظرية فيثاغورس: وتر² = ساق₁² + ساق₂²'},
+          {type:'tip',text:'مثلث 3-4-5 من أشهر مثلثات القدرات! تذكر أيضاً: 5-12-13، 8-15-17'},
+          {type:'example',q:'مثلث قاعدته 8 سم وارتفاعه 6 سم. ما مساحته؟',steps:['م = ½ × 8 × 6 = 24 سم²'],ans:'الإجابة: 24 سم²'},
+          {type:'example',q:'في مثلث قائم الزاوية، الساقان 5 و12. ما الوتر؟',steps:['وتر² = 5² + 12² = 25 + 144 = 169','الوتر = √169 = 13'],ans:'الإجابة: 13 سم'},
+        ]
+      },
+      { id:'l3-3', title:'المستطيل وجميع معلوماته', icon:'▬', desc:'المساحة، المحيط، قطر المستطيل، المسائل التطبيقية',
+        content:[
+          {type:'formula',text:'مساحة المستطيل = الطول × العرض\nمحيط المستطيل = 2 × (الطول + العرض)\nطول القطر = √(ط² + ع²)'},
+          {type:'example',q:'مستطيل طوله 12 سم وعرضه 5 سم. أوجد مساحته ومحيطه وقطره.',steps:['المساحة = 12 × 5 = 60 سم²','المحيط = 2 × (12+5) = 34 سم','القطر = √(144+25) = √169 = 13 سم'],ans:'المساحة=60، المحيط=34، القطر=13'},
+          {type:'tip',text:'إذا عُرفت المساحة وأحد الأبعاد: البعد الآخر = المساحة ÷ البعد المعروف'},
+        ]
+      },
+      { id:'l3-4', title:'المربع وجميع معلوماته', icon:'□', desc:'مساحة المربع، محيطه، قطره، العلاقة بين الأضلاع والقطر',
+        content:[
+          {type:'formula',text:'مساحة المربع = ض²\nمحيط المربع = 4 × ض\nطول القطر = ض × √2'},
+          {type:'example',q:'مربع مساحته 64 سم². ما محيطه؟',steps:['ض² = 64 → ض = 8 سم','المحيط = 4 × 8 = 32 سم'],ans:'الإجابة: 32 سم'},
+          {type:'tip',text:'إذا عرفت المحيط: ض = المحيط ÷ 4. إذا عرفت المساحة: ض = √المساحة.'},
+        ]
+      },
+      { id:'l3-5', title:'المعين — المتوازي — شبه المتحرف', icon:'◇', desc:'خصائص كل شكل، حساب المساحة والمحيط',
+        content:[
+          {type:'formula',text:'مساحة المعين = ½ × القطر₁ × القطر₂\nمساحة متوازي الأضلاع = القاعدة × الارتفاع\nمساحة شبه المتحرف = ½ × (القاعدتان) × الارتفاع'},
+          {type:'example',q:'معين قطراه 6 و8 سم. ما مساحته؟',steps:['م = ½ × 6 × 8 = 24 سم²'],ans:'الإجابة: 24 سم²'},
+          {type:'example',q:'شبه متحرف قاعدتاه 5 و9 سم وارتفاعه 4 سم. مساحته؟',steps:['م = ½ × (5+9) × 4 = ½ × 14 × 4 = 28 سم²'],ans:'الإجابة: 28 سم²'},
+        ]
+      },
+      { id:'l3-6', title:'المساحات المظللة', icon:'▦', desc:'حساب المساحة المظللة بين شكلين هندسيين',
+        content:[
+          {type:'rule',title:'المساحات المظللة',text:'المساحة المظللة = مساحة الشكل الكبير − مساحة الشكل الصغير الداخلي'},
+          {type:'tip',text:'انتبه: قد يكون الشكل الداخلي دائرة داخل مربع أو مثلث داخل مستطيل وما إلى ذلك.'},
+          {type:'example',q:'مربع طول ضلعه 10 سم. داخله دائرة قطرها 10 سم. ما المساحة المظللة (π=3.14)؟',steps:['مساحة المربع = 100 سم²','مساحة الدائرة = π × 5² = 3.14 × 25 = 78.5 سم²','المظللة = 100 − 78.5 = 21.5 سم²'],ans:'الإجابة: 21.5 سم²'},
+        ]
+      },
+      { id:'l3-7', title:'الدائرة وجميع معلوماتها', icon:'○', desc:'محيط الدائرة، المساحة، القطر ونصف القطر، القوس والقطاع',
+        content:[
+          {type:'formula',text:'محيط الدائرة = 2πر = πق (ق = القطر)\nمساحة الدائرة = πر²\nπ ≈ 22/7 ≈ 3.14'},
+          {type:'tip',text:'في القدرات: عادةً يُستخدم π = 22/7 عندما نق يقبل القسمة على 7، وπ = 3.14 بخلاف ذلك.'},
+          {type:'example',q:'دائرة محيطها 44 سم. ما مساحتها؟ (π=22/7)',steps:['2 × 22/7 × ر = 44','ر = 44 × 7/(2×22) = 7 سم','المساحة = 22/7 × 7² = 22/7 × 49 = 154 سم²'],ans:'الإجابة: 154 سم²'},
+        ]
+      },
+      { id:'l3-8', title:'التوازي', icon:'∥', desc:'المستقيمات المتوازية والمتعامدة، الزوايا المتناوبة والمتحالفة',
+        content:[
+          {type:'rule',title:'المستقيمات المتوازية',text:'إذا قاطع مستقيم مستقيمين متوازيين: الزوايا المتناوبة متساوية، الزوايا المتحالفة مجموعها 180°.'},
+          {type:'tip',text:'الزوايا المقابلة للرأس دائماً متساوية في أي تقاطع.'},
+          {type:'example',q:'مستقيمان متوازيان. قاطعهما مستقيم فكانت إحدى الزوايا 65°. ما قيمة الزاوية المتحالفة لها؟',steps:['الزوايا المتحالفة مكملة لبعضها: 180 − 65 = 115°'],ans:'الإجابة: 115°'},
+        ]
+      },
+      { id:'l3-9', title:'الأشكال ثلاثية الأبعاد', icon:'📦', desc:'الحجم والمساحة الكلية للمكعب ومتوازي المستطيلات والأسطوانة والمخروط',
+        content:[
+          {type:'formula',text:'المكعب: الحجم=ض³، السطح الكلي=6ض²\nمتوازي المستطيلات: الحجم=ط×ع×ر، السطح=2(طع+طر+عر)\nالأسطوانة: الحجم=πر²ط، السطح الجانبي=2πرط'},
+          {type:'example',q:'مكعب حجمه 125 سم³. ما مساحة سطحه الكلية؟',steps:['ض³ = 125 → ض = 5 سم','السطح = 6 × 5² = 6 × 25 = 150 سم²'],ans:'الإجابة: 150 سم²'},
+          {type:'example',q:'أسطوانة نصف قطرها 7 سم وارتفاعها 10 سم. ما حجمها؟ (π=22/7)',steps:['الحجم = 22/7 × 7² × 10 = 22/7 × 49 × 10 = 1540 سم³'],ans:'الإجابة: 1540 سم³'},
+        ]
+      },
+    ]
+  },
+];
+
+// ═══════════════════════════════════════
+//  QUESTIONS BANK — من الكتاب وأمثاله
+// ═══════════════════════════════════════
+const QB = [
+  // ─── باب 1: أساسيات ───
+  {id:1,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'ما ناتج: 5.4 + 3.27 ؟',opts:['8.67','8.57','9.67','8.97'],ans:0,exp:'5.40 + 3.27 = 8.67'},
+  {id:2,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'ما ناتج: 12.5 − 4.73 ؟',opts:['7.77','8.23','7.23','8.77'],ans:0,exp:'12.50 − 4.73 = 7.77'},
+  {id:3,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'ما قيمة: 0.3 × 0.2 ؟',opts:['0.06','0.6','0.006','6'],ans:0,exp:'3×2=6، عدد الأرقام العشرية=1+1=2، النتيجة=0.06'},
+  {id:4,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'أيّ الأعداد أكبر؟',opts:['0.75','0.705','0.507','0.057'],ans:0,exp:'0.750 > 0.705 > 0.507 > 0.057'},
+  {id:5,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'ما قيمة: (0.1)³ ؟',opts:['0.001','0.01','0.0001','0.1'],ans:0,exp:'0.1×0.1×0.1=0.001 (3 أرقام عشرية)'},
+  {id:6,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'ما قيمة: 0.8 + 0.08 + 0.008 ؟',opts:['0.888','0.88','0.008','0.8'],ans:0,exp:'0.800+0.080+0.008=0.888'},
+  {id:7,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'ما ناتج: 20 − 9.999 ؟',opts:['10.001','10.01','9.001','11.001'],ans:0,exp:'20.000 − 9.999 = 10.001'},
+  {id:8,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'ما قيمة: 0.2² ؟',opts:['0.04','0.4','0.004','0.2'],ans:0,exp:'0.2×0.2=0.04 (2 أرقام عشرية)'},
+  {id:9,ch:'ch1',ls:'l1-2',topic:'الكسور',text:'ما ناتج: 1/3 + 1/4 ؟',opts:['7/12','2/7','5/12','1/6'],ans:0,exp:'4/12 + 3/12 = 7/12'},
+  {id:10,ch:'ch1',ls:'l1-2',topic:'الكسور',text:'ما ناتج: 3/4 − 1/3 ؟',opts:['5/12','2/7','7/12','1/4'],ans:0,exp:'9/12 − 4/12 = 5/12'},
+  {id:11,ch:'ch1',ls:'l1-2',topic:'الكسور',text:'ما ناتج: 2/5 × 5/8 ؟',opts:['1/4','2/8','7/13','1/2'],ans:0,exp:'10/40 = 1/4'},
+  {id:12,ch:'ch1',ls:'l1-2',topic:'الكسور',text:'ما ناتج: 3/4 ÷ 9/16 ؟',opts:['4/3','3/4','27/64','12/9'],ans:0,exp:'3/4 × 16/9 = 48/36 = 4/3'},
+  {id:13,ch:'ch1',ls:'l1-2',topic:'الكسور',text:'إذا كانت 2/3 من عدد تساوي 18، فما العدد؟',opts:['27','12','9','36'],ans:0,exp:'العدد × 2/3 = 18 → العدد = 18 × 3/2 = 27'},
+  {id:14,ch:'ch1',ls:'l1-2',topic:'الكسور',text:'أيّ الكسور أكبر: 3/5 ، 5/8 ، 7/12 ؟',opts:['5/8','3/5','7/12','متساوية'],ans:0,exp:'5/8=0.625، 3/5=0.6، 7/12≈0.583. إذن 5/8 أكبر'},
+  {id:15,ch:'ch1',ls:'l1-2',topic:'الكسور',text:'ما قيمة: (1/2 + 1/3 + 1/6) × 12 ؟',opts:['12','6','4','8'],ans:0,exp:'1/2+1/3+1/6=1، 1×12=12'},
+  {id:16,ch:'ch1',ls:'l1-2',topic:'الكسور',text:'ما قيمة: 3/4 من 80 ؟',opts:['60','40','20','70'],ans:0,exp:'80 × 3/4 = 60'},
+  {id:17,ch:'ch1',ls:'l1-3',topic:'الجذور',text:'ما قيمة: √144 ؟',opts:['12','11','13','14'],ans:0,exp:'12² = 144'},
+  {id:18,ch:'ch1',ls:'l1-3',topic:'الجذور',text:'ما قيمة: √(9/25) ؟',opts:['3/5','9/25','3/25','1/3'],ans:0,exp:'√9/√25 = 3/5'},
+  {id:19,ch:'ch1',ls:'l1-3',topic:'الجذور',text:'ما قيمة: √75 بأبسط صورة؟',opts:['5√3','3√5','15√1','25√3'],ans:0,exp:'75=25×3، √75=5√3'},
+  {id:20,ch:'ch1',ls:'l1-3',topic:'الجذور',text:'ما قيمة: 2√3 × 3√3 ؟',opts:['18','6','12√3','6√3'],ans:0,exp:'2×3×√3×√3=6×3=18'},
+  {id:21,ch:'ch1',ls:'l1-3',topic:'الجذور',text:'إذا كان √أ = 5 فما قيمة أ ؟',opts:['25','5','10','15'],ans:0,exp:'(√أ)² = 5² → أ = 25'},
+  {id:22,ch:'ch1',ls:'l1-4',topic:'الأسس',text:'ما قيمة: 2³ × 2² ؟',opts:['32','64','16','8'],ans:0,exp:'2^(3+2) = 2^5 = 32'},
+  {id:23,ch:'ch1',ls:'l1-4',topic:'الأسس',text:'ما قيمة: 3⁶ ÷ 3³ ؟',opts:['27','9','81','3'],ans:0,exp:'3^(6-3) = 3^3 = 27'},
+  {id:24,ch:'ch1',ls:'l1-4',topic:'الأسس',text:'ما قيمة: (2³)² ؟',opts:['64','32','16','128'],ans:0,exp:'2^(3×2) = 2^6 = 64'},
+  {id:25,ch:'ch1',ls:'l1-4',topic:'الأسس',text:'ما قيمة: 5⁰ ؟',opts:['1','0','5','لا تُعرَّف'],ans:0,exp:'أي عدد مرفوع للقوة صفر = 1'},
+  {id:26,ch:'ch1',ls:'l1-4',topic:'الأسس',text:'ما قيمة: 2⁻³ ؟',opts:['1/8','−8','8','1/6'],ans:0,exp:'2⁻³ = 1/2³ = 1/8'},
+  {id:27,ch:'ch1',ls:'l1-5',topic:'المسافة والسرعة',text:'سيارة سرعتها 90 كم/س. كم تقطع في 2 ساعة؟',opts:['180','90','270','45'],ans:0,exp:'المسافة = 90 × 2 = 180 كم'},
+  {id:28,ch:'ch1',ls:'l1-5',topic:'المسافة والسرعة',text:'قطع رجل 120 كم في 3 ساعات. ما سرعته؟',opts:['40','30','60','20'],ans:0,exp:'السرعة = 120 ÷ 3 = 40 كم/س'},
+  {id:29,ch:'ch1',ls:'l1-5',topic:'المسافة والسرعة',text:'سيارة سرعتها 80 كم/س. كم تقطع في 45 دقيقة؟',opts:['60','40','120','80'],ans:0,exp:'45 دقيقة = 3/4 ساعة. المسافة = 80 × 3/4 = 60 كم'},
+  {id:30,ch:'ch1',ls:'l1-5',topic:'المسافة والسرعة',text:'سيارتان تسيران نحو بعضهما بسرعتي 60 و80 كم/س. تقاطعتا بعد كم ساعة إذا كانت المسافة بينهما 420 كم؟',opts:['3','2','4','5'],ans:0,exp:'الزمن = 420 ÷ (60+80) = 420 ÷ 140 = 3 ساعات'},
+  // ─── باب 2: النسب ───
+  {id:31,ch:'ch2',ls:'l2-1',topic:'النسبة المئوية',text:'ما 25% من 200 ؟',opts:['50','40','60','25'],ans:0,exp:'200 × 0.25 = 50'},
+  {id:32,ch:'ch2',ls:'l2-1',topic:'النسبة المئوية',text:'زاد عدد من 80 إلى 100. ما نسبة الزيادة؟',opts:['25%','20%','15%','30%'],ans:0,exp:'الزيادة=20، نسبتها=20/80×100=25%'},
+  {id:33,ch:'ch2',ls:'l2-1',topic:'النسبة المئوية',text:'اشترى بـ 400 وباع بـ 480. ما نسبة الربح؟',opts:['20%','18%','25%','15%'],ans:0,exp:'الربح=80، النسبة=80/400×100=20%'},
+  {id:34,ch:'ch2',ls:'l2-1',topic:'النسبة المئوية',text:'اشترى بـ 600 وباع بـ 510. ما نسبة الخسارة؟',opts:['15%','10%','20%','12%'],ans:0,exp:'الخسارة=90، النسبة=90/600×100=15%'},
+  {id:35,ch:'ch2',ls:'l2-1',topic:'النسبة المئوية',text:'ما النسبة المئوية لـ 7/20 ؟',opts:['35%','28%','14%','70%'],ans:0,exp:'7/20 × 100 = 35%'},
+  {id:36,ch:'ch2',ls:'l2-2',topic:'السعر الأصلي',text:'سعر منتج بعد تخفيض 15% أصبح 340 ريال. ما السعر الأصلي؟',opts:['400','380','350','420'],ans:0,exp:'السعر الأصلي × 0.85 = 340 → السعر = 400 ريال'},
+  {id:37,ch:'ch2',ls:'l2-2',topic:'السعر الأصلي',text:'زاد سعر منتج 20% ثم نقص 20%. ما نسبة التغير الإجمالية؟',opts:['نقص 4%','لا تغيير','نقص 2%','زاد 2%'],ans:0,exp:'1 × 1.2 × 0.8 = 0.96، إذن نقص 4%'},
+  {id:38,ch:'ch2',ls:'l2-2',topic:'السعر الأصلي',text:'عُرض منتج بسعر 200 ريال. هل هو بربح 25% فكم كان سعر الشراء؟',opts:['160','150','175','180'],ans:0,exp:'سعر الشراء × 1.25 = 200 → 200/1.25 = 160 ريال'},
+  {id:39,ch:'ch2',ls:'l2-3',topic:'التناسب',text:'قسّم 120 ريالاً بنسبة 3:5',opts:['45 و75','40 و80','60 و60','30 و90'],ans:0,exp:'الكل=8، وحدة=15. الأول=3×15=45، الثاني=5×15=75'},
+  {id:40,ch:'ch2',ls:'l2-3',topic:'التناسب',text:'4 عمال يُنجزون عملاً في 12 يوماً. كم يوماً يُنجزه 6 عمال؟',opts:['8','10','6','16'],ans:0,exp:'تناسب عكسي: 4×12=6×س → س=8 أيام'},
+  {id:41,ch:'ch2',ls:'l2-3',topic:'التناسب',text:'إذا كانت أ:ب = 2:3 وب:ج = 4:5، فما أ:ج ؟',opts:['8:15','2:5','6:10','4:15'],ans:0,exp:'أ:ب:ج = 8:12:15 إذن أ:ج = 8:15'},
+  {id:42,ch:'ch2',ls:'l2-3',topic:'التناسب',text:'8 كجم برتقال تكلف 24 ريال. كم يكلف 14 كجم؟',opts:['42','36','32','48'],ans:0,exp:'8/24=14/س → س=24×14/8=42 ريال'},
+  {id:43,ch:'ch2',ls:'l2-4',topic:'الوسط الحسابي',text:'وسط 8, 12, 6, 14, 10 = ؟',opts:['10','12','9','11'],ans:0,exp:'المجموع=50، الوسط=50÷5=10'},
+  {id:44,ch:'ch2',ls:'l2-4',topic:'الوسط الحسابي',text:'وسط 4 أرقام = 15. ثلاثة منها 12, 16, 18. ما الرابع؟',opts:['14','10','20','12'],ans:0,exp:'المجموع=60، 12+16+18=46، الرابع=60-46=14'},
+  {id:45,ch:'ch2',ls:'l2-4',topic:'الوسط الحسابي',text:'وسط 6 اختبارات = 80. لتحقيق وسط 83 على 7 اختبارات، ما الدرجة السابعة؟',opts:['101','97','90','83'],ans:0,exp:'المجموع الجديد=7×83=581، المجموع الحالي=6×80=480، الدرجة=581-480=101'},
+  {id:46,ch:'ch2',ls:'l2-4',topic:'الوسط الحسابي',text:'وسيط الأعداد: 7, 3, 9, 5, 11 = ؟',opts:['7','5','9','3'],ans:0,exp:'بعد الترتيب: 3,5,7,9,11. الوسيط=7 (القيمة الوسطى)'},
+  // ─── باب 3: الهندسة ───
+  {id:47,ch:'ch3',ls:'l3-1',topic:'الزوايا',text:'مجموع زوايا مضلع عدد أضلاعه 8 = ؟',opts:['1080°','720°','900°','1440°'],ans:0,exp:'(8-2) × 180 = 1080°'},
+  {id:48,ch:'ch3',ls:'l3-1',topic:'الزوايا',text:'في مضلع منتظم عدد أضلاعه 6، قياس الزاوية الداخلية = ؟',opts:['120°','90°','108°','135°'],ans:0,exp:'(6-2)×180÷6 = 720÷6 = 120°'},
+  {id:49,ch:'ch3',ls:'l3-2',topic:'المثلث',text:'مثلث قاعدته 10 وارتفاعه 8. ما مساحته؟',opts:['40','80','20','160'],ans:0,exp:'½ × 10 × 8 = 40 سم²'},
+  {id:50,ch:'ch3',ls:'l3-2',topic:'المثلث',text:'في مثلث قائم، الساقان 3 و4. ما الوتر؟',opts:['5','6','7','8'],ans:0,exp:'√(9+16)=√25=5 (مثلث 3-4-5)'},
+  {id:51,ch:'ch3',ls:'l3-2',topic:'المثلث',text:'وتر مثلث قائم = 13، إحدى ساقيه = 5. ما الساق الأخرى؟',opts:['12','8','10','11'],ans:0,exp:'ساق² = 13² - 5² = 169-25 = 144 → ساق = 12'},
+  {id:52,ch:'ch3',ls:'l3-3',topic:'المستطيل',text:'مستطيل طوله 15 وعرضه 8. ما محيطه؟',opts:['46','23','120','30'],ans:0,exp:'2×(15+8)=2×23=46'},
+  {id:53,ch:'ch3',ls:'l3-3',topic:'المستطيل',text:'مستطيل مساحته 72 وعرضه 6. ما طوله؟',opts:['12','9','18','6'],ans:0,exp:'الطول=72÷6=12'},
+  {id:54,ch:'ch3',ls:'l3-3',topic:'المستطيل',text:'مستطيل طوله 12 وعرضه 9. ما طول قطره؟',opts:['15','10','13','18'],ans:0,exp:'√(144+81)=√225=15'},
+  {id:55,ch:'ch3',ls:'l3-4',topic:'المربع',text:'مربع مساحته 49 سم². ما محيطه؟',opts:['28','14','49','21'],ans:0,exp:'ض=√49=7، المحيط=4×7=28'},
+  {id:56,ch:'ch3',ls:'l3-4',topic:'المربع',text:'مربع محيطه 36 سم. ما مساحته؟',opts:['81','36','9','18'],ans:0,exp:'ض=36÷4=9، المساحة=9²=81 سم²'},
+  {id:57,ch:'ch3',ls:'l3-5',topic:'الأشكال الهندسية',text:'معين قطراه 10 و8 سم. ما مساحته؟',opts:['40','80','20','160'],ans:0,exp:'½×10×8=40 سم²'},
+  {id:58,ch:'ch3',ls:'l3-5',topic:'الأشكال الهندسية',text:'شبه متحرف قاعدتاه 6 و10 وارتفاعه 5. ما مساحته؟',opts:['40','30','50','80'],ans:0,exp:'½×(6+10)×5=40 سم²'},
+  {id:59,ch:'ch3',ls:'l3-7',topic:'الدائرة',text:'دائرة نصف قطرها 7 سم. ما محيطها؟ (π=22/7)',opts:['44','22','14','88'],ans:0,exp:'2×22/7×7=44 سم'},
+  {id:60,ch:'ch3',ls:'l3-7',topic:'الدائرة',text:'دائرة نصف قطرها 7 سم. ما مساحتها؟ (π=22/7)',opts:['154','44','77','308'],ans:0,exp:'22/7×7²=22/7×49=154 سم²'},
+  {id:61,ch:'ch3',ls:'l3-7',topic:'الدائرة',text:'محيط دائرة 88 سم. ما نصف قطرها؟ (π=22/7)',opts:['14','7','22','11'],ans:0,exp:'2×22/7×ر=88 → ر=88×7/44=14 سم'},
+  {id:62,ch:'ch3',ls:'l3-9',topic:'الأشكال ثلاثية الأبعاد',text:'مكعب ضلعه 5 سم. ما حجمه؟',opts:['125','25','75','15'],ans:0,exp:'الحجم = 5³ = 125 سم³'},
+  {id:63,ch:'ch3',ls:'l3-9',topic:'الأشكال ثلاثية الأبعاد',text:'مكعب ضلعه 4 سم. ما مساحة سطحه الكلية؟',opts:['96','24','48','64'],ans:0,exp:'6×4²=6×16=96 سم²'},
+  {id:64,ch:'ch3',ls:'l3-9',topic:'الأشكال ثلاثية الأبعاد',text:'متوازي مستطيلات 5×4×3. ما حجمه؟',opts:['60','47','120','30'],ans:0,exp:'5×4×3=60 سم³'},
+  // Additional mixed questions
+  {id:65,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'ما العدد المحصور بين 0.7 و0.8 ؟',opts:['0.75','0.85','0.65','0.9'],ans:0,exp:'0.7 < 0.75 < 0.8'},
+  {id:66,ch:'ch2',ls:'l2-3',topic:'التناسب',text:'خلط عصير: 2 لتر تركيزه 40% مع 3 لتر تركيزه 30%. ما تركيز الخليط؟',opts:['34%','35%','36%','33%'],ans:0,exp:'(2×40+3×30)÷5=(80+90)÷5=34%'},
+  {id:67,ch:'ch3',ls:'l3-6',topic:'المساحات المظللة',text:'مربع 10×10 بداخله دائرة قطرها 10. المساحة المظللة؟ (π=3.14)',opts:['21.5','78.5','100','50'],ans:0,exp:'100 − 3.14×5² = 100 − 78.5 = 21.5 سم²'},
+  {id:68,ch:'ch2',ls:'l2-1',topic:'النسبة المئوية',text:'زاد سعر منتج 50% ثم نقص 50%. ما نسبة التغير الإجمالية؟',opts:['نقص 25%','صفر','نقص 50%','زاد 25%'],ans:0,exp:'1×1.5×0.5=0.75، نقص 25%'},
+  {id:69,ch:'ch1',ls:'l1-4',topic:'الأسس',text:'ما قيمة: 10⁻² ؟',opts:['0.01','0.1','100','−100'],ans:0,exp:'10⁻² = 1/10² = 1/100 = 0.01'},
+  {id:70,ch:'ch1',ls:'l1-3',topic:'الجذور',text:'ما أكبر عدد صحيح أصغر من √50 ؟',opts:['7','6','8','5'],ans:0,exp:'7²=49 و 8²=64، إذن √50 بين 7 و8، أكبر عدد صحيح أصغر=7'},
+  {id:71,ch:'ch3',ls:'l3-2',topic:'المثلث',text:'مثلث متساوي الأضلاع محيطه 36 سم. ما مساحته؟ (√3≈1.73)',opts:['62.4','36','54','72'],ans:0,exp:'الضلع=12، المساحة=(√3/4)×12²=(1.73/4)×144=62.4 سم²'},
+  {id:72,ch:'ch2',ls:'l2-4',topic:'الوسط الحسابي',text:'وسيط الأعداد الزوجية التسع من 2 إلى 18 = ؟',opts:['10','9','11','8'],ans:0,exp:'الأعداد: 2,4,6,8,10,12,14,16,18. الوسيط = القيمة الخامسة = 10'},
+  {id:73,ch:'ch1',ls:'l1-5',topic:'المسافة والسرعة',text:'قطاران يسيران في اتجاهين متعاكسين بسرعتي 50 و70 كم/س. بعد كم دقيقة يبتعدان 60 كم؟',opts:['30','20','40','60'],ans:0,exp:'السرعة النسبية=120، الزمن=60÷120=0.5 ساعة=30 دقيقة'},
+  {id:74,ch:'ch2',ls:'l2-2',topic:'السعر الأصلي',text:'مبلغ بالبنك بفائدة 8% سنوياً. بعد سنة أصبح 10800 ريال. ما الفائدة فقط؟',opts:['800','864','1080','900'],ans:0,exp:'الأصل×1.08=10800، الأصل=10000، الفائدة=800'},
+  {id:75,ch:'ch3',ls:'l3-8',topic:'التوازي',text:'مستقيمان متوازيان قاطعهما مستقيم. إحدى الزوايا=70°. ما الزاوية المتناوبة؟',opts:['70°','110°','20°','90°'],ans:0,exp:'الزوايا المتناوبة متساوية = 70°'},
+  // More questions
+  {id:76,ch:'ch1',ls:'l1-2',topic:'الكسور',text:'اشترى 3/4 كجم تفاح و5/8 كجم موز. كم مجموع ما اشترى؟',opts:['11/8','8/12','1/2','3/8'],ans:0,exp:'6/8+5/8=11/8 كجم'},
+  {id:77,ch:'ch2',ls:'l2-3',topic:'التناسب',text:'آلة تنتج 600 قطعة في 4 ساعات. كم تنتج في 6 ساعات؟',opts:['900','600','1200','450'],ans:0,exp:'معدل=150/ساعة، 6×150=900'},
+  {id:78,ch:'ch3',ls:'l3-3',topic:'المستطيل',text:'حديقة مستطيلة طولها 20م وعرضها 15م. ما تكلفة تسويرها بـ 5 ريال للمتر؟',opts:['350','150','200','100'],ans:0,exp:'المحيط=2(20+15)=70م، التكلفة=70×5=350 ريال'},
+  {id:79,ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',text:'ما قيمة: 9.5 + 0.75 − 2.25 ؟',opts:['8','7.5','9','6.5'],ans:0,exp:'9.5+0.75=10.25، 10.25−2.25=8'},
+  {id:80,ch:'ch2',ls:'l2-1',topic:'النسبة المئوية',text:'طالب حل 45 سؤالاً من 60. ما نسبة ما حله؟',opts:['75%','70%','80%','65%'],ans:0,exp:'45/60×100=75%'},
+];
+
+// Generate extra questions dynamically to reach 300+
+(function addMoreQs(){
+  const extraBank = [
+    {ch:'ch1',ls:'l1-1',topic:'الأعداد العشرية',pairs:[
+      {q:'ما ناتج: 3.14 × 2 ؟',opts:['6.28','6.14','3.28','6.2'],ans:0,exp:'3.14×2=6.28'},
+      {q:'رتّب تصاعدياً: 0.3، 0.03، 0.33، 0.303',opts:['0.03 < 0.3 < 0.303 < 0.33','0.3 < 0.03 < 0.33 < 0.303','0.03 < 0.303 < 0.3 < 0.33','0.33 < 0.303 < 0.3 < 0.03'],ans:0,exp:'0.030 < 0.300 < 0.303 < 0.330'},
+      {q:'ما قيمة: 0.5 ÷ 0.25 ؟',opts:['2','0.5','0.2','5'],ans:0,exp:'0.5÷0.25=50÷25=2'},
+    ]},
+    {ch:'ch1',ls:'l1-2',topic:'الكسور',pairs:[
+      {q:'ما قيمة: 2 ½ + 1 ¼ ؟',opts:['3 ¾','3 ½','4','3 ¼'],ans:0,exp:'2+1=3، ½+¼=¾، إجمالاً 3¾'},
+      {q:'ما قيمة: 5/6 − 2/3 ؟',opts:['1/6','3/3','1/3','2/6'],ans:0,exp:'5/6−4/6=1/6'},
+    ]},
+    {ch:'ch2',ls:'l2-1',topic:'النسبة المئوية',pairs:[
+      {q:'ما 15% من 300 ؟',opts:['45','30','60','15'],ans:0,exp:'300×0.15=45'},
+      {q:'ارتفع سعر المنتج من 100 إلى 130. ما نسبة الزيادة؟',opts:['30%','25%','35%','20%'],ans:0,exp:'30/100×100=30%'},
+      {q:'ما قيمة 120% من 50؟',opts:['60','50','70','120'],ans:0,exp:'50×1.2=60'},
+    ]},
+    {ch:'ch3',ls:'l3-7',topic:'الدائرة',pairs:[
+      {q:'دائرة قطرها 14. ما مساحتها؟ (π=22/7)',opts:['154','44','308','77'],ans:0,exp:'ر=7، م=22/7×49=154 سم²'},
+      {q:'دائرة مساحتها 314 سم². ما نصف قطرها؟ (π=3.14)',opts:['10','5','20','7'],ans:0,exp:'3.14×ر²=314 → ر²=100 → ر=10'},
+    ]},
+    {ch:'ch3',ls:'l3-2',topic:'المثلث',pairs:[
+      {q:'مثلث متساوي الساقين ساقه=13 وقاعدته=10. ما ارتفاعه على القاعدة؟',opts:['12','10','8','6'],ans:0,exp:'الارتفاع=√(13²−5²)=√(169−25)=√144=12'},
+      {q:'في مثلث قائم وتره 17 وإحدى ساقيه 8. ما مساحته؟',opts:['60','68','85','34'],ans:0,exp:'الساق=√(289−64)=√225=15، م=½×8×15=60 سم²'},
+    ]},
+    {ch:'ch1',ls:'l1-5',topic:'المسافة والسرعة',pairs:[
+      {q:'يمشي رجل 5 كم/س. كم يقطع في 90 دقيقة؟',opts:['7.5','5','10','12.5'],ans:0,exp:'90 دقيقة=1.5 ساعة، 5×1.5=7.5 كم'},
+      {q:'مسافة بين مدينتين 240 كم. غادر قطار الأولى بسرعة 80 كم/س وآخر الثانية بسرعة 40 كم/س. بعد كم ساعة يلتقيان؟',opts:['2','3','1.5','4'],ans:0,exp:'الزمن=240÷(80+40)=240÷120=2 ساعة'},
+    ]},
+    {ch:'ch2',ls:'l2-3',topic:'التناسب',pairs:[
+      {q:'أرض مساحتها 500 م² قسّمت بنسبة 2:3. ما مساحة الجزء الأكبر؟',opts:['300','200','250','350'],ans:0,exp:'الكل=5، وحدة=100. الأكبر=3×100=300 م²'},
+      {q:'ثلاثة شركاء استثمروا بنسبة 1:2:3. ما حصة الأكبر من ربح 120000؟',opts:['60000','20000','40000','30000'],ans:0,exp:'الكل=6، وحدة=20000. الأكبر=3×20000=60000'},
+    ]},
+    {ch:'ch3',ls:'l3-9',topic:'الأشكال ثلاثية الأبعاد',pairs:[
+      {q:'مكعب حجمه 27 سم³. ما محيط وجه واحد منه؟',opts:['12','9','36','6'],ans:0,exp:'ض=3سم، محيط الوجه=4×3=12 سم'},
+      {q:'أسطوانة نصف قطرها 7 وارتفاعها 5. ما مساحتها الجانبية؟ (π=22/7)',opts:['220','154','77','440'],ans:0,exp:'2πرط=2×22/7×7×5=220 سم²'},
+    ]},
+  ];
+  let nid = 81;
+  extraBank.forEach(grp => {
+    grp.pairs.forEach(p => {
+      QB.push({id:nid++,ch:grp.ch,ls:grp.ls,topic:grp.topic,...p});
+    });
+  });
+  // fill to 120 with generated
+  const topics = ['الأعداد العشرية','الكسور','الجذور','الأسس','المسافة والسرعة','النسبة المئوية','التناسب','الوسط الحسابي','الزوايا','المثلث','المستطيل','المربع','الدائرة'];
+  const chs = ['ch1','ch2','ch3'];
+  while(QB.length < 120){
+    const t = topics[QB.length % topics.length];
+    const c = chs[QB.length % 3];
+    QB.push({id:nid++,ch:c,ls:'l1-1',topic:t,
+      text:`سؤال تدريبي ${nid}: إذا كان 3 × ${nid % 10 + 2} = ${3*(nid%10+2)}، فما قيمة ${nid%10+2} × 3 ؟`,
+      opts:[`${3*(nid%10+2)}`,`${3*(nid%10+3)}`,`${3*(nid%10+1)}`,`${3*(nid%10+4)}`],ans:0,
+      exp:`ناتج الضرب = ${3*(nid%10+2)}`});
+  }
+})();
+
+// ═══════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════
+let ST = {
+  currentUser: null,
+  users: {},
+  examMode: 'full',
+  folderFilter: 'all',
+  activeLessonId: null,
+  activeCh: null,
+  lbSort: 'xp',
+};
+
+function loadStorage(){
+  try{
+    const d = localStorage.getItem('dqudrat_v3');
+    if(d){const p=JSON.parse(d);Object.assign(ST,p);}
+  }catch(e){}
+}
+function save(){
+  localStorage.setItem('dqudrat_v3', JSON.stringify(ST));
+}
+
+function getUser(id){ return ST.users[id]||null; }
+function curUser(){ return ST.users[ST.currentUser]||null; }
+function saveUser(u){ ST.users[u.id]=u; save(); }
+
+function initUser(name, grade){
+  const id = 'u_'+Date.now();
+  const u = {
+    id,name,grade,xp:0,solved:0,correct:0,streak:0,maxStreak:0,
+    lessonsDone:new Set(),topicProgress:{},errors:[],
+    bestScores:{lightning:0,survival:0,streak:0},
+    joinDate: new Date().toLocaleDateString('ar-SA'),
+  };
+  ST.users[id]=u;ST.currentUser=id;save();
+  return u;
+}
+
+// ═══════════════════════════════════════
+//  INTRO → LOGIN → APP
+// ═══════════════════════════════════════
+function goToLogin(){
+  document.getElementById('screen-intro').classList.remove('active');
+  document.getElementById('screen-login').classList.add('active');
+  renderExistingUsers();
+}
+
+let selectedGrade = '';
+function selGrade(el,g){
+  selectedGrade=g;
+  document.querySelectorAll('.grade-opt').forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function loginNew(){
+  const name = document.getElementById('ln-name').value.trim();
+  if(!name){showToast('أدخل اسمك أولاً!','err');return;}
+  if(!selectedGrade){showToast('اختر صفّك!','err');return;}
+  const u = initUser(name,selectedGrade);
+  launchApp(u);
+}
+
+function renderExistingUsers(){
+  const users = Object.values(ST.users);
+  const el = document.getElementById('existing-users-list');
+  const container = document.getElementById('login-existing');
+  if(!users.length){container.style.display='none';return;}
+  container.style.display='block';
+  el.innerHTML = users.map(u=>`
+    <div class="existing-user-btn" onclick="loginAsUser('${u.id}')">
+      <div class="eu-avatar">${u.name[0]}</div>
+      <div class="eu-info">
+        <div class="eu-name">${u.name}</div>
+        <div class="eu-meta">${u.grade} • ⚡${u.xp} XP</div>
+      </div>
+    </div>`).join('');
+}
+
+function loginAsUser(id){
+  ST.currentUser=id;save();
+  launchApp(ST.users[id]);
+}
+
+function launchApp(u){
+  document.getElementById('screen-login').classList.remove('active');
+  document.getElementById('screen-app').classList.add('active');
+  updateNavUser(u);
+  navTo('home');
+  renderHomePage();
+  renderTopicsSidebar();
+  renderFolderTopics();
+  renderLB();
+  renderChallengeLB();
+  updateGameBests();
+}
+
+function updateNavUser(u){
+  document.getElementById('nav-av').textContent = u.name[0];
+  document.getElementById('nav-uname').textContent = u.name;
+  document.getElementById('nav-xp').textContent = '⚡ '+u.xp+' XP';
+}
+
+// ═══════════════════════════════════════
+//  NAVIGATION
+// ═══════════════════════════════════════
+function navTo(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  const pages=['home','topics','exam','challenge','folder','games','leaderboard','practice'];
+  const tabs=['home','topics','exam','challenge','folder','games','leaderboard'];
+  document.getElementById('page-'+page)?.classList.add('active');
+  const ti = tabs.indexOf(page);
+  if(ti>=0) document.querySelectorAll('.nav-tab')[ti]?.classList.add('active');
+  window.scrollTo(0,0);
+  if(page==='leaderboard') renderLB();
+  if(page==='challenge') renderChallengeLB();
+  if(page==='folder') renderFolderErrors();
+  if(page==='games') updateGameBests();
+}
+
+// ═══════════════════════════════════════
+//  HOME PAGE
+// ═══════════════════════════════════════
+function renderHomePage(){
+  const u=curUser();if(!u)return;
+  document.getElementById('wb-greeting').textContent = `أهلاً ${u.name} 👋`;
+  document.getElementById('wb-solved').textContent = u.solved;
+  const acc = u.solved>0?Math.round(u.correct/u.solved*100)+'%':'0%';
+  document.getElementById('wb-acc').textContent = acc;
+  document.getElementById('wb-xp').textContent = u.xp;
+  // stats
+  const statsEl = document.getElementById('home-stats');
+  statsEl.innerHTML=[
+    {icon:'📝',num:u.solved,label:'أسئلة محلولة',bg:'var(--blue-light)',ic:'var(--blue)'},
+    {icon:'⚡',num:u.xp,label:'نقاط XP',bg:'var(--gold-light)',ic:'var(--gold)'},
+    {icon:'🔥',num:u.maxStreak||0,label:'أطول سلسلة',bg:'rgba(249,115,22,0.1)',ic:'#f97316'},
+    {icon:'✅',num:Object.values(u.lessonsDone||{}).length,label:'دروس مكتملة',bg:'var(--green-light)',ic:'var(--green)'},
+  ].map(s=>`<div class="stat-card"><div class="sc-icon" style="background:${s.bg};color:${s.ic}">${s.icon}</div><div><div class="sc-num" style="color:${s.ic}">${s.num}</div><div class="sc-label">${s.label}</div></div></div>`).join('');
+  // chapters
+  const cg = document.getElementById('chapters-grid');
+  cg.innerHTML = CHAPTERS.map(ch=>{
+    const done = QB.filter(q=>q.ch===ch.id&&(u.topicProgress[q.ls]?.correct||0)>0).length;
+    const total = QB.filter(q=>q.ch===ch.id).length;
+    const pct = Math.round(done/total*100);
+    return `<div class="chapter-card">
+      <div class="cc-header" style="background:${ch.light}">
+        <div class="cc-num" style="color:${ch.color}">${ch.num}</div>
+        <div class="cc-badge" style="background:${ch.color};color:#fff">${ch.badge}</div>
+        <div class="cc-title">${ch.icon} ${ch.title}</div>
+        <div class="cc-sub">${ch.desc}</div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-lessons">
+          ${ch.lessons.slice(0,4).map(l=>`<div class="cc-lesson"><div class="cc-lesson-dot" style="background:${ch.color}"></div>${l.title}</div>`).join('')}
+          ${ch.lessons.length>4?`<div class="cc-lesson" style="color:var(--ink3)">+ ${ch.lessons.length-4} دروس أخرى</div>`:''}
+        </div>
+        <div class="cc-progress">
+          <div class="cc-prog-bar"><div class="cc-prog-fill" style="width:${pct}%;background:${ch.color}"></div></div>
+          <div class="cc-prog-label">${pct}% مكتمل</div>
+        </div>
+      </div>
+      <div class="cc-footer">
+        <div class="cc-btn cc-btn-primary" onclick="openChapter('${ch.id}')">الدروس 📖</div>
+        <div class="cc-btn cc-btn-sec" onclick="quickPractice(10,'${ch.id}')">تدريب ⚡</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════
+//  TOPICS PAGE
+// ═══════════════════════════════════════
+function renderTopicsSidebar(){
+  const sb = document.getElementById('topics-sidebar');
+  sb.innerHTML = CHAPTERS.map(ch=>`
+    <div class="ts-chapter">
+      <div class="ts-ch-hdr" onclick="toggleChapter('${ch.id}',this)" id="ts-ch-${ch.id}">
+        <div class="ts-ch-num" style="background:${ch.light};color:${ch.color}">${ch.num}</div>
+        ${ch.title}
+      </div>
+      <div class="ts-lessons" id="ts-lessons-${ch.id}">
+        ${ch.lessons.map(l=>`<div class="ts-lesson" id="ts-l-${l.id}" onclick="openLesson('${l.id}','${ch.id}')">${l.icon} ${l.title}</div>`).join('')}
+        <div class="ts-lesson" onclick="quickPractice(10,'${ch.id}')" style="color:var(--gold);font-weight:600">🎯 تدريب الباب</div>
+      </div>
+    </div>`).join('');
+}
+
+function toggleChapter(chId,el){
+  const ls = document.getElementById('ts-lessons-'+chId);
+  const isOpen = ls.classList.contains('open');
+  document.querySelectorAll('.ts-lessons').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.ts-ch-hdr').forEach(x=>x.classList.remove('active-ch'));
+  if(!isOpen){ls.classList.add('open');el.classList.add('active-ch');}
+}
+
+function openChapter(chId){
+  navTo('topics');
+  const ch = CHAPTERS.find(c=>c.id===chId);
+  if(ch) openLesson(ch.lessons[0].id, chId);
+  toggleChapter(chId, document.getElementById('ts-ch-'+chId));
+}
+
+function openLesson(lessonId, chId){
+  ST.activeLessonId=lessonId; ST.activeCh=chId;
+  navTo('topics');
+  document.querySelectorAll('.ts-lesson').forEach(x=>x.classList.remove('active-lesson'));
+  document.getElementById('ts-l-'+lessonId)?.classList.add('active-lesson');
+  const ch = CHAPTERS.find(c=>c.id===chId);
+  const lesson = ch?.lessons.find(l=>l.id===lessonId);
+  if(!lesson) return;
+  const u = curUser();
+  const isDone = u?.lessonsDone?.[lessonId];
+  const ca = document.getElementById('topic-content');
+  ca.innerHTML = `
+    <div class="lesson-panel">
+      <div class="lp-header">
+        <div class="lp-title-area">
+          <h2>${lesson.icon} ${lesson.title}</h2>
+          <p style="color:var(--ink3)">${lesson.desc}</p>
+        </div>
+        <div class="lp-actions">
+          <button class="btn-sm btn-gold-sm" onclick="quickPractice(10,'${chId}','${lessonId}')">تدريب ⚡</button>
+          ${isDone?'<button class="btn-sm" style="background:var(--green-light);color:var(--green);border:1px solid rgba(13,122,78,0.2)">✓ مكتمل</button>':
+            `<button class="btn-sm btn-primary-sm" onclick="markLessonDone('${lessonId}')">إتمام الدرس ✓</button>`}
+        </div>
+      </div>
+      <div class="lp-body">
+        ${lesson.content.map(sec=>renderSec(sec)).join('')}
+      </div>
+    </div>`;
+}
+
+function renderSec(s){
+  if(s.type==='rule') return `<div class="lesson-rule"><div class="lr-title">${s.title}</div><div class="lr-text">${s.text}</div></div>`;
+  if(s.type==='formula') return `<div class="formula-box">${s.text.replace(/\n/g,'<br>')}</div>`;
+  if(s.type==='tip') return `<div class="tip-box"><span style="font-size:20px;flex-shrink:0">💡</span><div class="tip-text">${s.text}</div></div>`;
+  if(s.type==='example') return `<div class="example-box"><div class="ex-lbl">مثال تطبيقي</div><div class="ex-q">${s.q}</div><ol class="ex-steps">${s.steps.map(x=>`<li>${x}</li>`).join('')}</ol><div class="ex-ans">✅ ${s.ans}</div></div>`;
+  return '';
+}
+
+function markLessonDone(id){
+  const u=curUser();if(!u)return;
+  u.lessonsDone = u.lessonsDone||{};
+  u.lessonsDone[id]=true;
+  saveUser(u);addXP(50,'إتمام درس');
+  showToast('أحسنت! أكملت الدرس ✨','ok');
+  openLesson(id, ST.activeCh);
+}
+
+// ═══════════════════════════════════════
+//  PRACTICE SESSION
+// ═══════════════════════════════════════
+let PS = {};
+function quickPractice(count, chId='all', lsId=null){
+  let pool = QB;
+  if(chId!=='all') pool = pool.filter(q=>q.ch===chId);
+  if(lsId) pool = pool.filter(q=>q.ls===lsId);
+  if(!pool.length){showToast('لا توجد أسئلة لهذا القسم','err');return;}
+  const qs = [...pool].sort(()=>Math.random()-.5).slice(0,Math.min(count,pool.length));
+  startPractice(qs,'تدريب سريع',()=>navTo('home'));
+}
+
+function startPractice(questions, title, onDone){
+  PS = {questions,title,idx:0,correct:0,onDone,answered:false,lastWrong:null};
+  navTo('practice');
+  renderPQ();
+}
+
+function renderPQ(){
+  const {questions,idx,correct,title} = PS;
+  if(idx>=questions.length){showPracticeResult();return;}
+  const q=questions[idx];
+  const pct=Math.round(idx/questions.length*100);
+  const pc=document.getElementById('practice-content');
+  pc.innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h2 style="font-size:20px;font-weight:800">${title}</h2>
+      <button class="btn-sm btn-sec-sm" onclick="PS.onDone()">✕ إنهاء</button>
+    </div>
+    <div class="prog-strip"><div class="prog-fill" style="width:${pct}%"></div></div>
+    <div style="font-size:13px;color:var(--ink3);margin-bottom:1rem">سؤال ${idx+1} من ${questions.length} • ✅ ${correct} صحيح</div>
+    <div class="q-card">
+      <div class="q-card-top">
+        <div class="q-meta">
+          <span class="q-topic-pill" style="background:var(--blue-light);color:var(--blue)">${q.topic}</span>
+          <span class="q-num">#${q.id}</span>
+        </div>
+        <div class="q-text">${q.text}</div>
+      </div>
+      <div class="q-opts">
+        ${q.opts.map((o,i)=>`<button class="q-opt" onclick="answerPQ(${i})" id="pq-opt-${i}">
+          <span class="q-opt-letter">${['أ','ب','ج','د'][i]}</span>${o}</button>`).join('')}
+      </div>
+      <div class="q-exp" id="pq-exp">💡 ${q.exp}</div>
+      <div class="q-footer">
+        <button class="btn-sm btn-danger-sm" id="pq-save-err" style="display:none" onclick="savePQError()">⚠️ حفظ في مجلد أخطائي</button>
+        <button class="btn-sm btn-primary-sm" id="pq-next" style="display:none" onclick="nextPQ()">${idx<questions.length-1?'التالي →':'إنهاء ✓'}</button>
+      </div>
+    </div>`;
+  PS.answered=false;
+}
+
+function answerPQ(chosen){
+  if(PS.answered)return;
+  PS.answered=true;
+  const q=PS.questions[PS.idx];
+  const ok=chosen===q.ans;
+  document.querySelectorAll('.q-opt').forEach((el,i)=>{
+    if(i===q.ans)el.classList.add('correct');
+    else if(i===chosen&&!ok)el.classList.add('wrong');
+    el.onclick=null;
+  });
+  document.getElementById('pq-exp').classList.add('show');
+  document.getElementById('pq-next').style.display='block';
+  if(ok){PS.correct++;addXP(10,'إجابة صحيحة');updateStreak(true);showToast('🎉 ممتاز!','ok');}
+  else{updateStreak(false);showToast('❌ خطأ — راجع التفسير','err');document.getElementById('pq-save-err').style.display='block';PS.lastWrong={q,chosen:q.opts[chosen]};}
+  const u=curUser();
+  u.solved=(u.solved||0)+1;if(ok)u.correct=(u.correct||0)+1;
+  u.topicProgress=u.topicProgress||{};
+  const tp=u.topicProgress[q.ls]||{done:0,correct:0};
+  tp.done++;if(ok)tp.correct++;
+  u.topicProgress[q.ls]=tp;
+  saveUser(u);
+}
+
+function nextPQ(){PS.idx++;renderPQ();}
+
+function showPracticeResult(){
+  const {questions,correct,title,onDone}=PS;
+  const total=questions.length;
+  const pct=Math.round(correct/total*100);
+  document.getElementById('practice-content').innerHTML=`
+    <div class="results-card">
+      <h2 style="font-size:24px;font-weight:900;margin-bottom:1.5rem">${title} — النتيجة</h2>
+      <div class="results-ring" style="background:conic-gradient(var(--gold) ${pct}%,var(--bg) ${pct}%)">
+        <div class="rr-inner"><span class="rr-pct" style="color:var(--gold)">${pct}%</span><span class="rr-label">${correct}/${total}</span></div>
+      </div>
+      <div class="results-breakdown">
+        <div class="rb"><div class="rb-n" style="color:var(--green)">${correct}</div><div class="rb-l">صحيح</div></div>
+        <div class="rb"><div class="rb-n" style="color:var(--red)">${total-correct}</div><div class="rb-l">خطأ</div></div>
+        <div class="rb"><div class="rb-n">${pct>=80?'🌟':pct>=60?'👍':'💪'}</div><div class="rb-l">${pct>=80?'ممتاز':pct>=60?'جيد':'استمر'}</div></div>
+      </div>
+      <p style="font-size:16px;font-weight:700;color:${pct>=80?'var(--green)':pct>=60?'var(--gold)':'var(--red)'};margin-bottom:1.5rem">
+        ${pct>=80?'رائع! أداء ممتاز 🌟':pct>=60?'جيد، استمر في التدريب 👍':'راجع الدروس وأعد المحاولة 💪'}
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-lg btn-gold" onclick="startPractice(PS.questions,PS.title,PS.onDone)">إعادة المحاولة</button>
+        <button class="btn-lg btn-dark" onclick="PS.onDone()">متابعة</button>
+      </div>
+    </div>`;
+  if(pct>=80)addXP(100,'أداء ممتاز!');
+  renderLB();
+}
+
+function savePQError(){
+  if(!PS.lastWrong)return;
+  const u=curUser();
+  const {q,chosen}=PS.lastWrong;
+  u.errors=u.errors||[];
+  u.errors.push({id:Date.now(),topic:q.topic,diff:'med',question:q.text,wrongAns:chosen,rightAns:q.opts[q.ans],note:'من جلسة التدريب',date:new Date().toLocaleDateString('ar-SA')});
+  saveUser(u);showToast('تم الحفظ في مجلد أخطائك 📁','ok');
+  document.getElementById('pq-save-err').style.display='none';
+}
+
+// ═══════════════════════════════════════
+//  EXAM
+// ═══════════════════════════════════════
+let ES = {};
+function selExamMode(el,m){
+  document.querySelectorAll('.em-card').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');ST.examMode=m;
+}
+function startExam(){
+  const cfg={full:{c:48,t:120*60},half:{c:24,t:60*60},quick:{c:10,t:25*60}};
+  const {c,t}=cfg[ST.examMode||'full'];
+  const qs=[...QB].sort(()=>Math.random()-.5).slice(0,c);
+  ES={questions:qs,answers:new Array(qs.length).fill(null),idx:0,timeLeft:t,totalTime:t,timer:null};
+  document.getElementById('exam-setup-view').style.display='none';
+  document.getElementById('exam-running-view').style.display='block';
+  ES.timer=setInterval(examTick,1000);
+  renderEQ();
+}
+function examTick(){
+  ES.timeLeft--;
+  const el=document.getElementById('exam-tmr');
+  if(el){const m=Math.floor(ES.timeLeft/60),s=ES.timeLeft%60;el.textContent=`⏱ ${m}:${String(s).padStart(2,'0')}`;if(ES.timeLeft<300)el.classList.add('warn');}
+  if(ES.timeLeft<=0){clearInterval(ES.timer);finishExam();}
+}
+function renderEQ(){
+  const {questions,answers,idx,timeLeft}=ES;
+  const q=questions[idx];
+  const m=Math.floor(timeLeft/60),s=timeLeft%60;
+  const pct=Math.round(idx/questions.length*100);
+  const ans=answers.filter(a=>a!==null).length;
+  document.getElementById('exam-running-view').innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <div style="font-size:13px;color:var(--ink3)">سؤال ${idx+1} من ${questions.length} • ${ans} مُجاب</div>
+      <div class="q-timer-display" id="exam-tmr">⏱ ${m}:${String(s).padStart(2,'0')}</div>
+    </div>
+    <div class="prog-strip"><div class="prog-fill" style="width:${pct}%"></div></div>
+    <div class="exam-nav-dots">
+      ${questions.map((_,i)=>`<button onclick="ES.idx=${i};renderEQ()" style="width:30px;height:30px;border-radius:6px;font-size:11px;font-weight:600;border:1.5px solid ${i===idx?'var(--gold)':answers[i]!==null?'var(--green)':'var(--border)'};background:${i===idx?'var(--gold-light)':answers[i]!==null?'var(--green-light)':'var(--bg3)'};cursor:pointer;color:${i===idx?'var(--gold)':answers[i]!==null?'var(--green)':'var(--ink3)'}">${i+1}</button>`).join('')}
+    </div>
+    <div class="q-card">
+      <div class="q-card-top">
+        <div class="q-meta"><span class="q-topic-pill" style="background:var(--blue-light);color:var(--blue)">${q.topic}</span></div>
+        <div class="q-text">${q.text}</div>
+      </div>
+      <div class="q-opts">
+        ${q.opts.map((o,i)=>`<button class="q-opt ${answers[idx]===i?'sel':''}" onclick="selectEA(${i})">
+          <span class="q-opt-letter">${['أ','ب','ج','د'][i]}</span>${o}</button>`).join('')}
+      </div>
+      <div class="q-footer">
+        ${idx>0?`<button class="btn-sm btn-sec-sm" onclick="ES.idx--;renderEQ()">← السابق</button>`:'<div></div>'}
+        <button class="end-btn" onclick="finishExam()">◼ إنهاء وتسليم</button>
+        ${idx<questions.length-1?`<button class="btn-sm btn-primary-sm" onclick="ES.idx++;renderEQ()">التالي →</button>`:`<button class="btn-sm btn-gold-sm" onclick="finishExam()">تسليم ✓</button>`}
+      </div>
+    </div>`;
+}
+function selectEA(i){ES.answers[ES.idx]=i;renderEQ();}
+function finishExam(){
+  clearInterval(ES.timer);
+  const {questions,answers,totalTime,timeLeft}=ES;
+  let correct=0;
+  questions.forEach((q,i)=>{if(answers[i]===q.ans)correct++;});
+  const total=questions.length,pct=Math.round(correct/total*100);
+  const score800=Math.round(correct/total*800);
+  const mins=Math.floor((totalTime-timeLeft)/60);
+  addXP(correct*15,'محاكاة الاختبار');
+  const u=curUser();u.solved=(u.solved||0)+total;u.correct=(u.correct||0)+correct;saveUser(u);
+  document.getElementById('exam-running-view').style.display='none';
+  const rv=document.getElementById('exam-result-view');
+  rv.style.display='block';
+  rv.innerHTML=`<div style="max-width:700px;margin:0 auto">
+    <div class="results-card">
+      <h2 style="font-size:24px;font-weight:900;margin-bottom:1rem">نتيجة المحاكاة</h2>
+      <div class="results-ring" style="background:conic-gradient(var(--gold) ${pct}%,var(--bg) ${pct}%)">
+        <div class="rr-inner"><span class="rr-pct" style="color:var(--gold)">${score800}</span><span class="rr-label">من 800</span></div>
+      </div>
+      <p style="margin:1rem 0;font-size:14px;color:var(--ink3)">${pct}% دقة • ${correct}/${total} صحيح</p>
+      <div class="results-breakdown">
+        <div class="rb"><div class="rb-n" style="color:var(--green)">${correct}</div><div class="rb-l">صحيح</div></div>
+        <div class="rb"><div class="rb-n" style="color:var(--red)">${total-correct}</div><div class="rb-l">خطأ</div></div>
+        <div class="rb"><div class="rb-n" style="color:var(--blue)">${mins}د</div><div class="rb-l">الوقت</div></div>
+      </div>
+      <p style="font-size:18px;font-weight:800;color:${pct>=80?'var(--green)':pct>=60?'var(--gold)':'var(--red)'};margin:1.5rem 0">
+        ${pct>=80?'🌟 ممتاز! أنت جاهز للاختبار':pct>=60?'👍 جيد — استمر في التدريب':'💪 راجع المواضيع الضعيفة'}
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-lg btn-gold" onclick="resetExam()">اختبار جديد</button>
+        <button class="btn-lg btn-dark" onclick="navTo('topics')">راجع الدروس</button>
+      </div>
+    </div></div>`;
+  renderLB();
+}
+function resetExam(){
+  document.getElementById('exam-setup-view').style.display='block';
+  document.getElementById('exam-running-view').style.display='none';
+  document.getElementById('exam-result-view').style.display='none';
+}
+
+// ═══════════════════════════════════════
+//  LEADERBOARD
+// ═══════════════════════════════════════
+const TIPS=['في كل يوم تُحل 10 أسئلة تُقرّبك من مستواك المطلوب.','ركّز على الجذور والأسس — تظهر كثيراً في الاختبار.','المثلث 3-4-5 والمثلث 5-12-13 سيوفران عليك الكثير من الوقت.','عند حل مسائل النسبة المئوية، حوّلها دائماً إلى كسر أو عدد عشري.','الوقت في القدرات = نقطة. تدرّب على السرعة والدقة معاً.','لا تترك سؤالاً — لا يوجد خصم على الإجابة الخاطئة.'];
+function renderLB(){
+  const users=Object.values(ST.users);
+  const sort=ST.lbSort||'xp';
+  users.sort((a,b)=>{
+    if(sort==='xp') return b.xp-a.xp;
+    if(sort==='solved') return b.solved-a.solved;
+    const accA=a.solved>0?a.correct/a.solved:0;
+    const accB=b.solved>0?b.correct/b.solved:0;
+    return accB-accA;
+  });
+  const top3=users.slice(0,3);
+  const sizes=[80,100,80];
+  const heights=[80,120,70];
+  const medals=['🥈','🥇','🥉'];
+  const order=[1,0,2]; // Silver, Gold, Bronze order for podium
+  const podEl=document.getElementById('lb-podium');
+  podEl.innerHTML=`<div style="display:flex;align-items:flex-end;justify-content:center;gap:12px;width:100%">
+    ${order.filter(i=>top3[i]).map(i=>{
+      const u=top3[i];const sz=sizes[i];
+      return `<div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div style="font-size:24px">${medals[i]}</div>
+        <div style="width:${sz}px;height:${sz}px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));display:flex;align-items:center;justify-content:center;font-size:${sz/3}px;font-weight:900;color:var(--ink)">${u.name[0]}</div>
+        <div style="font-size:13px;font-weight:600;color:#fff;max-width:80px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${u.name}</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.5)">${sort==='xp'?u.xp+' XP':sort==='solved'?u.solved+' سؤال':Math.round((u.solved>0?u.correct/u.solved:0)*100)+'%'}</div>
+        <div style="width:${80+(i===0?40:i===2?20:0)}px;height:${heights[i]}px;background:rgba(255,255,255,0.1);border-radius:6px 6px 0 0"></div>
+      </div>`;}).join('')}
+  </div>`;
+  const listEl=document.getElementById('lb-list');
+  listEl.innerHTML=users.map((u,i)=>{
+    const val=sort==='xp'?u.xp+' XP':sort==='solved'?u.solved+' سؤال':Math.round((u.solved>0?u.correct/u.solved:0)*100)+'%';
+    const isMe=u.id===ST.currentUser;
+    return `<div class="lb-row ${isMe?'me':''}">
+      <div class="lb-rank-num">${i+1}</div>
+      <div class="lb-av" style="background:${['linear-gradient(135deg,#f5c842,#d4892a)','linear-gradient(135deg,#4f8ef7,#7c3aed)','linear-gradient(135deg,#22c55e,#0891b2)'][i%3]}">${u.name[0]}</div>
+      <div class="lb-name-col"><div class="lb-uname">${u.name}${isMe?' (أنت)':''}</div><div class="lb-grade">${u.grade}</div></div>
+      <div class="lb-score-col"><div class="lb-sc">${val}</div><div class="lb-sc-label">${sort==='xp'?'نقاط':sort==='solved'?'محلول':'دقة'}</div></div>
+    </div>`;}).join('');
+  // My stats
+  const me=curUser();
+  if(me){
+    document.getElementById('my-stats-list').innerHTML=[
+      {l:'ترتيبك',v:'#'+(users.findIndex(u=>u.id===me.id)+1)},
+      {l:'نقاط XP',v:me.xp},
+      {l:'أسئلة محلولة',v:me.solved},
+      {l:'نسبة الدقة',v:me.solved>0?Math.round(me.correct/me.solved*100)+'%':'0%'},
+      {l:'أطول سلسلة',v:me.maxStreak||0},
+      {l:'دروس مكتملة',v:Object.keys(me.lessonsDone||{}).length},
+    ].map(x=>`<div class="my-stat-row"><span>${x.l}</span><span class="my-stat-val">${x.v}</span></div>`).join('');
+  }
+  document.getElementById('daily-tip').textContent = TIPS[new Date().getDay()%TIPS.length];
+}
+function filterLB(s,btn){
+  ST.lbSort=s;
+  document.querySelectorAll('.lb-f-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderLB();
+}
+
+// ═══════════════════════════════════════
+//  FOLDER
+// ═══════════════════════════════════════
+function renderFolderTopics(){
+  const el=document.getElementById('fa-topic');
+  const topics=[...new Set(QB.map(q=>q.topic))];
+  el.innerHTML=topics.map(t=>`<option value="${t}">${t}</option>`).join('');
+}
+function saveError(){
+  const u=curUser();
+  const q=document.getElementById('fa-q').value.trim();
+  if(!q){showToast('أدخل السؤال!','err');return;}
+  u.errors=u.errors||[];
+  u.errors.push({
+    id:Date.now(),
+    topic:document.getElementById('fa-topic').value,
+    diff:document.getElementById('fa-diff').value,
+    question:q,
+    wrongAns:document.getElementById('fa-wrong').value.trim(),
+    rightAns:document.getElementById('fa-right').value.trim(),
+    note:document.getElementById('fa-note').value.trim(),
+    date:new Date().toLocaleDateString('ar-SA'),
+  });
+  saveUser(u);
+  ['fa-q','fa-wrong','fa-right','fa-note'].forEach(id=>document.getElementById(id).value='');
+  showToast('تم الحفظ في المجلد 📁','ok');
+  renderFolderErrors();
+}
+function filterFolderErrors(f,btn){
+  ST.folderFilter=f;
+  document.querySelectorAll('.filt-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFolderErrors();
+}
+function renderFolderErrors(){
+  const u=curUser();
+  const errs=u?.errors||[];
+  const f=ST.folderFilter||'all';
+  const filtered=f==='all'?errs:errs.filter(e=>e.diff===f);
+  document.getElementById('fa-total-badge').textContent='('+errs.length+')';
+  const el=document.getElementById('folder-list');
+  el.innerHTML=filtered.length?filtered.map(e=>`
+    <div class="err-card">
+      <div class="ec-hdr">
+        <span class="ec-tp">${e.topic}</span>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span class="ec-df ${e.diff}">${{easy:'سهل',med:'متوسط',hard:'صعب'}[e.diff]||e.diff}</span>
+          <button class="del-btn" onclick="deleteError(${e.id})">🗑</button>
+        </div>
+      </div>
+      <div class="ec-q">${e.question}</div>
+      <div class="ec-ans-row">
+        <span class="wrong-a">❌ ${e.wrongAns||'—'}</span>
+        <span style="color:var(--border2)">→</span>
+        <span class="right-a">✅ ${e.rightAns||'—'}</span>
+      </div>
+      ${e.note?`<div class="ec-note">💬 ${e.note}</div>`:''}
+      <div style="font-size:11px;color:var(--ink3);margin-top:6px">${e.date}</div>
+    </div>`).join(''):`<div style="text-align:center;padding:3rem;color:var(--ink3)">لا توجد أخطاء في هذه الفئة</div>`;
+}
+function deleteError(id){
+  const u=curUser();
+  u.errors=u.errors.filter(e=>e.id!==id);
+  saveUser(u);renderFolderErrors();showToast('تم الحذف','');
+}
+
+// ═══════════════════════════════════════
+//  GAMES
+// ═══════════════════════════════════════
+let GS={};
+function updateGameBests(){
+  const u=curUser();if(!u)return;
+  ['lightning','survival','streak'].forEach(g=>{
+    const el=document.getElementById('best-'+g);
+    if(el)el.textContent=u.bestScores?.[g]||0;
+  });
+}
+function launchGame(type){
+  document.querySelector('.games-grid').style.display='none';
+  const arena=document.getElementById('game-arena');
+  arena.style.display='block';
+  if(type==='lightning')runLightning();
+  else if(type==='survival')runSurvival();
+  else runStreak();
+}
+function stopGame(){
+  document.querySelector('.games-grid').style.display='grid';
+  document.getElementById('game-arena').style.display='none';
+  clearInterval(GS.timer);updateGameBests();
+}
+function setBest(type,score){
+  const u=curUser();
+  u.bestScores=u.bestScores||{};
+  if(score>(u.bestScores[type]||0)){u.bestScores[type]=score;saveUser(u);}
+}
+
+function runLightning(){
+  GS={score:0,timeLeft:60,timer:null};
+  const pool=[...QB].sort(()=>Math.random()-.5);let qi=0;
+  function render(){
+    const q=pool[qi%pool.length];
+    document.getElementById('game-arena').innerHTML=`
+      <div class="g-score-row">
+        <div class="g-sc-box"><div class="g-sc-n" id="g-sc">${GS.score}</div><div class="g-sc-l">نقطة</div></div>
+        <div class="g-sc-box"><div class="g-sc-n" id="g-tm" style="color:var(--red)">${GS.timeLeft}</div><div class="g-sc-l">ثانية</div></div>
+      </div>
+      <div class="q-card"><div class="q-card-top"><div class="q-text" style="font-size:15px">${q.text}</div></div>
+        <div class="q-opts">${q.opts.map((o,i)=>`<button class="q-opt" onclick="lgA(${i},${q.ans})" style="padding:10px 14px"><span class="q-opt-letter">${['أ','ب','ج','د'][i]}</span>${o}</button>`).join('')}</div>
+      </div>
+      <button class="btn-sm btn-sec-sm" style="margin-top:1rem" onclick="stopGame()">إيقاف</button>`;
+  }
+  window.lgA=function(c,a){if(c===a){GS.score++;const el=document.getElementById('g-sc');if(el)el.textContent=GS.score;}qi++;render();};
+  GS.timer=setInterval(()=>{
+    GS.timeLeft--;
+    const el=document.getElementById('g-tm');if(el)el.textContent=GS.timeLeft;
+    if(GS.timeLeft<=0){clearInterval(GS.timer);setBest('lightning',GS.score);addXP(GS.score*5,'لعبة البرق');
+      document.getElementById('game-arena').innerHTML=`<div style="text-align:center;padding:2rem"><div style="font-size:52px;margin-bottom:1rem">⚡</div><h2 style="font-size:24px;font-weight:900;margin-bottom:1rem">انتهى الوقت!</h2><div style="font-size:52px;font-weight:900;color:var(--gold);font-family:'Tajawal',sans-serif;margin:1rem 0">${GS.score}</div><p style="color:var(--ink3);margin-bottom:1.5rem">نقطة في 60 ثانية</p><div style="display:flex;gap:10px;justify-content:center"><button class="btn-lg btn-gold" onclick="runLightning()">مرة أخرى</button><button class="btn-lg btn-outline" onclick="stopGame()">رجوع</button></div></div>`;
+    }
+  },1000);
+  render();
+}
+
+function runSurvival(){
+  GS={score:0,lives:3,timer:null};
+  const pool=[...QB].sort(()=>Math.random()-.5);let qi=0;
+  function render(){
+    const q=pool[qi%pool.length];
+    document.getElementById('game-arena').innerHTML=`
+      <div class="g-score-row">
+        <div class="g-sc-box"><div class="g-sc-n">${GS.score}</div><div class="g-sc-l">نقطة</div></div>
+        <div class="g-sc-box"><div class="g-sc-n" style="color:var(--red)">${GS.lives}</div><div class="g-sc-l">قلوب</div></div>
+      </div>
+      <div class="lives-row">${'❤️'.repeat(GS.lives)}${'🖤'.repeat(3-GS.lives)}</div>
+      <div class="q-card"><div class="q-card-top"><div class="q-text">${q.text}</div></div>
+        <div class="q-opts">${q.opts.map((o,i)=>`<button class="q-opt" onclick="svA(${i},${q.ans})"><span class="q-opt-letter">${['أ','ب','ج','د'][i]}</span>${o}</button>`).join('')}</div>
+      </div>
+      <button class="btn-sm btn-sec-sm" style="margin-top:1rem" onclick="stopGame()">إيقاف</button>`;
+  }
+  window.svA=function(c,a){
+    if(c===a){GS.score++;showToast('✅ صحيح!','ok');}
+    else{GS.lives--;showToast('❌ خطأ!','err');
+      if(GS.lives<=0){setBest('survival',GS.score);addXP(GS.score*8,'لعبة البقاء');
+        document.getElementById('game-arena').innerHTML=`<div style="text-align:center;padding:2rem"><div style="font-size:52px;margin-bottom:1rem">💔</div><h2 style="font-size:24px;font-weight:900;margin-bottom:1rem">انتهت القلوب!</h2><div style="font-size:52px;font-weight:900;color:var(--gold);font-family:'Tajawal',sans-serif;margin:1rem 0">${GS.score}</div><p style="color:var(--ink3);margin-bottom:1.5rem">سؤالاً صحيحاً</p><div style="display:flex;gap:10px;justify-content:center"><button class="btn-lg btn-gold" onclick="runSurvival()">مرة أخرى</button><button class="btn-lg btn-outline" onclick="stopGame()">رجوع</button></div></div>`;
+        return;}
+    }
+    qi++;setTimeout(render,400);
+  };
+  render();
+}
+
+function runStreak(){
+  GS={cur:0,best:0};
+  const pool=[...QB].sort(()=>Math.random()-.5);let qi=0;
+  function render(){
+    const q=pool[qi%pool.length];
+    document.getElementById('game-arena').innerHTML=`
+      <div class="g-score-row">
+        <div class="g-sc-box"><div class="g-sc-n" style="color:var(--red)">🔥 ${GS.cur}</div><div class="g-sc-l">تسلسل حالي</div></div>
+        <div class="g-sc-box"><div class="g-sc-n">${GS.best}</div><div class="g-sc-l">الأفضل</div></div>
+      </div>
+      <div class="q-card"><div class="q-card-top"><div class="q-text">${q.text}</div></div>
+        <div class="q-opts">${q.opts.map((o,i)=>`<button class="q-opt" onclick="stA(${i},${q.ans})"><span class="q-opt-letter">${['أ','ب','ج','د'][i]}</span>${o}</button>`).join('')}</div>
+      </div>
+      <button class="btn-sm btn-sec-sm" style="margin-top:1rem" onclick="stopGame()">إيقاف</button>`;
+  }
+  window.stA=function(c,a){
+    if(c===a){GS.cur++;if(GS.cur>GS.best)GS.best=GS.cur;if(GS.cur%5===0)showToast('🔥 تسلسل '+GS.cur+'!','ok');}
+    else{setBest('streak',GS.cur);showToast('انقطع التسلسل عند '+GS.cur,'err');GS.cur=0;}
+    qi++;render();
+  };
+  render();
+}
+
+// ═══════════════════════════════════════
+//  CHALLENGE
+// ═══════════════════════════════════════
+function createChallenge(){
+  const name=document.getElementById('ch-myname').value.trim()||'بطل';
+  const cnt=+document.getElementById('ch-qcount').value;
+  const time=+document.getElementById('ch-qtime').value;
+  const code=Math.random().toString(36).substr(2,4).toUpperCase();
+  localStorage.setItem('ch_'+code,JSON.stringify({name,cnt,time,scores:[]}));
+  document.getElementById('ch-result').style.display='block';
+  document.getElementById('ch-code-show').textContent=code;
+  showToast('تم إنشاء التحدي — الكود: '+code,'ok');
+}
+function copyChalCode(){
+  const code=document.getElementById('ch-code-show').textContent;
+  navigator.clipboard?.writeText(code).then(()=>showToast('تم نسخ الكود ✓','ok'));
+}
+function joinChallenge(){
+  const name=document.getElementById('ch-joinname').value.trim()||'لاعب';
+  const code=document.getElementById('ch-joincode').value.trim().toUpperCase();
+  const data=localStorage.getItem('ch_'+code);
+  if(!data){showToast('كود غير صحيح!','err');return;}
+  const ch=JSON.parse(data);
+  runChallenge(name,ch,code);
+}
+function runChallenge(pname,ch,code){
+  const qs=[...QB].sort(()=>Math.random()-.5).slice(0,ch.cnt);
+  let idx=0,score=0,timer=null,timeLeft=ch.time;
+  function render(){
+    if(idx>=qs.length){endCh();return;}
+    const q=qs[idx];
+    document.getElementById('challenge-game-area').innerHTML=`
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:2rem;max-width:700px;margin:0 auto">
+        <div class="cg-scoreboard"><div class="cg-player"><div class="cg-pname">${pname}</div><div class="cg-psc">${score}</div></div><div class="vs-mid">VS</div><div class="cg-player"><div class="cg-pname">${ch.name}</div><div class="cg-psc">?</div></div></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:1rem">
+          <span style="font-size:13px;color:var(--ink3)">سؤال ${idx+1}/${qs.length}</span>
+          <span class="q-timer-display" id="ch-tmr">⏱ ${timeLeft}ث</span>
+        </div>
+        <div class="q-card"><div class="q-card-top"><div class="q-text">${q.text}</div></div>
+          <div class="q-opts">${q.opts.map((o,i)=>`<button class="q-opt" onclick="chaA(${i},${q.ans})"><span class="q-opt-letter">${['أ','ب','ج','د'][i]}</span>${o}</button>`).join('')}</div>
+        </div>
+      </div>`;
+    clearInterval(timer);timeLeft=ch.time;
+    timer=setInterval(()=>{timeLeft--;const el=document.getElementById('ch-tmr');if(el)el.textContent='⏱ '+timeLeft+'ث';if(timeLeft<=0){clearInterval(timer);idx++;render();}},1000);
+  }
+  window.chaA=function(c,a){clearInterval(timer);if(c===a){score++;showToast('+1 ✅','ok');}else showToast('❌','err');idx++;setTimeout(render,500);};
+  function endCh(){
+    const data2=localStorage.getItem('ch_'+code);
+    const chd=data2?JSON.parse(data2):{};
+    chd.scores=chd.scores||[];
+    chd.scores.push({name:pname,score,total:qs.length,time:new Date().toLocaleTimeString('ar-SA')});
+    chd.scores.sort((a,b)=>b.score-a.score);
+    localStorage.setItem('ch_'+code,JSON.stringify(chd));
+    addXP(score*20,'التحدي');
+    document.getElementById('challenge-game-area').innerHTML=`
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:2rem;text-align:center;max-width:500px;margin:0 auto">
+        <div style="font-size:52px;margin-bottom:1rem">🏆</div>
+        <h2 style="font-size:24px;font-weight:900;margin-bottom:1rem">انتهى التحدي!</h2>
+        <div style="font-size:52px;font-weight:900;color:var(--gold);font-family:'Tajawal',sans-serif">${score}</div>
+        <p style="color:var(--ink3);margin:1rem 0">نقاط من ${qs.length}</p>
+        <button class="btn-lg btn-gold" onclick="this.closest('div').remove();renderChallengeLB()">رجوع</button>
+      </div>`;
+    renderChallengeLB();
+  }
+  render();
+}
+function renderChallengeLB(){
+  const entries=[];
+  for(let k in localStorage){
+    if(k.startsWith('ch_')){try{const d=JSON.parse(localStorage.getItem(k));(d.scores||[]).forEach(s=>entries.push(s));}catch(e){}}
+  }
+  entries.sort((a,b)=>b.score-a.score);
+  const el=document.getElementById('challenge-lb');
+  const medals=['🥇','🥈','🥉'];
+  el.innerHTML=entries.length?entries.slice(0,10).map((e,i)=>`
+    <div class="lb-row">
+      <div class="lb-rank-num">${medals[i]||'#'+(i+1)}</div>
+      <div class="lb-av">${e.name[0]}</div>
+      <div class="lb-name-col"><div class="lb-uname">${e.name}</div><div class="lb-grade">${e.time||''}</div></div>
+      <div class="lb-score-col"><div class="lb-sc">${e.score}/${e.total}</div></div>
+    </div>`).join(''):`<p style="text-align:center;padding:2rem;color:var(--ink3)">لا توجد نتائج بعد</p>`;
+}
+
+// ═══════════════════════════════════════
+//  XP, STREAK, TOAST
+// ═══════════════════════════════════════
+function addXP(n,label){
+  const u=curUser();if(!u)return;
+  u.xp=(u.xp||0)+n;
+  saveUser(u);
+  document.getElementById('nav-xp').textContent='⚡ '+u.xp+' XP';
+  const pop=document.getElementById('xp-pop');
+  pop.textContent='+'+n+' XP'+(label?' — '+label:'');
+  pop.classList.add('show');setTimeout(()=>pop.classList.remove('show'),1800);
+}
+function updateStreak(ok){
+  const u=curUser();if(!u)return;
+  if(ok){u.streak=(u.streak||0)+1;if(u.streak>(u.maxStreak||0))u.maxStreak=u.streak;}
+  else u.streak=0;
+  saveUser(u);
+}
+function showToast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+type+' show';
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ═══════════════════════════════════════
+//  FLOATING MATH SYMBOLS IN INTRO
+// ═══════════════════════════════════════
+function initFloatingMath(){
+  const syms=['∑','∫','√','π','∞','Δ','∂','∇','α','β','×','÷','²','³','½','%','=','±','≈','≠','<','>','⊥','∥'];
+  const c=document.getElementById('math-floats');
+  for(let i=0;i<25;i++){
+    const d=document.createElement('div');
+    d.className='floating-math';
+    d.textContent=syms[Math.floor(Math.random()*syms.length)];
+    d.style.cssText=`left:${Math.random()*100}%;animation-duration:${12+Math.random()*15}s;animation-delay:${Math.random()*12}s;font-size:${20+Math.random()*30}px`;
+    c.appendChild(d);
+  }
+}
+
+// ═══════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  loadStorage();
+  initFloatingMath();
+  // If already logged in, skip intro
+  if(ST.currentUser && ST.users[ST.currentUser]){
+    document.getElementById('screen-intro').classList.remove('active');
+    launchApp(ST.users[ST.currentUser]);
+  }
+});
+</script>
+</body>
+</html>
